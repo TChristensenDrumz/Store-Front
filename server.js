@@ -28,5 +28,3 @@ if (process.env.NODE_ENV === "production") {
         console.log("Listening on PORT " + PORT);
     });
 });
-
-module.exports = app;
