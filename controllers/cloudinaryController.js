@@ -5,7 +5,7 @@ const { getContent } = require("../config/middleware/multer");
 module.exports = {
 
     uploadImage: async function(req, res) {
-        const imageType = req.params.imageType;
+      const imageType = req.params.imageType;
       if (req.file) {
         const file = await getContent(req);
         return uploader.upload(file.content).then(result => {
@@ -63,6 +63,9 @@ module.exports = {
               });
             });
           };
+
+          res.json(image);
+
           switch (imageType) {
             case "bg-image":
               bgImage(res, image, req.params.id);
