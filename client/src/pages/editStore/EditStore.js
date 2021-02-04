@@ -1,6 +1,6 @@
 import React from "react";
+import ListGroup from 'react-bootstrap/ListGroup';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import $ from 'jquery';
 
 
 function EditStore() {
@@ -12,6 +12,15 @@ function EditStore() {
         <div className="container border rounded" id="space">
             <div className="row">
                 <div className="col-4 p-0">
+                    <ListGroup variant="flush" className="border-right rounded">
+                        <ListGroup.Item action href="/details">Store Details</ListGroup.Item>
+                        <ListGroup.Item>Font</ListGroup.Item>
+                        <ListGroup.Item>Colors</ListGroup.Item>
+                        <ListGroup.Item>Background Images</ListGroup.Item>
+                        <ListGroup.Item>Product Upload</ListGroup.Item>
+                        <ListGroup.Item>Products</ListGroup.Item>
+                        <ListGroup.Item>Delete Store</ListGroup.Item>
+                    </ListGroup>
                     <div className="list-group list-group-flush border-right rounded" id="list-tab" role="tablist">
                         <a className="list-group-item list-group-item-action active" id="list-store-list" data-toggle="list"
                             href="#list-store" role="tab" aria-controls="store">Store Details</a>
