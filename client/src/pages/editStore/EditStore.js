@@ -1,19 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import ListGroup from 'react-bootstrap/ListGroup';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import StoreDetails from "../../components/storeEdit/StoreDetails";
 
 
 function EditStore() {
-    const styles= {
-
-    }
+    const [edit, setEdit] = useState(<StoreDetails />);
   return (
     <div>
         <div className="container border rounded" id="space">
             <div className="row">
                 <div className="col-4 p-0">
                     <ListGroup variant="flush" className="border-right rounded">
-                        <ListGroup.Item action href="/details">Store Details</ListGroup.Item>
+                        <ListGroup.Item>Store Details</ListGroup.Item>
                         <ListGroup.Item>Font</ListGroup.Item>
                         <ListGroup.Item>Colors</ListGroup.Item>
                         <ListGroup.Item>Background Images</ListGroup.Item>
@@ -21,24 +20,9 @@ function EditStore() {
                         <ListGroup.Item>Products</ListGroup.Item>
                         <ListGroup.Item>Delete Store</ListGroup.Item>
                     </ListGroup>
-                    <div className="list-group list-group-flush border-right rounded" id="list-tab" role="tablist">
-                        <a className="list-group-item list-group-item-action active" id="list-store-list" data-toggle="list"
-                            href="#list-store" role="tab" aria-controls="store">Store Details</a>
-                        <a className="list-group-item list-group-item-action" id="list-font-list" data-toggle="list"
-                            href="#list-font" role="tab" aria-controls="font">Font</a>
-                        <a className="list-group-item list-group-item-action" id="list-colors-list" data-toggle="list"
-                            href="#list-colors" role="tab" aria-controls="colors">Colors</a>
-                        <a className="list-group-item list-group-item-action" id="list-background-list" data-toggle="list"
-                            href="#list-background" role="tab" aria-controls="background">Background Images</a>
-                        <a className="list-group-item list-group-item-action" id="list-products-list" data-toggle="list"
-                            href="#list-product-upload" role="tab" aria-controls="productUpload">Product Upload</a>
-                        <a className="list-group-item list-group-item-action" id="list-products-list" data-toggle="list"
-                            href="#list-products" role="tab" aria-controls="products">Products</a>
-                        <a className="list-group-item list-group-item-action border-bottom" id="list-delete-list" data-toggle="list"
-                            href="#list-delete" role="tab" aria-controls="products">Delete Store</a>
-                    </div>
                 </div>
                 <div className="col-8">
+                    {edit}
                     <div className="tab-content" id="nav-tabContent">
                         <div className="tab-pane fade show active" id="list-store" role="tabpanel" aria-labelledby="list-home-list">
 
