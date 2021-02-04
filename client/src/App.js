@@ -33,6 +33,9 @@ function App() {
         <Route exact path="/contact">
           <ContactStore />
         </Route>
+        <Route exact path="/:storeid/editor">
+          <EditStore />
+        </Route>
       <Footer />
     </Router>
   );
