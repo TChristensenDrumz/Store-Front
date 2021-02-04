@@ -17,13 +17,22 @@ import StoreLanding from "./pages/storeLanding/StoreLanding";
 import AllProducts from "./pages/allProducts/allProducts"
 import EditStore from "./pages/editStore/EditStore";
 import ContactStore from "./pages/contactStore/ContactStore";
+import LoginPage from "./pages/login/Login";
 
 
 function App() {
   return (
     <Router>
       <Header />
-      <ContactStore />
+        <Route exact path="/">
+          <StoreLanding />
+        </Route>
+        <Route exact path="/login">
+          <LoginPage />
+        </Route>
+        <Route exact path="/contact">
+          <ContactStore />
+        </Route>
       <Footer />
     </Router>
   );
