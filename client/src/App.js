@@ -21,7 +21,7 @@ function App() {
   return (
     <Router>
       <Header />
-      {/* <NameInput /> */}
+     
       <Footer />
     </Router>
   );
