@@ -4,7 +4,7 @@ function Font() {
   return (
     <div>
       <div
-        className="tab-pane fade"
+        className="tab-pane fade show active"
         id="list-font"
         role="tabpanel"
         aria-labelledby="list-profile-list"
