@@ -15,6 +15,7 @@ import NameInput from "./components/NameInput";
 import Cart from "./pages/cart/Cart";
 import StoreLanding from "./pages/storeLanding/StoreLanding";
 import EditStore from "./pages/editStore/EditStore";
+import ContactStore from "./pages/contactStore/ContactStore";
 
 
 
@@ -22,7 +23,7 @@ function App() {
   return (
     <Router>
       <Header />
-      <EditStore />
+      <ContactStore />
       <Footer />
     </Router>
   );
