@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import About from "./components/About";
-import Jumbo from "./components/Jumbotron";
-import SiteLanding from "./pages/siteLanding/SiteLanding";
-import api from "./utils/api";
+import CartItem from "./components/CartItem";
+import Cart from "./pages/cart/Cart";
+
+
 
 function App() {
   return (
     <div> 
-      <About />
+      <Cart/>
     </div>
   );
 }
