@@ -15,13 +15,14 @@ import NameInput from "./components/NameInput";
 import Cart from "./pages/cart/Cart";
 import StoreLanding from "./pages/storeLanding/StoreLanding";
 import AllProducts from "./pages/allProducts/allProducts"
+import EditStore from "./pages/editStore/EditStore";
 
 
 function App() {
   return (
     <Router>
       <Header />
-      <AllProducts/>
+      <EditStore />
       <Footer />
     </Router>
   );
