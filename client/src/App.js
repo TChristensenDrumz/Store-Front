@@ -16,13 +16,14 @@ import Cart from "./pages/cart/Cart";
 import StoreLanding from "./pages/storeLanding/StoreLanding";
 import AllProducts from "./pages/allProducts/allProducts"
 import EditStore from "./pages/editStore/EditStore";
+import ContactStore from "./pages/contactStore/ContactStore";
 
 
 function App() {
   return (
     <Router>
       <Header />
-      <EditStore />
+      <ContactStore />
       <Footer />
     </Router>
   );

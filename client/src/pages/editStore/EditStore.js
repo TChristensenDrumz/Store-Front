@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import ListGroup from 'react-bootstrap/ListGroup';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import StoreDetails from "../../components/storeEdit/StoreDetails";
-import Font from "../../components/storeEdit/Font";
-import Colors from "../../components/storeEdit/Colors";
-import BackgroundImages from "../../components/storeEdit/BackgroundImages";
-import ProductUpload from "../../components/storeEdit/ProductUpload";
-import Products from "../../components/storeEdit/Products";
-import DeleteStore from "../../components/storeEdit/DeleteStore";
+import StoreDetails from "../../components/storeEditor/StoreDetails";
+import Font from "../../components/storeEditor/Font";
+import Colors from "../../components/storeEditor/Colors";
+import BackgroundImages from "../../components/storeEditor/BackgroundImages";
+import ProductUpload from "../../components/storeEditor/ProductUpload";
+import Products from "../../components/storeEditor/Products";
+import DeleteStore from "../../components/storeEditor/DeleteStore";
 
 
 function EditStore() {
