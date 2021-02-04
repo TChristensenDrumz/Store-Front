@@ -9,8 +9,9 @@ router.route("/singleProduct/:productid")
     .get(productController.getSingleProduct);
 
 router.route("/create")
-    .put(productController.createProduct);
+    .post(productController.createProduct);
 
 router.route("/:productid")
     .delete(productController.deleteProduct);
+    
 module.exports = router;
