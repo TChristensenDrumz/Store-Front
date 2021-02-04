@@ -8,7 +8,7 @@ import StoreLanding from "./pages/storeLanding/StoreLanding";
 function App() {
   return (
     <div> 
-      <StoreLanding />
+      <Cart />
     </div>
   );
 }
