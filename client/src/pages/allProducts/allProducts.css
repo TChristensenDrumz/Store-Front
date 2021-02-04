@@ -1,0 +1,24 @@
+/* <style>
+    body {
+        font-family: {{ font }};
+        color: {{ body_color }};
+    }
+
+    .nav, .nav-item, .nav-link {
+        color: {{ font_color }};
+    }
+
+    img {
+        width: 300px;
+        height: 400px;
+    }
+
+    img:hover {
+        cursor: pointer;
+    }
+
+    footer, .custom-color {
+        background-color: {{ accent_color }};
+        color: {{ footer_color }};
+    }
+</style> */
