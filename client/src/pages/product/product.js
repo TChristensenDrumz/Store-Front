@@ -36,8 +36,8 @@ function Product(){
                         </div>
                            <div className="row pb-3">
                            <div className="input-group">
-                               <input type="text" className="form-control text-center" id="prod-quantity" value="1" aria-label="Recipient's username with two button addons" onChange = {}></input>
-                               <button onClick = {console.log(document.getElementById("#prod-quantity"))} className="btn btn-outline-secondary" id="add" type="button">
+                               <input type="text" className="form-control text-center" id="prod-quantity" value="1" aria-label="Recipient's username with two button addons" ></input>
+                               <button  className="btn btn-outline-secondary" id="add" type="button">
                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-plus" viewBox="0 0 16 16">
                                        <path fillRule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                                    </svg>
