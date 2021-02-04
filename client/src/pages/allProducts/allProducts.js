@@ -44,8 +44,9 @@ function AllProducts(){
 
             <a name="#"></a>
             <div class="container">
+            <h3 style = {{textAlign:"center"}}>All Products</h3>
                 <div class="row pt-5 pb-5 text-center justify-content-center">
-                    <h3>All Products</h3>
+                    
                     {products.map(product => (
                         <ProductBlock
                         key = {product.name}
