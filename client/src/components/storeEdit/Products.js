@@ -1,4 +1,5 @@
 import React from "react";
+import ProductEditor from "./ProductEditor";
 
 function Products() {
   return (
@@ -16,17 +17,12 @@ function Products() {
               <hr className="m-0 pb-4" />
             </div>
           </div>
-          {/* {{#if hasProducts}}
-                                {{#each products}}
-                                {{> product/editor-block}}
-                                {{/each}}
-                                {{/if}} */}
-
-          {/* {{#unless hasProducts}} */}
+            <ProductEditor />
+            <ProductEditor />
+            <ProductEditor />
           <div className="row align-items-center">
             <p className="col-12">No items on file for this store</p>
           </div>
-          {/* {{/unless}} */}
           <div className="text-right updateStatus"></div>
         </div>
       </div>
