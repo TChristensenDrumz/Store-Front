@@ -5,8 +5,8 @@ const isAuthenticated = require("../../config/middleware/isAuthenticated");
 router.route("/:id")
     .get(storeController.getStoreInfo);
 
-// router.route("/edit/:userid")
-//     .get(storeController.getEditor);
+router.route("/owner/:userId")
+    .get(storeController.getStoreByOwner);
 
 // router.route("/contact/:id")
 //     .get(storeController)

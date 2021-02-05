@@ -1,13 +1,27 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getOwnerStore } from "../../redux/actions/stores.actions";
+import api from "../../utils/api";
+import HandleStoreUpdate from "../../utils/HandleStoreUpdate";
 
 function StoreDetails() {
-  const store = useSelector(state => state.stores);
-  const [store_name, setStoreName] = useState(store.store_name);
+  const dispatch = useDispatch();
+  const { ownerStore } = useSelector(state => state.stores);
+  const [store_name, setStoreName] = useState(ownerStore.store_name);
+  const [tagline, setTagline] = useState(ownerStore.tagline);
+  const [about, setAbout] = useState(ownerStore.about);
+  const [address, setAddress] = useState(ownerStore.address);
 
-  useEffect(() => {
+  const handleDetailSubmit = (event) => {
+    event.preventDefault();
+    api.updateStore(ownerStore.id, {store_name, tagline, about, address}).then(result => {
+      console.log(result);
+      api.getStoreByOwner(ownerStore.UserId).then(data =>{
+        dispatch(getOwnerStore(data.data));
+      });
+    });
+  };
 
-  })
   return (
     <div>
       <div
@@ -16,7 +30,7 @@ function StoreDetails() {
         role="tabpanel"
         aria-labelledby="list-home-list"
       >
-        <form className="col-12 p-4" id="store-details-form">
+        <form className="col-12 p-4" onSubmit={handleDetailSubmit}>
           <div className="form-group">
             <label for="exampleFormControlInput1">Store Name</label>
             <input
@@ -25,6 +39,7 @@ function StoreDetails() {
               id="storeName"
               placeholder="Store Name"
               value={store_name}
+              onChange={(e) => setStoreName(e.target.value)}
             />
           </div>
 
@@ -35,6 +50,8 @@ function StoreDetails() {
               className="form-control"
               id="storeTagline"
               placeholder="Store Tagline"
+              value={tagline}
+              onChange={(e) => setTagline(e.target.value)}
             />
           </div>
 
@@ -44,7 +61,8 @@ function StoreDetails() {
               className="form-control"
               placeholder="About Us"
               rows="3"
-              value={store.about}
+              value={about}
+              onChange={(e) => setAbout(e.target.value)}
             ></textarea>
           </div>
 
@@ -55,11 +73,13 @@ function StoreDetails() {
               className="form-control"
               id="storeAddress"
               placeholder="Store Address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
             />
           </div>
 
           <div className="text-right">
-            <button type="submit" className="btn button-color">
+            <button type="submit" className="btn btn-dark ">
               Update
             </button>
           </div>

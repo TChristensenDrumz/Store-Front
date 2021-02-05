@@ -19,19 +19,20 @@ module.exports = {
         });
     },
 
-    // getEditor: function(req, res) {
-    //     db.Store.findOne({
-    //         where: {
-    //           UserId: req.params.userid
-    //         },
-    //         include: [db.Product]
-    //       }).then(result => {
-    //           res.json(result);
-    //       })
-    //       .catch(err => {
-    //         res.json(err);
-    //     });
-    // },
+    getStoreByOwner: function(req, res) {
+        db.Store.findOne({
+            where: {
+              UserId: req.params.userId
+            },
+            include: [db.Product]
+          }).then(result => {
+              console.log(result)
+              res.json(result);
+          })
+          .catch(err => {
+            res.json(err);
+        });
+    },
 
     createStore: function(req, res) {
         db.Store.create({

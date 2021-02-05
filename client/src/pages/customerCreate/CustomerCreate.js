@@ -12,7 +12,7 @@ function CreateAccount() {
     const [password, setPassword] = useState("");
     const [first_name, setFirstName] = useState("");
     const [last_name, setLastName] = useState("");
-    const [redirect, setRedirect] = useState({url: "/csignup"});
+    const [redirect, setRedirect] = useState({url: "/new-customer"});
 
     const handleCreateAccount = (event) => {
         event.preventDefault();
@@ -34,7 +34,7 @@ function CreateAccount() {
           </button>
           <div>
             <small class="form-text">
-              <a href="/login">Already have an account? Login here</a>
+              <a href="/customer-login">Already have an account? Login here</a>
             </small>
           </div>
           <div>

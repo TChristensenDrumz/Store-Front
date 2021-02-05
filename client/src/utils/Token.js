@@ -18,4 +18,11 @@ export default {
       }
     }
   },
+
+  getId: function () {
+    const token = this.getToken();
+    if (token) {
+      return token.userId;
+    }
+  },
 };
