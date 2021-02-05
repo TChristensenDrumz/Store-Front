@@ -1,10 +1,41 @@
 import React from "react";
 import CartItem from "../../components/CartItem";
 import { PayPalButton } from "react-paypal-button-v2";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 
 function Cart() {
+  let products = [
+    {
+      img: "https://images.unsplash.com/photo-1485550409059-9afb054cada4?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cmFuZG9tfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      name: "Lego Heads1",
+      price: 1000
+    },
+    {
+      img: "https://images.unsplash.com/photo-1485550409059-9afb054cada4?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cmFuZG9tfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      name: "Lego Heads2",
+      price: 1000
+    },
+    {
+      img: "https://images.unsplash.com/photo-1485550409059-9afb054cada4?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cmFuZG9tfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      name: "Lego Heads13",
+      price: 1000
+    },
+    {
+      img: "https://images.unsplash.com/photo-1485550409059-9afb054cada4?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cmFuZG9tfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      name: "Lego Heads14",
+      price: 1000
+    }
+  ]
+
+  let subTotal = 0
+  products.forEach(product=>{
+    subTotal += product.price})
+
   return (
+    <div>
+    <Header/>
     <div className="container">
       <h2>Shopping Cart</h2>
       <div className="row pl-3 pr-3 mb-1">
@@ -14,12 +45,18 @@ function Cart() {
         <p className="col-2 m-0 text-right">Price</p>
       </div>
       <hr />
-      <CartItem />
-      <CartItem />
-      <CartItem />
+        
+        {products.map(product => (
+          <CartItem
+            key = {product.name}
+            price = {product.price}
+            img = {product.img}
+            name = {product.name}
+            />
+        ))}
       <div className="row align-items-center pt-3 pb-3">
         <div className="col-12">
-          <h5 className="text-right">Subtotal: $300.00</h5>
+          <h5 className="text-right">{"Subtotal: $"+ subTotal}</h5>
         </div>
       </div>
 
@@ -43,7 +80,7 @@ function Cart() {
               tagline:false,
               height:45,
             }}
-            amount="0.01"
+            amount={subTotal.toString()}
             // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
             onApprove={(data,actions)=>{
             }}
@@ -64,6 +101,8 @@ function Cart() {
           />
         </div>
       </div>
+    </div>
+    <Footer/>
     </div>
   );
 }

@@ -15,7 +15,7 @@ function CreateOwnerAccount() {
   const [password, setPassword] = useState("");
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
-  const [redirect, setRedirect] = useState({ url: "/osignup" });
+  const [redirect, setRedirect] = useState({ url: "/signup" });
   const dispatch = useDispatch();
 
   const handleCreateAccount = (event) => {
@@ -72,12 +72,12 @@ function CreateOwnerAccount() {
           </button>
           <div>
             <small class="form-text">
-              <a href="/customer-login">Already have an account? Login here</a>
+              <a href="/login">Already have an account? Login here</a>
             </small>
           </div>
           <div>
             <small class="form-text">
-              <a href="/signup">Store owner? Create account here</a>
+              <a href="/new-customer">Customer? Create account here</a>
             </small>
           </div>
           <Redirect to={redirect.url} />
