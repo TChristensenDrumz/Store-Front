@@ -25,10 +25,10 @@ function Colors() {
       <div
         className="tab-pane fade show active"
         id="list-colors"
-        role="tabpanel"
+        role="tabpanel" 
         aria-labelledby="list-messages-list"
       >
-        <form className="col-12 p-4" id="color-form" onChange={handleColorSubmit}>
+        <form className="col-12 p-4" id="color-form" onSubmit={handleColorSubmit}>
           <div className="form-group">
             <label for="exampleFormControlInput1">Store Color</label>
             <input
