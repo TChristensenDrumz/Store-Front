@@ -1,9 +1,10 @@
 import React from 'react';
 import Jumbotron from "react-bootstrap/Jumbotron";
 
-function About({image, info}) {
+function About({image, info, color}) {
     const styles = {
         jumbo: {
+            color: `${color}`,
           height: "100vh",
           width: "100vw",
           padding: "0",

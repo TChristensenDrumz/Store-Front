@@ -9,10 +9,11 @@ function StoreLanding() {
   const params = useParams();
   const stores = useSelector(state => state.stores);
   const selectedStore = stores.allStores.filter(store => store.id == params.storeId)[0];
-  let products = [selectedStore.Products];
+  let products = selectedStore.Products;
   if (products.length > 3) {
     products = products.splice(0, 3);
   }
+
     const styles= {
         popular: {
             paddingTop: "10vh",
@@ -50,6 +51,7 @@ function StoreLanding() {
       <About 
         image={selectedStore.about_image}
         info={selectedStore.about}
+        color={selectedStore.body_color}
       />
     </div>
   );
