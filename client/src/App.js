@@ -18,17 +18,36 @@ import Cart from "./pages/cart/Cart";
 import StoreLanding from "./pages/storeLanding/StoreLanding";
 import SiteLanding from "./pages/siteLanding/SiteLanding";
 import AllProducts from "./pages/allProducts/allProducts"
-import EditStore from "./pages/editStore/EditStore";
 import ContactStore from "./pages/contactStore/ContactStore";
+import ProtectedRoute from "./components/ProtectedRoute";
+
+// Import Pages
+import Login from "./pages/login/Login";
+import OwnerLogin from "./pages/ownerLogin/OwnerLogin";
+import CreateAccount from "./pages/createAccount/CreateAccount";
+import CreateOwnerAccount from "./pages/createOwnerAccount/CreateOwnerAccount";
+import SiteLanding from "./pages/siteLanding/SiteLanding";
+import EditStore from "./pages/editStore/EditStore";
+import StoreLanding from "./pages/storeLanding/StoreLanding";
 
 
 function App() {
   return (
     <Router>
-      {/* <Header />
-      <ContactStore />
-      <Footer /> */}
-      <SiteLanding />
+      <Header />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/ologin" component={OwnerLogin} />
+        <Route exact path="/csignup" component={CreateAccount} />
+        <Route exact path="/osignup" component={CreateOwnerAccount} />
+        {/* <Route exact path="/">
+          <ProtectedRoute component={SiteLanding} />
+        </Route> */}
+        <Route exact path="/" component={SiteLanding} />
+        <Route exact path="/storeEditor">
+          <ProtectedRoute component={EditStore} />
+        </Route>
+        <Route exact path="/storefront/:storeId" component={StoreLanding} />
+      <Footer />
     </Router>
   );
 }

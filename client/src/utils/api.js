@@ -14,6 +14,10 @@ export default {
     login: function(userData) {
         return axios.post("/api/user/login", userData);
     },
+
+    updateUser: function(userId, userData) {
+        return axios.put("/api/user/update/" + userId, userData);
+    },
     //========================================================
     // Routes for store data
     getStoreInfo: function(storeId) {
