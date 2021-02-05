@@ -26,9 +26,8 @@ import Login from "./pages/login/Login";
 import OwnerLogin from "./pages/ownerLogin/OwnerLogin";
 import CreateAccount from "./pages/createAccount/CreateAccount";
 import CreateOwnerAccount from "./pages/createOwnerAccount/CreateOwnerAccount";
-import SiteLanding from "./pages/siteLanding/SiteLanding";
 import EditStore from "./pages/editStore/EditStore";
-import StoreLanding from "./pages/storeLanding/StoreLanding";
+
 
 
 function App() {

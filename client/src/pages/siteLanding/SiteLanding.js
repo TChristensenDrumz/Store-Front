@@ -37,7 +37,7 @@ window.addEventListener('scroll', changeBg)
                   <Nav.Link className="ml-4 mr-4" style={{color:"white"}} href="//">About</Nav.Link>
               </Nav>
               <Nav className="mr-5">
-                  <Nav.Link style={{color:"white"}} href="//">Login</Nav.Link>
+                  <Nav.Link style={{color:"white"}} href="/login">Login</Nav.Link>
                   <Nav.Link style={{color:"white"}} href="//">Get Started</Nav.Link>
               </Nav>
           </Navbar.Collapse>
