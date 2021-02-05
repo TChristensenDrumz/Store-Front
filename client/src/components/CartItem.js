@@ -1,6 +1,9 @@
 import React from "react";
 
-function CartItem() {
+function CartItem(props) {
+  let name = props.name
+  let img = props.img
+  let price = props.price
   return (
     <>
       <div className="row align-items-center d-flex justify-content-between p-3">
@@ -8,9 +11,9 @@ function CartItem() {
           <i className="fas fa-times"></i>
         </div>
         <div class="media align-items-center col-6 p-2">
-          <img src="https://placehold.it/100x100" className="mr-3" alt="..." />
+          <img src={img} className="mr-3" alt="..." />
           <div className="media-body">
-            <h5 className="mt-0 ml-3">Product Name</h5>
+            <h5 className="mt-0 ml-3">{name}</h5>
           </div>
         </div>
         <div className="col-3 text-center">
@@ -26,7 +29,7 @@ function CartItem() {
             </div>
           </div>
         </div>
-        <div className="col-2 text-right">$24.99</div>
+        <div className="col-2 text-right">{"$"+price}</div>
       </div>
       <hr />
     </>
