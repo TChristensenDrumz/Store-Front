@@ -1,5 +1,8 @@
 // Import dependencies
 import React, { useState } from "react";
+import api from "../../utils/api";
+import { useSelector, useDispatch } from "react-redux";
+import { getAllStores } from "../../redux/actions/stores.actions";
 
 // Import styling 
 import { Navbar, Nav, Jumbotron, Button, Container, Row, Col } from 'react-bootstrap';

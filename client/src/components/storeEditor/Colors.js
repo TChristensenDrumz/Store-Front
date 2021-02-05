@@ -1,6 +1,8 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 function Colors() {
+  const store = useSelector(state => state.stores);
   return (
     <div>
       <div
@@ -16,7 +18,7 @@ function Colors() {
               type="color"
               className="form-control color-form"
               id="storeColor"
-              value="{{ accent_color }}"
+              value={store.accent_color}
             />
           </div>
 

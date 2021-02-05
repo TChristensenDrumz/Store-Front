@@ -4,12 +4,7 @@ const jwt = require('jsonwebtoken');
 
 module.exports = {
     create: function(req, res) {   
-        db.User.create({
-            email: req.body.email,
-            password: req.body.password,
-            first_name: req.body.first_name,
-            last_name: req.body.last_name
-          }).then((result, err) => {
+        db.User.create(req.body).then((result, err) => {
                 if (err) {
                     res.json(err);
                 } else {
@@ -46,5 +41,19 @@ module.exports = {
               })(req, res); 
             }; 
           }; 
+    },
+
+    update: function(req, res) {
+      db.User.update(req.body,
+        {where: {
+          id: req.params.userId
+        }
+      }).then(result => {
+        res.json(result);
+      })
+      .catch(err => {
+        console.log(err);
+        res.json(err);
+      }) 
     }
 };

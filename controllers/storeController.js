@@ -35,8 +35,8 @@ module.exports = {
 
     createStore: function(req, res) {
         db.Store.create({
-            store_name: req.body.store.store_name,
-            UserId: req.body.userid
+            store_name: req.body.store_name,
+            UserId: req.body.userId
           }).then(result => {
               res.json(result);
           })
