@@ -4,6 +4,9 @@ import EmailPassword from "../../components/EmailPassword";
 import NameInput from "../../components/NameInput";
 import api from "../../utils/api";
 
+import Header from '../../components/Header'
+import Footer from '../../components/Footer'
+
 function CreateAccount() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -20,25 +23,29 @@ function CreateAccount() {
         setRedirect({url: "/login"});
     }
   return (
-    <form className="container" onSubmit={handleCreateAccount}>
-        <h2>Create Account</h2>
-      <NameInput setFirstName={setFirstName} setLastName={setLastName}/>
-      <EmailPassword setEmail={setEmail} setPassword={setPassword}/>
-      <button type="submit" class="btn btn-dark mb-2">
-        Submit
-      </button>
-      <div>
-        <small class="form-text">
-          <a href="/login">Already have an account? Login here</a>
-        </small>
-      </div>
-      <div>
-        <small class="form-text">
-          <a href="/osignup">Store owner? Create account here</a>
-        </small>
-      </div>
-      <Redirect to={redirect.url} />
-    </form>
+    <>
+      <Header />
+        <form className="container" onSubmit={handleCreateAccount}>
+            <h2>Create Account</h2>
+          <NameInput setFirstName={setFirstName} setLastName={setLastName}/>
+          <EmailPassword setEmail={setEmail} setPassword={setPassword}/>
+          <button type="submit" class="btn btn-dark mb-2">
+            Submit
+          </button>
+          <div>
+            <small class="form-text">
+              <a href="/login">Already have an account? Login here</a>
+            </small>
+          </div>
+          <div>
+            <small class="form-text">
+              <a href="/signup">Store owner? Create account here</a>
+            </small>
+          </div>
+          <Redirect to={redirect.url} />
+        </form>
+      <Footer />
+    </>
   );
 }
 
