@@ -7,6 +7,7 @@ import BackgroundImages from "../../components/storeEditor/BackgroundImages";
 import ProductUpload from "../../components/storeEditor/ProductUpload";
 import Products from "../../components/storeEditor/Products";
 import DeleteStore from "../../components/storeEditor/DeleteStore";
+import "./EditStore.css";
 
 
 function EditStore() {
@@ -18,7 +19,7 @@ function EditStore() {
             <div className="row">
                 <div className="col-4 p-0">
                     <ListGroup variant="flush" className="border-right rounded">
-                        <ListGroup.Item onClick={() => setEdit(<StoreDetails />)}>Store Details</ListGroup.Item>
+                        <button><ListGroup.Item onClick={() => setEdit(<StoreDetails />)}>Store Details</ListGroup.Item></button>
                         <ListGroup.Item onClick={() => setEdit(<Font />)}>Font</ListGroup.Item>
                         <ListGroup.Item onClick={() => setEdit(<Colors />)}>Colors</ListGroup.Item>
                         <ListGroup.Item onClick={() => setEdit(<BackgroundImages />)}>Background Images</ListGroup.Item>

@@ -1,6 +1,19 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import api from "../../utils/api";
 
 function DeleteStore() {
+  const { ownerStore } = useSelector(state => state.stores);
+  const history = useHistory();
+
+  const handleDelete = event => {
+    event.preventDefault();
+    api.deleteStore(ownerStore.id).then(result => {
+      history.push("/");
+    })
+  }
+
   return (
     <div>
       <div
@@ -18,13 +31,13 @@ function DeleteStore() {
           <div className="text-left">
             <button
               type="submit"
-              className="btn btn-danger delete-store"
-              data-storeid="{{ storeid }}"
+              className="btn btn-danger"
+              onClick={handleDelete}
             >
               Delete
             </button>
           </div>
-          <div className="text-right updateStatus"></div>
+          <div className="text-right"></div>
         </form>
       </div>
     </div>

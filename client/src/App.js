@@ -10,17 +10,17 @@ import ProtectedRoute from "./components/ProtectedRoute";
 
 
 // Import pages
-import Cart from "./pages/Cart/Cart";
+import Cart from "./pages/cart/Cart";
 
-import StoreLanding from "./pages/StoreLanding/StoreLanding";
-import SiteLanding from "./pages/SiteLanding/SiteLanding";
-import AllProducts from "./pages/AllProducts/AllProducts";
-import ContactStore from "./pages/ContactStore/ContactStore";
-import StoreLogin from "./pages/StoreLogin/StoreLogin";
-import CreateStoreAccount from "./pages/StoreCreate/StoreCreate";
-import CustomerLogin from "./pages/CustomerLogin/CustomerLogin";
-import CreateAccount from "./pages/CustomerCreate/CustomerCreate";
-import EditStore from "./pages/EditStore/EditStore";
+import StoreLanding from "./pages/storeLanding/StoreLanding";
+import SiteLanding from "./pages/siteLanding/SiteLanding";
+import AllProducts from "./pages/allProducts/allProducts";
+import ContactStore from "./pages/contactStore/ContactStore";
+import StoreLogin from "./pages/storeLogin/storeLogin";
+import CreateStoreAccount from "./pages/storeCreate/StoreCreate";
+import CustomerLogin from "./pages/customerLogin/CustomerLogin";
+import CreateAccount from "./pages/customerCreate/CustomerCreate";
+import EditStore from "./pages/editStore/EditStore";
 
 
 function App() {
