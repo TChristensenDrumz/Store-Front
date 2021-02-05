@@ -24,6 +24,10 @@ export default {
         return axios.get("/api/store/" + storeId);
     },
 
+    getStoreByOwner: function(userId) {
+        return axios.get("/api/store/owner/" + userId);
+    },
+
     createStore: function(storeData) {
         return axios.post("/api/store/create", storeData);
     },

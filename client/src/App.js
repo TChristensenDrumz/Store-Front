@@ -14,15 +14,13 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Cart from "./pages/cart/Cart";
 import StoreLanding from "./pages/storeLanding/StoreLanding";
 import SiteLanding from "./pages/siteLanding/SiteLanding";
-import AllProducts from "./pages/allProducts/allProducts"
+import AllProducts from "./pages/allProducts/allProducts";
 import ContactStore from "./pages/contactStore/ContactStore";
 import StoreLogin from "./pages/storeLogin/storeLogin";
 import CreateStoreAccount from "./pages/storeCreate/StoreCreate";
 import CustomerLogin from "./pages/customerLogin/CustomerLogin";
 import CreateAccount from "./pages/customerCreate/CustomerCreate";
-import SiteLanding from "./pages/siteLanding/SiteLanding";
 import EditStore from "./pages/editStore/EditStore";
-import StoreLanding from "./pages/storeLanding/StoreLanding";
 
 
 function App() {

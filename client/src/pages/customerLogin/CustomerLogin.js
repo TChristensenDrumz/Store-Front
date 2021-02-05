@@ -11,7 +11,7 @@ import Footer from '../../components/Footer'
 function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [redirect, setRedirect] = useState({url: "/login"});
+    const [redirect, setRedirect] = useState({url: "/customer-login"});
   const dispatch = useDispatch();
 
     const handleLogin = (event) => {
