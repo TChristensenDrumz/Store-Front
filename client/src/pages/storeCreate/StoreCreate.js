@@ -6,6 +6,9 @@ import api from "../../utils/api";
 import { useDispatch } from "react-redux";
 import { getStoreInfo } from "../../redux/actions/stores.actions";
 
+import Header from '../../components/Header'
+import Footer from '../../components/Footer'
+
 function CreateOwnerAccount() {
   const [store_name, setStoreName] = useState("");
   const [email, setEmail] = useState("");
@@ -50,33 +53,37 @@ function CreateOwnerAccount() {
     });
   };
   return (
-    <form className="container" onSubmit={handleCreateAccount}>
-      <h2>Create Store Owner Account</h2>
-      <div className="form-group">
-        <label for="store-name">Store Name</label>
-        <input
-          type="text"
-          className="form-control"
-          onChange={(e) => setStoreName(e.target.value)}
-        />
-      </div>
-      <NameInput setFirstName={setFirstName} setLastName={setLastName} />
-      <EmailPassword setEmail={setEmail} setPassword={setPassword} />
-      <button type="submit" class="btn btn-dark mb-2">
-        Submit
-      </button>
-      <div>
-        <small class="form-text">
-          <a href="/login">Already have an account? Login here</a>
-        </small>
-      </div>
-      <div>
-        <small class="form-text">
-          <a href="/osignup">Store owner? Create account here</a>
-        </small>
-      </div>
-      <Redirect to={redirect.url} />
-    </form>
+    <>
+      <Header />
+        <form className="container" onSubmit={handleCreateAccount}>
+          <h2>Create Store Owner Account</h2>
+          <div className="form-group">
+            <label for="store-name">Store Name</label>
+            <input
+              type="text"
+              className="form-control"
+              onChange={(e) => setStoreName(e.target.value)}
+            />
+          </div>
+          <NameInput setFirstName={setFirstName} setLastName={setLastName} />
+          <EmailPassword setEmail={setEmail} setPassword={setPassword} />
+          <button type="submit" class="btn btn-dark mb-2">
+            Submit
+          </button>
+          <div>
+            <small class="form-text">
+              <a href="/customer-login">Already have an account? Login here</a>
+            </small>
+          </div>
+          <div>
+            <small class="form-text">
+              <a href="/signup">Store owner? Create account here</a>
+            </small>
+          </div>
+          <Redirect to={redirect.url} />
+        </form>
+      <Footer />
+    </>
   );
 }
 
