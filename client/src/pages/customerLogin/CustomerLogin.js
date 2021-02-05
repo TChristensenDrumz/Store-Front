@@ -5,6 +5,9 @@ import api from "../../utils/api";
 import { useDispatch } from "react-redux";
 import { getAllStores } from "../../redux/actions/stores.actions";
 
+import Header from '../../components/Header'
+import Footer from '../../components/Footer'
+
 function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -31,34 +34,38 @@ function LoginPage() {
         });
     }
   return (
-    <form
-      style={{
-        width: "50%",
-        margin: "auto"
-      }}
-      onSubmit={handleLogin}
-    >
-      <h3>Customer Login</h3>
-      <EmailPassword setEmail={setEmail} setPassword={setPassword}/>
-      <button type="submit" class="btn btn-dark mb-2">
-        Submit
-      </button>
-      <div>
-        <small class="form-text">
-          <a href="/csignup">
-            New customer? Sign up for an account here
-          </a>
-        </small>
-      </div>
-      <div>
-        <small class="form-text">
-          <a href="/ologin">
-            Store owner? Login here
-          </a>
-        </small>
-      </div>
-      <Redirect to={redirect.url} />
-    </form>
+    <>
+      <Header />
+        <form
+          style={{
+            width: "50%",
+            margin: "auto"
+          }}
+          onSubmit={handleLogin}
+        >
+          <h3>Customer Login</h3>
+          <EmailPassword setEmail={setEmail} setPassword={setPassword}/>
+          <button type="submit" class="btn btn-dark mb-2">
+            Submit
+          </button>
+          <div>
+            <small class="form-text">
+              <a href="/new-customer">
+                New customer? Sign up for an account here
+              </a>
+            </small>
+          </div>
+          <div>
+            <small class="form-text">
+              <a href="/login">
+                Store owner? Login here
+              </a>
+            </small>
+          </div>
+          <Redirect to={redirect.url} />
+        </form>
+      <Footer />
+    </>
   );
 }
 

@@ -32,13 +32,13 @@ window.addEventListener('scroll', changeBg)
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="ml-auto mr-auto">
-                  <Nav.Link className="ml-4 mr-4" style={{color:"white"}} href="//">Shops</Nav.Link>
-                  <Nav.Link className="ml-4 mr-4" style={{color:"white"}} href="#about">Templates</Nav.Link>
-                  <Nav.Link className="ml-4 mr-4" style={{color:"white"}} href="//">About</Nav.Link>
+                  <Nav.Link className="ml-4 mr-4" style={{color:"white"}} href="/shops">Shops</Nav.Link>
+                  <Nav.Link className="ml-4 mr-4" style={{color:"white"}} href="/templates">Templates</Nav.Link>
+                  <Nav.Link className="ml-4 mr-4" style={{color:"white"}} href="/about">About</Nav.Link>
               </Nav>
               <Nav className="mr-5">
                   <Nav.Link style={{color:"white"}} href="/login">Login</Nav.Link>
-                  <Nav.Link style={{color:"white"}} href="//">Get Started</Nav.Link>
+                  <Nav.Link style={{color:"white"}} href="/create">Get Started</Nav.Link>
               </Nav>
           </Navbar.Collapse>
       </Navbar>
