@@ -26,7 +26,32 @@ import EditStore from "./pages/editStore/EditStore";
 
 function App() {
   return (
-    <Cart/>
+    <Router>
+    <Header />
+      <Route exact path="/login" component={Login} />
+      <Route exact path="/ologin" component={OwnerLogin} />
+      <Route exact path="/csignup" component={CreateAccount} />
+      <Route exact path="/osignup" component={CreateOwnerAccount} />
+      {/* <Route exact path="/">
+        <ProtectedRoute component={SiteLanding} />
+      </Route> */}
+      {/* Landing */}
+      <Route exact path="/" component={SiteLanding} />
+
+      {/* Logins */}
+      <Route exact path="/login" component={StoreLogin} />
+      <Route exact path="/customer-login" component={CustomerLogin} />
+      <Route exact path="/signup" component={CreateStoreAccount} />
+      <Route exact path="/new-customer" component={CreateAccount} />
+
+      {/*  */}
+      <Route exact path="/storeEditor">
+        <ProtectedRoute component={EditStore} />
+      </Route>
+      <Route exact path="/storefront/:storeId" component={StoreLanding} />
+    <Footer />
+
+  </Router>
   );
 }
 
