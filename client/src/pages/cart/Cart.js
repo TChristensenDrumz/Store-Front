@@ -1,5 +1,7 @@
 import React from "react";
 import CartItem from "../../components/CartItem";
+import { PayPalButton } from "react-paypal-button-v2";
+
 
 function Cart() {
   return (
@@ -15,20 +17,51 @@ function Cart() {
       <CartItem />
       <CartItem />
       <CartItem />
-      <div className="row align-items-center p-3">
+      <div className="row align-items-center pt-3 pb-3">
         <div className="col-12">
           <h5 className="text-right">Subtotal: $300.00</h5>
         </div>
       </div>
 
-      <div className="row align-items-center p-3">
-        <div className="col-12 text-right p-0">
-          <button
-            type="button"
-            className="btn btn-dark"
-          >
-            Checkout
-          </button>
+      <div className="row">
+        
+        <div 
+        className="pr-3"
+        style={{
+          width:"200px",
+          marginLeft:"auto"
+          }}>
+       
+          <PayPalButton 
+            
+            
+            style={{
+              
+              label:"checkout",
+              layout:"horizontal",
+              color: "black",
+              tagline:false,
+              height:45,
+            }}
+            amount="0.01"
+            // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
+            onApprove={(data,actions)=>{
+            }}
+            onSuccess={(details, data) => {
+              console.log(details,data)
+             
+              alert("Transaction completed by " + details.payer.name.given_name);
+              
+              // OPTIONAL: Call your server to save the transaction
+            // return fetch("/paypal-transaction-complete", {
+            //     method: "post",
+            //     body: JSON.stringify({
+            //       orderID: data.orderID
+            //     })
+            //   });
+            }}
+            options = {{clientId: "AfhjZ5Uut9acoZSMszE4Zqo2-V_E6RashVGEW1CNegRN2dbXzgEMjm7h5yDMkqt78jIsdx0KsxRORjhC", disableFunding:"credit"}}
+          />
         </div>
       </div>
     </div>
