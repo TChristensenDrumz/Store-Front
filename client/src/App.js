@@ -26,7 +26,6 @@ import LoginPage from "./pages/login/Login";
 function App() {
   return (
     <Router>
-<<<<<<< HEAD
       <Header />
         <Route exact path="/">
           <StoreLanding />
@@ -41,12 +40,6 @@ function App() {
           <EditStore />
         </Route>
       <Footer />
-=======
-      {/* <Header />
-      <ContactStore />
-      <Footer /> */}
-      <SiteLanding />
->>>>>>> 1fee14b4e9542df4e0be2da44d5314832a716079
     </Router>
   );
 }
