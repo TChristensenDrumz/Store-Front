@@ -12,8 +12,11 @@ import Footer from './components/Footer';
 import CartItem from "./components/CartItem";
 import EmailPassword from "./components/EmailPassword";
 import NameInput from "./components/NameInput";
+
+// Import pages
 import Cart from "./pages/cart/Cart";
 import StoreLanding from "./pages/storeLanding/StoreLanding";
+import SiteLanding from "./pages/siteLanding/SiteLanding";
 import AllProducts from "./pages/allProducts/allProducts"
 import EditStore from "./pages/editStore/EditStore";
 import ContactStore from "./pages/contactStore/ContactStore";
@@ -23,6 +26,7 @@ import LoginPage from "./pages/login/Login";
 function App() {
   return (
     <Router>
+<<<<<<< HEAD
       <Header />
         <Route exact path="/">
           <StoreLanding />
@@ -37,6 +41,12 @@ function App() {
           <EditStore />
         </Route>
       <Footer />
+=======
+      {/* <Header />
+      <ContactStore />
+      <Footer /> */}
+      <SiteLanding />
+>>>>>>> 1fee14b4e9542df4e0be2da44d5314832a716079
     </Router>
   );
 }
