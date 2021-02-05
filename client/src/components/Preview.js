@@ -1,7 +1,6 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
-import "../pages/ContactStore/node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { useHistory } from "react-router-dom";
 
 function Preview({image, name, id}) {

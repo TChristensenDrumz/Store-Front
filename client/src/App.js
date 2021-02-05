@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 // Import styling
-import './pages/ContactStore/node_modules/bootstrap/dist/css/bootstrap.min.css';
 import 'react-bootstrap'
 
 // Import components
