@@ -63,9 +63,6 @@ module.exports = {
               });
             });
           };
-
-          res.json(image);
-
           switch (imageType) {
             case "bg-image":
               bgImage(res, image, req.params.id);
@@ -79,12 +76,14 @@ module.exports = {
             default:
               return;
           }
-        }).catch(err => res.json({
+        }).catch(err => {
+          console.log(err);
+          res.json({
           message: "Something went wrong while processing your request",
           data: {
             err
           }
-        }));
+        })});
       };
     },
 
