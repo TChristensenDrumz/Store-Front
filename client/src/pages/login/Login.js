@@ -2,16 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import EmailPassword from "../../components/EmailPassword";
 import api from "../../utils/api";
+import { useDispatch } from "react-redux";
+import { getAllStores } from "../../redux/actions/stores.actions";
 
 function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [redirect, setRedirect] = useState({url: "/login"});
-
-    useEffect(() => {
-        console.log({email, password});
-    }, [email, password]);
-
+  const dispatch = useDispatch();
 
     const handleLogin = (event) => {
         event.preventDefault();
@@ -22,6 +20,10 @@ function LoginPage() {
             console.log(result);
             if (result.data.success) {
                 localStorage.setItem("token", JSON.stringify(result.data.token));
+                api.landingStores().then(res => {
+                  console.log(res);
+                  dispatch(getAllStores(res.data));
+                });
                 setRedirect({url: "/"});
             } else {
                 return alert(result.data.message);

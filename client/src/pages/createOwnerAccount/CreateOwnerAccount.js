@@ -3,6 +3,8 @@ import { Redirect } from "react-router-dom";
 import EmailPassword from "../../components/EmailPassword";
 import NameInput from "../../components/NameInput";
 import api from "../../utils/api";
+import { useDispatch } from "react-redux";
+import { getStoreInfo } from "../../redux/actions/stores.actions";
 
 function CreateOwnerAccount() {
   const [store_name, setStoreName] = useState("");
@@ -11,6 +13,7 @@ function CreateOwnerAccount() {
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
   const [redirect, setRedirect] = useState({ url: "/osignup" });
+  const dispatch = useDispatch();
 
   const handleCreateAccount = (event) => {
     event.preventDefault();
@@ -26,6 +29,7 @@ function CreateOwnerAccount() {
           console.log(res);
           api.createStore({ store_name, userId }).then((data) => {
             console.log(data);
+            dispatch(getStoreInfo(data.data))
             setRedirect({ url: "/storeEditor" });
           });
         });
@@ -37,6 +41,7 @@ function CreateOwnerAccount() {
               let { userId } = JSON.parse(atob(res.data.token.split(".")[1]));
               api.createStore({ store_name, userId }).then((data) => {
                 console.log(data);
+                dispatch(getStoreInfo(data.data))
                 setRedirect({ url: "/storeEditor" });
               });
             });

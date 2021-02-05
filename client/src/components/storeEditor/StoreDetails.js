@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 function StoreDetails() {
+  const store = useSelector(state => state.stores);
+  const [store_name, setStoreName] = useState(store.store_name);
+
+  useEffect(() => {
+
+  })
   return (
     <div>
       <div
@@ -17,7 +24,7 @@ function StoreDetails() {
               className="form-control"
               id="storeName"
               placeholder="Store Name"
-              value="{{ name }}"
+              value={store_name}
             />
           </div>
 
@@ -35,9 +42,9 @@ function StoreDetails() {
             <label for="exampleFormControlTextarea1">About</label>
             <textarea
               className="form-control"
-              id="aboutDetails"
               placeholder="About Us"
               rows="3"
+              value={store.about}
             ></textarea>
           </div>
 

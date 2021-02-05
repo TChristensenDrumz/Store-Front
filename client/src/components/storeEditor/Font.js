@@ -1,6 +1,8 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 function Font() {
+  const store = useSelector(state => state.stores);
   return (
     <div>
       <div
@@ -47,7 +49,7 @@ function Font() {
               type="color"
               className="form-control color-form"
               id="headerFontColor"
-              value="{{ header_font_color }}"
+              value={store.header_font_color}
             />
           </div>
 
@@ -57,7 +59,7 @@ function Font() {
               type="color"
               className="form-control color-form"
               id="bodyFontColor"
-              value="{{ body_font_color }}"
+              value={store.body_font_color}
             />
           </div>
 
@@ -67,7 +69,7 @@ function Font() {
               type="color"
               className="form-control color-form"
               id="footerFontColor"
-              value="{{ footer_font_color }}"
+              value={store.footer_font_color}
             />
           </div>
 

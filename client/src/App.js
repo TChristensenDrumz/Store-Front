@@ -13,7 +13,6 @@ import CartItem from "./components/CartItem";
 import EmailPassword from "./components/EmailPassword";
 import NameInput from "./components/NameInput";
 import Cart from "./pages/cart/Cart";
-import StoreLanding from "./pages/storeLanding/StoreLanding";
 import AllProducts from "./pages/allProducts/allProducts"
 import ContactStore from "./pages/contactStore/ContactStore";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -25,6 +24,7 @@ import CreateAccount from "./pages/createAccount/CreateAccount";
 import CreateOwnerAccount from "./pages/createOwnerAccount/CreateOwnerAccount";
 import SiteLanding from "./pages/siteLanding/SiteLanding";
 import EditStore from "./pages/editStore/EditStore";
+import StoreLanding from "./pages/storeLanding/StoreLanding";
 
 
 function App() {
@@ -35,12 +35,14 @@ function App() {
         <Route exact path="/ologin" component={OwnerLogin} />
         <Route exact path="/csignup" component={CreateAccount} />
         <Route exact path="/osignup" component={CreateOwnerAccount} />
-        <Route exact path="/">
+        {/* <Route exact path="/">
           <ProtectedRoute component={SiteLanding} />
-        </Route>
+        </Route> */}
+        <Route exact path="/" component={SiteLanding} />
         <Route exact path="/storeEditor">
           <ProtectedRoute component={EditStore} />
         </Route>
+        <Route exact path="/storefront/:storeId" component={StoreLanding} />
       <Footer />
     </Router>
   );
