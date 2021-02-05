@@ -1,6 +1,53 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getOwnerStore } from "../../redux/actions/stores.actions";
+import api from "../../utils/api";
 
 function BackgroundImages() {
+  const dispatch = useDispatch();
+  const { ownerStore } = useSelector((state) => state.stores);
+  const [background_image, setBG] = useState(ownerStore.background_image);
+  const [bg_scroll, setBgScroll] = useState(ownerStore.bg_scroll);
+  const [about_image, setAboutImage] = useState(ownerStore.about_image);
+  const [about_scroll, setAboutScroll] = useState(ownerStore.about_scroll);
+
+  const bgUpload = () => {
+    handleImageUpload("bg-image");
+  };
+
+  const aboutImageUpload = () => {
+    handleImageUpload("about-image");
+  };
+
+  const handleImageUpload = (imageType) => {
+    let fd = new FormData();
+    if (imageType === "bg-image") {
+      fd.append("file", background_image);
+    } else {
+      fd.append("file", about_image);
+    };
+    console.log(fd);
+    api.uploadImage(imageType, ownerStore.id, fd).then(result => {
+      console.log(result);
+      api.getStoreByOwner(ownerStore.UserId).then((data) => {
+        console.log(data);
+        dispatch(getOwnerStore(data.data));
+        alert("Your image has been uploaded!");
+      }).catch(err => console.log(err));
+    });
+  };
+
+  const handleScrollSubmit = (event) => {
+    event.preventDefault();
+    api
+      .updateStore(ownerStore.id, { bg_scroll, about_scroll })
+      .then((result) => {
+        api.getStoreByOwner(ownerStore.UserId).then((data) => {
+          dispatch(getOwnerStore(data.data));
+        });
+      });
+  };
+
   return (
     <div>
       <div
@@ -9,7 +56,11 @@ function BackgroundImages() {
         role="tabpanel"
         aria-labelledby="list-settings-list"
       >
-        <form className="col-12 p-4" id="bg-image-form">
+        <form
+          className="col-12 p-4"
+          id="bg-image-form"
+          onSubmit={handleScrollSubmit}
+        >
           <label for="exampleFormControlInput1">Background Image</label>
           <div className="input-group pb-3">
             <div className="custom-file">
@@ -18,6 +69,7 @@ function BackgroundImages() {
                 className="custom-file-input"
                 id="bg-image"
                 aria-describedby="inputGroupFileAddon04"
+                onChange={(e) => setBG(e.target.files[0])}
               />
               <label
                 className="custom-file-label"
@@ -32,6 +84,7 @@ function BackgroundImages() {
                 className="btn btn-outline-secondary button-color"
                 type="button"
                 id="bg-image-upload"
+                onClick={bgUpload}
               >
                 Upload
               </button>
@@ -40,8 +93,14 @@ function BackgroundImages() {
 
           <label for="exampleFormControlInput1">Scroll Behavior</label>
           <div className="input-group mb-3">
-            <select className="custom-select" id="bg-scroll">
-              <option selected>Choose...</option>
+            <select
+              className="custom-select"
+              id="bg-scroll"
+              onChange={(e) => setBgScroll(e.target.value)}
+            >
+              <option value={bg_scroll} selected>
+                {bg_scroll}
+              </option>
               <option value="scroll">Scroll</option>
               <option value="fixed">Fixed</option>
             </select>
@@ -60,6 +119,7 @@ function BackgroundImages() {
                 className="custom-file-input"
                 id="about-image"
                 aria-describedby="inputGroupFileAddon04"
+                onChange={(e) => setAboutImage(e.target.files[0])}
               />
               <label
                 className="custom-file-label"
@@ -74,6 +134,7 @@ function BackgroundImages() {
                 className="btn btn-outline-secondary button-color"
                 type="button"
                 id="about-image-upload"
+                onClick={aboutImageUpload}
               >
                 Upload
               </button>
@@ -82,8 +143,14 @@ function BackgroundImages() {
 
           <label for="exampleFormControlInput1">Scroll Behavior</label>
           <div className="input-group mb-3">
-            <select className="custom-select" id="about-scroll">
-              <option selected>Choose...</option>
+            <select
+              className="custom-select"
+              id="about-scroll"
+              onChange={(e) => setAboutScroll(e.target.value)}
+            >
+              <option value={about_scroll} selected>
+                {about_scroll}
+              </option>
               <option value="scroll">Scroll</option>
               <option value="fixed">Fixed</option>
             </select>
@@ -94,11 +161,7 @@ function BackgroundImages() {
             </div>
           </div>
           <div className="text-right">
-            <button
-              type="submit"
-              className="btn button-color"
-              id="scroll-submit"
-            >
+            <button type="submit" className="btn btn-dark" id="scroll-submit">
               Update
             </button>
           </div>

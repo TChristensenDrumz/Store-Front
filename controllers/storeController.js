@@ -26,7 +26,6 @@ module.exports = {
             },
             include: [db.Product]
           }).then(result => {
-              console.log(result)
               res.json(result);
           })
           .catch(err => {
