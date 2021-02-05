@@ -4,15 +4,15 @@ import { useHistory } from "react-router-dom";
 import api from "../../utils/api";
 
 function DeleteStore() {
-  const { ownerStore } = useSelector(state => state.stores);
+  const { ownerStore } = useSelector((state) => state.stores);
   const history = useHistory();
 
-  const handleDelete = event => {
+  const handleDelete = (event) => {
     event.preventDefault();
-    api.deleteStore(ownerStore.id).then(result => {
+    api.deleteStore(ownerStore.id).then((result) => {
       history.push("/");
-    })
-  }
+    });
+  };
 
   return (
     <div>
