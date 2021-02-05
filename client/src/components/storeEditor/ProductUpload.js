@@ -1,6 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getOwnerStore } from "../../redux/actions/stores.actions";
+import api from "../../utils/api";
 
 function ProductUpload() {
+  const dispatch = useDispatch();
+  const { ownerStore } = useSelector((state) => state.stores);
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+  const [stock, setStock] = useState("");
+  const [description, setDescription] = useState("");
+  const [image, setImage] = useState("");
+
+  const handleProductSubmit = (event) => {
+    event.preventDefault();
+    let fd = new FormData();
+    fd.append("file", image);
+    api
+      .createProduct({
+        StoreId: ownerStore.id,
+        name,
+        price,
+        stock,
+        description,
+      })
+      .then((productData) => {
+        api.uploadImage("prod-image", productData.data.id, fd).then((result) => {
+          api
+            .getStoreByOwner(ownerStore.UserId)
+            .then((data) => {
+              dispatch(getOwnerStore(data.data));
+              alert("Your product has been uploaded!");
+              setName("");
+              setPrice("");
+              setStock("");
+              setDescription("");
+              setImage("");
+            })
+            .catch((err) => console.log(err));
+        });
+      });
+  };
+
   return (
     <div>
       <div
@@ -9,7 +50,11 @@ function ProductUpload() {
         role="tabpanel"
         aria-labelledby="list-settings-list"
       >
-        <form className="col-12 p-4" id="prod-form">
+        <form
+          className="col-12 p-4"
+          id="prod-form"
+          onSubmit={handleProductSubmit}
+        >
           <div className="form-group" id="product-form">
             <label for="exampleFormControlInput1">Product Name</label>
             <input
@@ -17,6 +62,8 @@ function ProductUpload() {
               className="form-control"
               id="productName"
               placeholder="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
           </div>
 
@@ -27,6 +74,8 @@ function ProductUpload() {
               className="form-control"
               id="price"
               placeholder="$"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
             />
           </div>
 
@@ -37,6 +86,8 @@ function ProductUpload() {
               className="form-control"
               id="inventory"
               placeholder="#"
+              value={stock}
+              onChange={(e) => setStock(e.target.value)}
             />
           </div>
 
@@ -47,6 +98,8 @@ function ProductUpload() {
               id="productDescription"
               placeholder="Product description"
               rows="3"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
             ></textarea>
           </div>
 
@@ -57,6 +110,7 @@ function ProductUpload() {
                 type="file"
                 className="custom-file-input"
                 id="prod-image-upload"
+                onChange={(e) => setImage(e.target.files[0])}
               />
               <label
                 className="custom-file-label"
@@ -73,7 +127,7 @@ function ProductUpload() {
           </div>
 
           <div className="text-right">
-            <button type="submit" className="btn button-color">
+            <button type="submit" className="btn btn-dark">
               Update
             </button>
           </div>
