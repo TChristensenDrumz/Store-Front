@@ -37,6 +37,10 @@
     "mysql2": "^2.2.5",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
+    "prop-types": "^15.7.2",
+    "react-async-script-loader": "^0.3.0",
+    "react-paypal-button-v2": "^2.6.2",
+    "rimraf": "^3.0.2",
     "sequelize": "^6.5.0"
   },
   "devDependencies": {

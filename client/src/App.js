@@ -28,6 +28,7 @@ import StoreLanding from "./pages/storeLanding/StoreLanding";
 function App() {
   return (
     <Router>
+
         {/* Landing */}
         <Route exact path="/" component={SiteLanding} />
 
@@ -42,7 +43,6 @@ function App() {
           <ProtectedRoute component={EditStore} />
         </Route>
         <Route exact path="/storefront/:storeId" component={StoreLanding} />
-
     </Router>
   );
 }
