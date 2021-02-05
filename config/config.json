@@ -1,7 +1,7 @@
 {
     "development": {
       "username": "root",
-      "password": "Hersh6624!",
+      "password": "mySQLpassword2020",
       "database": "store_frontV2DB",
       "host": "127.0.0.1",
       "dialect": "mysql"

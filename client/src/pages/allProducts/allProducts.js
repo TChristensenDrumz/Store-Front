@@ -1,5 +1,5 @@
 
-import ProductBlock from "../../components/productBlock"
+import ProductBlock from "../../components/ProductBlock"
 import React from "react"
 function AllProducts(){
     let products = [
