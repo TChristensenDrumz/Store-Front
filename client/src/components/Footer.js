@@ -6,7 +6,9 @@ import { Navbar, Nav, Container, Row, Col } from 'react-bootstrap';
 
 export default function Footer() {
     return (
-        <Navbar expand="lg" bg="none" variant="light" className="p-5" >
+
+        <Navbar expand="lg" bg="none" variant="light" className="p-5" sticky ="bottom">
+
                 <Nav className="ml-auto mr-auto">
                     <Row>
                         <Col className="text-left mr-5 pr-5">
