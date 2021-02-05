@@ -5,20 +5,27 @@ import api from "../../utils/api";
 
 function Font() {
   const dispatch = useDispatch();
-  const { ownerStore } = useSelector(state => state.stores);
+  const { ownerStore } = useSelector((state) => state.stores);
   const [font, setFont] = useState(ownerStore.font);
-  const[font_color, setFontColor] = useState(ownerStore.font_color);
+  const [font_color, setFontColor] = useState(ownerStore.font_color);
   const [body_color, setBodyColor] = useState(ownerStore.body_color);
   const [footer_color, setFooterColor] = useState(ownerStore.footer_color);
 
   const handleFontSubmit = (event) => {
     event.preventDefault();
-    api.updateStore(ownerStore.id, {font, font_color, body_color, footer_color}).then(result => {
-      api.getStoreByOwner(ownerStore.UserId).then(data =>{
-        dispatch(getOwnerStore(data.data));
-    })
-  })
-}
+    api
+      .updateStore(ownerStore.id, {
+        font,
+        font_color,
+        body_color,
+        footer_color,
+      })
+      .then((result) => {
+        api.getStoreByOwner(ownerStore.UserId).then((data) => {
+          dispatch(getOwnerStore(data.data));
+        });
+      });
+  };
   return (
     <div>
       <div
@@ -30,8 +37,14 @@ function Font() {
         <form className="col-12 p-4" id="font-form" onSubmit={handleFontSubmit}>
           <label for="exampleFormControlInput1">Font</label>
           <div className="input-group mb-3">
-            <select className="custom-select" id="font-select" onChange={(e) => setFont(e.target.value)}>
-              <option selected value={font}>{font}</option>
+            <select
+              className="custom-select"
+              id="font-select"
+              onChange={(e) => setFont(e.target.value)}
+            >
+              <option selected value={font}>
+                {font}
+              </option>
               <option className="helvetica" value="helvetica neue">
                 Helvetica Neue
               </option>
