@@ -12,10 +12,6 @@ import DeleteStore from "../../components/storeEditor/DeleteStore";
 function EditStore() {
     const [edit, setEdit] = useState(<StoreDetails />);
 
-    useEffect(() => {
-        console.log("OK");
-    }, [edit]);
-
   return (
     <div>
         <div className="container border rounded" id="space">
