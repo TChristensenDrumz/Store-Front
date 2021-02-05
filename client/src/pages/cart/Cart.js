@@ -44,15 +44,16 @@ function Cart() {
         <p className="col-3 m-0 text-right">Quantity</p>
         <p className="col-2 m-0 text-right">Price</p>
       </div>
-      <hr />  
-        {products.map(product => {
+      <hr />
+        
+        {products.map(product => (
           <CartItem
             key = {product.name}
             price = {product.price}
             img = {product.img}
             name = {product.name}
             />
-        })}
+        ))}
       <div className="row align-items-center pt-3 pb-3">
         <div className="col-12">
           <h5 className="text-right">{"Subtotal: $"+ subTotal}</h5>
@@ -79,7 +80,7 @@ function Cart() {
               tagline:false,
               height:45,
             }}
-            amount="0.01"
+            amount={subTotal.toString()}
             // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
             onApprove={(data,actions)=>{
             }}
