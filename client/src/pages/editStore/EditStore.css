@@ -1,0 +1,15 @@
+button .list-group-item{
+    border: none;
+    background: white;
+    width: 100%;
+}
+
+button {
+    border: none;
+    background: white;
+}
+
+
+button .list-group-item:hover {
+    background-color: lightblue;
+}
