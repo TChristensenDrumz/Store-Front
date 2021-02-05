@@ -1,47 +1,73 @@
 // Import dependencies
-import React from "react";
+import React, { useState } from "react";
 
 // Import styling 
-import { Navbar, Nav, Button, Jumbotron, Container, Row, Col } from 'react-bootstrap';
+import { Navbar, Nav, Jumbotron, Button, Container, Row, Col } from 'react-bootstrap';
+import './SiteLanding.css'
 
 // Import components
 
 
 function SiteLanding() {
+  const [bg, setBg ] = useState(false);
+  
+  const changeBg = () => {
+    if(window.scrollY >= 88) {
+      setBg(true);
+    } else {
+      setBg(false);
+    };
+  };
+
+window.addEventListener('scroll', changeBg)
+
   return (
     <div> 
       {/* Header */}
-      <Navbar collapseOnSelect expand="lg" bg="none" variant="light" className="p-5" fixed="top">
+      <Navbar collapseOnSelect expand="lg" className={bg ? 'navbar active p-4' : 'navbar p-4'} variant="dark" fixed="top" id="top">
           <Navbar.Brand className="ml-5"href="#home">Store Front</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="ml-auto mr-auto">
-                  <Nav.Link className="ml-4 mr-4" href="//">Shops</Nav.Link>
-                  <Nav.Link className="ml-4 mr-4" href="#about">Templates</Nav.Link>
-                  <Nav.Link className="ml-4 mr-4" href="//">About</Nav.Link>
+                  <Nav.Link className="ml-4 mr-4" style={{color:"white"}} href="//">Shops</Nav.Link>
+                  <Nav.Link className="ml-4 mr-4" style={{color:"white"}} href="#about">Templates</Nav.Link>
+                  <Nav.Link className="ml-4 mr-4" style={{color:"white"}} href="//">About</Nav.Link>
               </Nav>
               <Nav className="mr-5">
-                  <Nav.Link href="//">Login</Nav.Link>
-                  <Button variant="outline-dark">Dark</Button>
+                  <Nav.Link style={{color:"white"}} href="//">Login</Nav.Link>
+                  <Nav.Link style={{color:"white"}} href="//">Get Started</Nav.Link>
               </Nav>
           </Navbar.Collapse>
       </Navbar>
 
       {/* First jumbotron */}
-      <Jumbotron fluid>
+      <Jumbotron className="margin0">
         <Container style={{height:"90vh"}}>
-          <h1>Fluid jumbotron</h1>
+          <div className="align-items-center justify-content-center">
+              <h1>Customize your own web store.</h1>
+              <p>
+                This is a modified jumbotron that occupies the entire horizontal space of
+                its parent.
+              </p>
+              <Button variant="dark" size='lg'>Get Started</Button>
+            </div>
+        </Container>
+      </Jumbotron> 
+
+      {/* Second jumbotron */}
+      <Jumbotron className="margin0">
+        <Container style={{height:"50vh"}}>
+          <h1>Create your own store front</h1>
           <p>
             This is a modified jumbotron that occupies the entire horizontal space of
             its parent.
           </p>
         </Container>
-      </Jumbotron> 
+      </Jumbotron>
 
-      {/* Second jumbotron */}
-      <Jumbotron fluid>
-        <Container style={{height:"30vh"}}>
-          <h1>Fluid jumbotron</h1>
+      <Jumbotron className="margin0">
+        <Container style={{height:"90vh"}}>
+          <h1>Visit our merchants</h1>
           <p>
             This is a modified jumbotron that occupies the entire horizontal space of
             its parent.
@@ -50,31 +76,9 @@ function SiteLanding() {
       </Jumbotron>
 
       {/* Third jumbotron */}
-      <Jumbotron fluid>
+      <Jumbotron className="margin0">
         <Container style={{height:"60vh"}}>
-          <h1>Fluid jumbotron</h1>
-          <p>
-            This is a modified jumbotron that occupies the entire horizontal space of
-            its parent.
-          </p>
-        </Container>
-      </Jumbotron>
-
-      {/* Fourth jumbotron */}
-      <Jumbotron fluid>
-        <Container style={{height:"90vh"}}>
-          <h1>Fluid jumbotron</h1>
-          <p>
-            This is a modified jumbotron that occupies the entire horizontal space of
-            its parent.
-          </p>
-        </Container>
-      </Jumbotron>
-
-      {/* Fifth jumbotron */}
-      <Jumbotron fluid>
-        <Container style={{height:"50vh"}}>
-          <h1>Fluid jumbotron</h1>
+          <h1>How It Works</h1>
           <p>
             This is a modified jumbotron that occupies the entire horizontal space of
             its parent.
@@ -92,14 +96,14 @@ function SiteLanding() {
                         </Col>
 
                         <Col className="text-right ml-5 pl-5">
-                            <Nav.Link className="" href="#">Back to Top</Nav.Link>
                             <Nav.Link className="" href="//">Contact</Nav.Link>
+                            <Nav.Link className="" href="https://github.com/DJ620/store-front-react" target="_blank">Github</Nav.Link>
                         </Col>
                     </Row>
                 </Nav>
         </Navbar>
     </div>
   );
-}
+};
 
 export default SiteLanding;

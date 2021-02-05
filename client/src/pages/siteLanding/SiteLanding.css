@@ -1,0 +1,21 @@
+/* Navbar */
+.navbar {
+    background-color: transparent;
+    color:white;
+    transition: background-color 0.5s ease;
+}
+
+.navbar.active {
+    background-color: black;
+    color: white;
+    transition: background-color 0.5s ease;
+}
+
+.headerTextColor {
+    color: white;
+}
+
+/* Margins */
+.margin0 {
+    margin: 0;
+}
