@@ -21,12 +21,13 @@ import CreateStoreAccount from "./pages/storeCreate/StoreCreate";
 import CustomerLogin from "./pages/customerLogin/CustomerLogin";
 import CreateAccount from "./pages/customerCreate/CustomerCreate";
 import EditStore from "./pages/editStore/EditStore";
+import MarketPlace from "./pages/MarketPlace/MarketPlace";
 
 
 function App() {
   return (
     <Router>
-
+      
       <Route exact path="/" component={SiteLanding} />
 
       {/* Logins */}
@@ -40,7 +41,7 @@ function App() {
         <ProtectedRoute component={EditStore} />
       </Route>
       <Route exact path="/storefront/:storeId" component={StoreLanding} />
-
+      <Route exact path="/marketplace" component={MarketPlace} />
 
   </Router>
   );

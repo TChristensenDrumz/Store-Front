@@ -3,15 +3,18 @@ import { Card } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
 import { useHistory } from "react-router-dom";
 
-function Preview({image, name, id}) {
+function Preview({image, name, storeId, productId, type}) {
   const history = useHistory();
 
-  const goToStore = () => {
-    console.log(id)
-    history.push(`/storefront/${id}`)
-  }
+  const goToPage = () => {
+    if (type === "store") {
+    history.push(`/storefront/${storeId}`);
+    } else {
+      history.push(`/storefront/${storeId}/${productId}`);
+    };
+  };
   return (
-    <div className="d-flex justify-content-center m-5" onClick={goToStore}>
+    <div className="d-flex justify-content-center m-5" onClick={goToPage}>
       <Card style={{ width: "15vw" }}>
         <Image variant="top" src={image} fluid />
         <Card.Body>
