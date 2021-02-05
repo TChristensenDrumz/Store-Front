@@ -1,5 +1,5 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "../EditStore/node_modules/bootstrap/dist/css/bootstrap.min.css";
 import NameInput from "../../components/NameInput";
 
 function ContactStore() {

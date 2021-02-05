@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ListGroup from 'react-bootstrap/ListGroup';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import '../ContactStore/node_modules/bootstrap/dist/css/bootstrap.min.css';
 import StoreDetails from "../../components/storeEditor/StoreDetails";
 import Font from "../../components/storeEditor/Font";
 import Colors from "../../components/storeEditor/Colors";
