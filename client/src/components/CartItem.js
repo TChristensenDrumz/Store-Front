@@ -1,14 +1,21 @@
 import React from "react";
+import api from "../utils/api";
+import { useHistory } from "react-router-dom";
 
-function CartItem(props) {
-  let name = props.name
-  let img = props.img
-  let price = props.price
+function CartItem({name, img, price, id, setChange}) {
+  const history = useHistory();
+  const handleItemDelete = () => {
+    api.removeItem(id).then(result => {
+      console.log(result);
+      setChange(id);
+    })
+  }
+
   return (
     <div>
       <div className="row align-items-center d-flex justify-content-between p-3">
         <div className="col-1 text-left">
-          <i className="fas fa-times"></i>
+          <button style={{background: "none", border: "none"}} onClick={handleItemDelete}><i className="fas fa-times"></i></button>
         </div>
         <div class="media align-items-center col-6 p-2">
           <img src={img} className="mr-3" alt="..." height="75px"/>

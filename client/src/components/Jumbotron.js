@@ -1,9 +1,26 @@
 import React from "react";
-import Jumbotron from "react-bootstrap/Jumbotron";
 import Button from "react-bootstrap/Button";
+import { useHistory } from "react-router-dom";
 
-function Jumbo({image, name, tagline, font, taglineColor, buttonColor, buttonTextColor, bg_scroll, body_color}) {
-  console.log({image, name, tagline, font, taglineColor, buttonColor, buttonTextColor, bg_scroll, body_color})
+function Jumbo({
+  image,
+  name,
+  tagline,
+  font,
+  taglineColor,
+  buttonColor,
+  buttonTextColor,
+  bg_scroll,
+  body_color,
+  storeId,
+}) {
+  const history = useHistory();
+
+  const browse = () => {
+    console.log("Clicked")
+    history.push("/storefront/allproducts/" + storeId);
+  };
+
   const styles = {
     jumbo: {
       color: `${body_color}`,
@@ -14,25 +31,29 @@ function Jumbo({image, name, tagline, font, taglineColor, buttonColor, buttonTex
       backgroundImage: `url(${image})`,
       backgroundSize: "100%",
       backgroundPosition: "center",
-      backgroundAttachment: `${bg_scroll}`
+      backgroundAttachment: `${bg_scroll}`,
     },
     storeName: {
       textAlign: "center",
       paddingTop: "40vh",
     },
     button: {
-        backgroundColor: `${buttonColor}`,
-        color: `${buttonTextColor}`,
-        transform: "scale(1.7)"
-    }
+      backgroundColor: `${buttonColor}`,
+      color: `${buttonTextColor}`,
+      transform: "scale(1.7)",
+    },
   };
   return (
     <div>
       <div style={styles.jumbo}>
         <div style={styles.storeName}>
           <h1 className="display-2 mb-2">{name}</h1>
-          <h3 className="display-6 mb-5" style={{color: `${taglineColor}`}}>{tagline}</h3>
-          <Button style={styles.button}>Browse Collection</Button>
+          <h3 className="display-6 mb-5" style={{ color: `${taglineColor}` }}>
+            {tagline}
+          </h3>
+          <Button style={styles.button} onClick={browse}>
+            Browse Collection
+          </Button>
         </div>
       </div>
     </div>
