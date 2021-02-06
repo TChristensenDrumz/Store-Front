@@ -8,6 +8,6 @@ router.route("/:userid")
 router.route("/addItem")
     .post(cartController.addItem);
 
-router.route("/removeItem/:itemid")
+router.route("/:itemid")
     .delete(cartController.removeItem);
 module.exports = router;

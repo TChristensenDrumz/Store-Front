@@ -32,6 +32,7 @@ function StoreLanding() {
         buttonTextColor={selectedStore.footer_color}
         bg_scroll={selectedStore.bg_scroll}
         body_color={selectedStore.body_color}
+        storeId={selectedStore.id}
       />
       <div style={styles.popular}>
         <h1 className="text-center">Popular Items</h1>

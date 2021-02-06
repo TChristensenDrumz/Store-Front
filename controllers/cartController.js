@@ -33,6 +33,7 @@ module.exports = {
     },
 
     removeItem: function(req, res) {
+        console.log(req)
         db.Cart.destroy({
             where: {
                 id: req.params.itemid

@@ -15,7 +15,7 @@ function Preview({image, name, storeId, productId, type}) {
   };
   return (
     <div className="d-flex justify-content-center m-5" onClick={goToPage}>
-      <Card style={{ width: "15vw" }}>
+      <Card style={{ width: "15vw", minWidth: "200px" }}>
         <Image variant="top" src={image} fluid />
         <Card.Body>
           <Card.Title style={{textAlign: "center"}}>{name}</Card.Title>

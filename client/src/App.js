@@ -15,6 +15,7 @@ import Cart from "./pages/cart/Cart";
 import StoreLanding from "./pages/storeLanding/StoreLanding";
 import SiteLanding from "./pages/siteLanding/SiteLanding";
 import AllProducts from "./pages/allProducts/allProducts";
+import Product from "./pages/product/product";
 import ContactStore from "./pages/contactStore/ContactStore";
 import StoreLogin from "./pages/storeLogin/storeLogin";
 import CreateStoreAccount from "./pages/storeCreate/StoreCreate";
@@ -42,6 +43,9 @@ function App() {
       </Route>
       <Route exact path="/storefront/:storeId" component={StoreLanding} />
       <Route exact path="/marketplace" component={MarketPlace} />
+      <Route exact path="/storefront/allproducts/:storeId" component={AllProducts} />
+      <Route exact path="/storefront/:storeId/:productId" component={Product} />
+      <Route exact path="/cart" component={Cart} />
 
   </Router>
   );
