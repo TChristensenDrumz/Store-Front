@@ -8,11 +8,15 @@ import { useParams } from "react-router-dom";
 function StoreLanding() {
   const params = useParams();
   const stores = useSelector(state => state.stores);
+  console.log(stores)
   const selectedStore = stores.allStores.filter(store => store.id == params.storeId)[0];
+  console.log(selectedStore)
   let products = selectedStore.Products;
+  console.log(products)
   if (products.length > 3) {
-    products = products.splice(0, 3);
+    products = products.slice(0, 3);
   }
+  console.log(products)
 
     const styles= {
         popular: {
