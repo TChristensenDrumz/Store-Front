@@ -1,7 +1,7 @@
 module.exports = {
     "development": {
       "username": "root",
-      "password": "Hersh6624!",
+      "password": "Bootcamp2020",
       "database": "store_frontV2DB",
       "host": "127.0.0.1",
       "dialect": "mysql"
