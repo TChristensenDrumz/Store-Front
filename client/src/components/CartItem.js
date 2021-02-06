@@ -2,7 +2,7 @@ import React from "react";
 import api from "../utils/api";
 import { useHistory } from "react-router-dom";
 
-function CartItem({name, img, price, id, setChange}) {
+function CartItem({name, img, price, id, setChange, quantity}) {
   const history = useHistory();
   const handleItemDelete = () => {
     api.removeItem(id).then(result => {
@@ -31,7 +31,7 @@ function CartItem({name, img, price, id, setChange}) {
               <input
                 className="form-control form-control-sm text-center quantity"
                 type="text"
-                value="3"
+                value={quantity}
               />
             </div>
           </div>
