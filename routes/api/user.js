@@ -11,4 +11,7 @@ router.route('/login')
 router.route("/update/:userId")
     .put(userController.update);
 
+router.route("/:userid")
+    .get(userController.getUsersCart);
+
 module.exports = router;

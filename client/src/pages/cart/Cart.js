@@ -3,7 +3,6 @@ import CartItem from "../../components/CartItem";
 import { PayPalButton } from "react-paypal-button-v2";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-// import { useSelector, useDispatch } from "react-redux";
 import Token from "../../utils/Token";
 import api from "../../utils/api";
 
@@ -12,45 +11,28 @@ function Cart() {
   const [total, setTotal] = useState(null);
   const [change, setChange] = useState("");
 
-  
-
   useEffect(() => {
     const userId = Token.getId();
-    api.getCart(userId).then((result) => {
+    api.getUsersCart(userId).then(result => {
       console.log(result.data);
-      // let newTotal = 0;
-      // setCartItems(result.data);
-      // console.log(cartItems);
-      // cartItems.forEach((item) => {
-      //   newTotal += parseInt(item.Product.price) * parseInt(item.quantity);
-      // });
-      // console.log(newTotal);
-      setTotal(newTotal);
+      setTotal(result.data.total.toFixed(2));
+      setCartItems(result.data.items);
     });
   }, []);
 
   useEffect(() => {
-    let newTotal = 0;
-    cartItems.forEach((item) => {
-      newTotal += parseInt(item.Product.price) * parseInt(item.quantity);
-    });
-    // console.log(newTotal);
-    setTotal(newTotal);
-    // console.log(cartItems);
     if (change) {
-      let id = change;
+      let {id, price} = change;
       let newItems = cartItems.filter((item) => item.id !== id);
       setCartItems(newItems);
+      let newTotal = total - price;
+      setTotal(newTotal.toFixed(2));
     }
   }, [change]);
 
-  if (!total && !cartItems) {
+  if (!total || !cartItems) {
     return <h1>Loading...</h1>;
   }
-
-  // let subTotal = 0
-  // products.forEach(product=>{
-  //   subTotal += product.price})
 
   return (
     <div>
@@ -73,7 +55,7 @@ function Cart() {
             name={product.Product.name}
             id={product.id}
             setChange={setChange}
-            quantity = {product.quantity}
+            quantity={product.quantity}
           />
         ))}
         <div className="row align-items-center pt-3 pb-3">
