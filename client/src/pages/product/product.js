@@ -33,9 +33,9 @@ function Product() {
     if (amount > product.stock) {
       return alert("Exceeds stock limit of this item");
     }
-    let { id } = product;
+    let { id, price } = product;
     let userid = Token.getId();
-    api.addItem({ quantity: amount, userid, productid: id }).then((result) => {
+    api.addItem({ quantity: amount, userid, productid: id, price }).then((result) => {
       console.log(result);
     });
   };

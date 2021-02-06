@@ -1,11 +1,7 @@
 {
     "development": {
       "username": "root",
-<<<<<<< HEAD
       "password": "mySQLpassword2020",
-=======
-      "password": "Bootcamp2020",
->>>>>>> 8993be288055aefe1485d2ed538523f23c91dace
       "database": "store_frontV2DB",
       "host": "127.0.0.1",
       "dialect": "mysql"

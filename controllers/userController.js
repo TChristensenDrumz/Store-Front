@@ -43,6 +43,32 @@ module.exports = {
           }; 
     },
 
+    getUsersCart: function(req, res) {
+      db.User.findOne({
+        where: {
+          id: req.params.userid
+        },
+        include: [{
+          model: db.Cart,
+          include: [db.Product]
+        }]
+      }).then(result => {
+        items = [];
+        result.Carts.forEach(cart => {
+          items.push(cart.dataValues);
+        });
+        let prices = [];
+        result.Carts.forEach(cart => {
+          prices.push(parseFloat(cart.dataValues.Product.dataValues.price))
+        });
+        total = prices.reduce((a, b) => a+b);
+        res.json({items, total});
+      })
+      .catch(err => {
+        res.json(err);
+      })
+    },
+
     update: function(req, res) {
       db.User.update(req.body,
         {where: {
