@@ -2,14 +2,15 @@ import React, { useEffect } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
-import Preview from "../../components/Preview";
+import Preview from "../../components/Preview/Preview";
 import api from "../../utils/api";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllStores } from "../../redux/actions/stores.actions";
 
 function MarketPlace() {
   const dispatch = useDispatch();
-  const stores = useSelector((state) => state.stores);
+  const { allStores } = useSelector((state) => state.stores);
+  const openStores = allStores.filter(store => store.Products.length > 0);
 
   useEffect(() => {
     api
@@ -21,19 +22,17 @@ function MarketPlace() {
       .catch((err) => console.log(err));
   }, []);
 
-  console.log(stores);
-  if (!stores.allStores) {
-    console.log(stores);
+  if (!allStores) {
     return <h1>Loading...</h1>;
   }
   return (
     <Container fluid>
       <Row className="justify-content-md-center">
-        {stores.allStores.map(store => (
+        {openStores.map((store) => (
           <Col>
-            <Preview 
-                type="store"
-              image={store.background_image}
+            <Preview
+              type="store"
+              image={store.Products[0].image}
               name={store.store_name}
               key={store.id}
               storeId={store.id}
@@ -42,7 +41,7 @@ function MarketPlace() {
         ))}
       </Row>
     </Container>
-  )
+  );
 }
 
 export default MarketPlace;

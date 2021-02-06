@@ -2,6 +2,7 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
 import { useHistory } from "react-router-dom";
+import "./Preview.css";
 
 function Preview({image, name, storeId, productId, type}) {
   const history = useHistory();

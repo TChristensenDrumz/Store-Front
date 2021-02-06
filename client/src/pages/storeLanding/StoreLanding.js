@@ -1,7 +1,7 @@
 import React from "react";
 import Jumbo from "../../components/Jumbotron";
 import About from "../../components/About";
-import Preview from "../../components/Preview";
+import Preview from "../../components/Preview/Preview";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
