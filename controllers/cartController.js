@@ -22,6 +22,7 @@ module.exports = {
         db.Product.increment({popularity: req.body.quantity}, { where: { id: req.body.productid }});
         db.Cart.create({
             quantity: req.body.quantity,
+            price: req.body.price,
             UserId: req.body.userid,
             ProductId: req.body.productid
         }).then(result => {

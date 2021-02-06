@@ -1,13 +1,11 @@
 import React from "react";
 import api from "../utils/api";
-import { useHistory } from "react-router-dom";
 
 function CartItem({name, img, price, id, setChange, quantity}) {
-  const history = useHistory();
   const handleItemDelete = () => {
     api.removeItem(id).then(result => {
       console.log(result);
-      setChange(id);
+      setChange({id, price});
     })
   }
 

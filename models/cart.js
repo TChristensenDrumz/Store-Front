@@ -3,6 +3,10 @@ module.exports = (sequelize, DataTypes) => {
         quantity: {
             type: DataTypes.INTEGER,
             defaultValue: 1
+        },
+        price: {
+            type: DataTypes.DECIMAL,
+            allowNull: false
         }
     });
     Cart.associate = models => {

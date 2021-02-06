@@ -58,6 +58,10 @@ export default {
     },
     //========================================================
     // Routes for cart data
+    getUsersCart: function(userId) {
+        return axios.get("/api/user/" + userId);
+    },
+    
     getCart: function(userId) {
         return axios.get("/api/cart/" + userId);
     },
