@@ -50,7 +50,7 @@ function Cart() {
     }
   }, [change, itemAmount]);
 
-  if (!total || !cartItems) {
+  if (!total || !cartItems || cartItems.length === 0) {
     return (
       <>
         <Header />
