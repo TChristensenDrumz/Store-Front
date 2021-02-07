@@ -25,6 +25,7 @@ function CreateOwnerAccount() {
     }
     api.login({ email, password }).then((result) => {
       if (result.data.success) {
+        localStorage.setItem("token", JSON.stringify(result.data.token));
         let { userId } = JSON.parse(atob(result.data.token.split(".")[1]));
         api.updateUser(userId, { isSeller: true }).then((res) => {
           api.createStore({ store_name, userId }).then((data) => {
@@ -37,6 +38,7 @@ function CreateOwnerAccount() {
           .register({ email, password, first_name, last_name, isSeller: true })
           .then((result) => {
             api.login({ email, password }).then((res) => {
+              localStorage.setItem("token", JSON.stringify(res.data.token));
               let { userId } = JSON.parse(atob(res.data.token.split(".")[1]));
               api.createStore({ store_name, userId }).then((data) => {
                 dispatch(getStoreInfo(data.data));
@@ -50,7 +52,7 @@ function CreateOwnerAccount() {
   return (
     <>
       <Header />
-      <form className="container" onSubmit={handleCreateAccount}>
+      <form className="container mb-5" onSubmit={handleCreateAccount}>
         <h2>Create Store Owner Account</h2>
         <div className="form-group">
           <label for="store-name">Store Name</label>

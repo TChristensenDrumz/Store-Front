@@ -25,7 +25,7 @@ function CreateAccount() {
   return (
     <>
       <Header />
-        <form className="container" onSubmit={handleCreateAccount}>
+        <form className="container mb-5" onSubmit={handleCreateAccount}>
             <h2>Create Account</h2>
           <NameInput setFirstName={setFirstName} setLastName={setLastName}/>
           <EmailPassword setEmail={setEmail} setPassword={setPassword}/>

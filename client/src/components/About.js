@@ -1,5 +1,4 @@
 import React from "react";
-import Jumbotron from "react-bootstrap/Jumbotron";
 
 function About({ image, info, color, about_scroll }) {
   const styles = {
@@ -23,10 +22,10 @@ function About({ image, info, color, about_scroll }) {
   };
   return (
     <div>
-      <Jumbotron style={styles.jumbo}>
+      <div style={styles.jumbo}>
         <h1 className="display-2 text-center pt-4">About Us</h1>
         <p style={styles.text}>{info}</p>
-      </Jumbotron>
+      </div>
     </div>
   );
 }
