@@ -34,6 +34,7 @@ module.exports = {
     },
 
     createProduct: function(req, res) {
+        console.log(req);
         db.Product.create(req.body).then(result => {
             res.json(result);
         })
