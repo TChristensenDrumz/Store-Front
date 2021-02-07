@@ -28,6 +28,7 @@ function StoreLanding() {
     popular: {
       paddingTop: "10vh",
       paddingBottom: "10vh",
+      color: selectedStore.body_color
     },
   };
   return (
@@ -63,7 +64,7 @@ function StoreLanding() {
           image={selectedStore.about_image}
           info={selectedStore.about}
           color={selectedStore.body_color}
-          id="about"
+          about_scroll={selectedStore.about_scroll}
         />
       <Footer />
     </div>
