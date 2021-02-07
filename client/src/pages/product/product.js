@@ -23,7 +23,7 @@ function Product() {
 
   const subtract = () => {
     const newAmount = amount - 1;
-    if (newAmount < 0) {
+    if (newAmount < 1) {
       return;
     }
     setAmount(newAmount);

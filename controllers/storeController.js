@@ -59,16 +59,41 @@ module.exports = {
     },
 
     deleteStore: function(req, res) {
-        db.Store.destroy({
+        db.User.update({isSeller: false}, {
             where: {
-              id: req.params.storeid
+                id: req.params.userId
             }
         }).then(result => {
-            res.json(result);
-        })
-        .catch(err => {
+            db.Store.destroy({
+                where: {
+                    id: req.params.storeid
+                }
+            }).then(data => {
+                res.json(data);
+            });
+        }).catch(err => {
+            console.log(err);
             res.json(err);
         });
     }
+
+    // deleteStore: function(req, res) {
+    //     db.Store.destroy({
+    //         where: {
+    //           id: req.params.storeid
+    //         }
+    //     }).then(result => {
+    //         db.User.update({isSeller: false}, {
+    //             where: {
+    //                 id: req.body.userId
+    //             }
+    //         }).then(data => {
+    //             res.json(data);
+    //         });
+    //     })
+    //     .catch(err => {
+    //         res.json(err);
+    //     });
+    // }
 
 }

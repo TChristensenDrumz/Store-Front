@@ -32,7 +32,7 @@ module.exports = {
                       }else{ 
                         const token =  jwt.sign({userId : user.id,  
                            email:user.email, isSeller: user.isSeller }, process.env.tokenSecret,  
-                              {expiresIn: '2h'}); 
+                              {expiresIn: '24h'}); 
                         res.json({success:true, message:"Authentication successful", token: token }); 
                       }; 
                     }); 

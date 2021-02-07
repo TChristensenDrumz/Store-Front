@@ -9,7 +9,7 @@ function DeleteStore() {
 
   const handleDelete = (event) => {
     event.preventDefault();
-    api.deleteStore(ownerStore.id).then((result) => {
+    api.deleteStore(ownerStore.id, ownerStore.UserId).then((result) => {
       history.push("/");
     });
   };

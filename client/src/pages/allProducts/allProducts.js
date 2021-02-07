@@ -3,6 +3,7 @@ import Preview from "../../components/Preview/Preview";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Header from "../../components/Header";
 function AllProducts(){
     const { allStores } = useSelector(state => state.stores);
     console.log(allStores);
@@ -28,7 +29,7 @@ function AllProducts(){
     }
     return(
         <div>
-
+            <Header />
             <a name="#"></a>
             <div >
             <h3 style = {{textAlign:"center"}}>All Products</h3>

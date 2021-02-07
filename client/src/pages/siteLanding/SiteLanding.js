@@ -1,8 +1,9 @@
 // Import dependencies
 import React, { useState, useEffect } from "react";
 import api from "../../utils/api";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getAllStores } from "../../redux/actions/stores.actions";
+import Token from "../../utils/Token";
 
 // Import styling
 import {
@@ -21,22 +22,17 @@ import "./SiteLanding.css";
 function SiteLanding() {
   const [bg, setBg] = useState(false);
   const dispatch = useDispatch();
-  const stores = useSelector((state) => state.stores);
+  const isSeller = Token.isSeller();
+  const userAuth = Token.authenticate();
+
   useEffect(() => {
     api
       .landingStores()
       .then((allStores) => {
-        console.log(allStores.data);
         dispatch(getAllStores(allStores.data));
       })
       .catch((err) => console.log(err));
   }, []);
-
-  console.log(stores);
-  if (!stores.allStores) {
-    console.log(stores);
-    return <h1>Loading...</h1>;
-  }
 
   const changeBg = () => {
     if (window.scrollY >= 88) {
@@ -46,7 +42,11 @@ function SiteLanding() {
     }
   };
 
-  // window.addEventListener("scroll", changeBg);
+  window.addEventListener("scroll", changeBg);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+  };
 
   return (
     <div>
@@ -68,17 +68,21 @@ function SiteLanding() {
             <Nav.Link
               className="ml-4 mr-4"
               style={{ color: "white" }}
-              href="/shops"
+              href="/marketplace"
             >
               Shops
             </Nav.Link>
-            <Nav.Link
-              className="ml-4 mr-4"
-              style={{ color: "white" }}
-              href="/storeEditor"
-            >
-              Store Editor
-            </Nav.Link>
+            {isSeller ? (
+              <Nav.Link
+                className="ml-4 mr-4"
+                style={{ color: "white" }}
+                href="/storeEditor"
+              >
+                Store Editor
+              </Nav.Link>
+            ) : (
+              <div />
+            )}
             <Nav.Link
               className="ml-4 mr-4"
               style={{ color: "white" }}
@@ -88,10 +92,17 @@ function SiteLanding() {
             </Nav.Link>
           </Nav>
           <Nav className="mr-5">
-            <Nav.Link style={{ color: "white" }} href="/login">
-              Login
+            <Nav.Link
+              style={{ color: "white" }}
+              href={userAuth ? "/" : "/login"}
+              onClick={handleLogout}
+            >
+              {userAuth ? "Logout" : "Login"}
             </Nav.Link>
-            <Nav.Link style={{ color: "white" }} href="/create">
+            <Nav.Link
+              style={{ color: "white" }}
+              href={isSeller ? "/storeEditor" : "/signup"}
+            >
               Get Started
             </Nav.Link>
           </Nav>
@@ -107,9 +118,11 @@ function SiteLanding() {
               This is a modified jumbotron that occupies the entire horizontal
               space of its parent.
             </p>
-            <Button variant="dark" size="lg">
-              Get Started
-            </Button>
+            <a href={isSeller ? "/storeEditor" : "/signup"}>
+              <Button variant="dark" size="lg">
+                Get Started
+              </Button>
+            </a>
           </div>
         </Container>
       </Jumbotron>
