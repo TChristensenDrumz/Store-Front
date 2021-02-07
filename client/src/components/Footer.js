@@ -12,11 +12,13 @@ export default function Footer() {
     const [font, setFont] = useState("Helvetica Neue");
     const [fontColor, setFontColor] = useState("white");
     const [bgColor, setBgColor] = useState("black");
+    const [address, setAddress] = useState("123 Internet Way");
 
     useEffect(() => {
         if (location.pathname.includes("storefront")) {
             setFont(currentStore.font);
             setFontColor(currentStore.footer_color);
+            setAddress(currentStore.address);
         }
     }, [location]);
 
@@ -36,7 +38,7 @@ export default function Footer() {
                     <Row>
                         <Col className="text-left mr-5 pr-5">
                             <Navbar.Brand className="ml-auto mr-auto"href="/" style={styles.footer}>Storefront</Navbar.Brand>
-                            <Navbar.Text style={styles.footer}>Address</Navbar.Text>
+                            <Navbar.Text style={styles.footer}>{address}</Navbar.Text>
                         </Col>
 
                         <Col className="text-right ml-5 pl-5">

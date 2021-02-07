@@ -23,6 +23,7 @@ function Font() {
       .then((result) => {
         api.getStoreByOwner(ownerStore.UserId).then((data) => {
           dispatch(getOwnerStore(data.data));
+          alert("Store updated!");
         });
       });
   };

@@ -40,7 +40,7 @@ function EditStore() {
     <div>
       <Header />
       <div className="container border rounded" id="space">
-        <div className="row">
+        <div className="row pb-5">
           <div className="col-4 p-0">
             <ListGroup variant="flush" className="border-right rounded">
               <ListGroup.Item onClick={() => setEdit(<StoreDetails />)}>

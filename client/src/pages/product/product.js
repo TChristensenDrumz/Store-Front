@@ -3,10 +3,13 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import api from "../../utils/api";
 import Token from "../../utils/Token";
+import { useHistory } from "react-router-dom";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
 function Product() {
+  const history = useHistory();
+  const userAuth = Token.authenticate();
   const { productId } = useParams();
   const { currentStore } = useSelector((state) => state.stores);
   const product = currentStore.Products.filter(
@@ -31,6 +34,10 @@ function Product() {
   };
 
   const handleAddToCart = () => {
+    if (!userAuth) {
+      alert("Please sign in or create an account to add items to your cart");
+      history.push("/customer-login");
+    };
     if (amount > product.stock) {
       return alert("Exceeds stock limit of this item");
     }

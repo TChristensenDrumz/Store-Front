@@ -1,14 +1,20 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
+import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { getCurrentStore } from "../../redux/actions/stores.actions";
 import "./Preview.css";
 
 function Preview({image, name, storeId, productId, type}) {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const { allStores } = useSelector(state => state.stores);
 
   const goToPage = () => {
     if (type === "store") {
+      let currentStore = allStores.filter(store => store.id == storeId)[0];
+      dispatch(getCurrentStore(currentStore));
     history.push(`/storefront/${storeId}`);
     } else {
       history.push(`/storefront/${storeId}/${productId}`);
