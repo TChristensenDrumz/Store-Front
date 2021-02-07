@@ -14,41 +14,55 @@ function Cart() {
 
   useEffect(() => {
     const userId = Token.getId();
-    api.getUsersCart(userId).then(result => {
+    api.getUsersCart(userId).then((result) => {
       console.log(result.data);
-      setTotal(result.data.total.toFixed(2));
+      if (result.data.total) {
+        setTotal(result.data.total.toFixed(2));
+      }
       setCartItems(result.data.items);
     });
   }, []);
 
   useEffect(() => {
     if (change) {
-      let {id, price} = change;
-      let deletedItem = cartItems.filter(item => item.id == id)[0];
+      let { id, price } = change;
+      let deletedItem = cartItems.filter((item) => item.id == id)[0];
       let newItems = cartItems.filter((item) => item.id !== id);
       setCartItems(newItems);
-      let newTotal = total - (price * deletedItem.quantity);
+      let newTotal = total - price * deletedItem.quantity;
       setTotal(newTotal.toFixed(2));
       setChange("");
-    };
+    }
     if (itemAmount) {
       let { newAmount, id, setAmount } = itemAmount;
-      let item = cartItems.filter(item => item.id == id)[0];
+      let item = cartItems.filter((item) => item.id == id)[0];
       if (newAmount > item.Product.stock) {
         newAmount = item.Product.stock;
         setAmount(newAmount);
         alert(`Only ${newAmount} of this item currently in stock`);
-      };
-      let newTotal = total - (item.Product.price * item.quantity);
+      }
+      let newTotal = total - item.Product.price * item.quantity;
       item.quantity = newAmount;
       newTotal += item.Product.price * item.quantity;
       setTotal(newTotal.toFixed(2));
       setItemAmount("");
-    };
+    }
   }, [change, itemAmount]);
 
   if (!total || !cartItems) {
-    return <h1>Loading...</h1>;
+    return (
+      <>
+        <Header />
+        <div className="container">
+          <h2>Shopping Cart</h2>
+          <div className="mt-5 mb-5 text-center">
+            <h4 className="mb-5">Cart is empty</h4>
+            <a href="/marketplace">Return to Marketplace</a>
+          </div>
+        </div>
+        <Footer />
+      </>
+    );
   }
 
   return (

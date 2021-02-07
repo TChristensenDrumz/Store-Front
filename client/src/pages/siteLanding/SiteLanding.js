@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import api from "../../utils/api";
 import { useDispatch } from "react-redux";
-import { getAllStores } from "../../redux/actions/stores.actions";
+import { getAllStores, getCurrentStore } from "../../redux/actions/stores.actions";
 import Token from "../../utils/Token";
 
 // Import styling
@@ -30,8 +30,9 @@ function SiteLanding() {
       .landingStores()
       .then((allStores) => {
         dispatch(getAllStores(allStores.data));
+        dispatch(getCurrentStore({}));
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err));     
   }, []);
 
   const changeBg = () => {
