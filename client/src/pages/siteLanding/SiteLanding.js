@@ -171,14 +171,14 @@ function SiteLanding() {
         <Nav className="ml-auto mr-auto">
           <Row>
             <Col className="text-left mr-5 pr-5">
-              <Navbar.Brand className="ml-auto mr-auto" href="#home">
+              <Navbar.Brand className="ml-auto mr-auto" href="/">
                 Storefront
               </Navbar.Brand>
-              <Navbar.Text className="">Address</Navbar.Text>
+              <Navbar.Text className="">123 Internet Way</Navbar.Text>
             </Col>
 
             <Col className="text-right ml-5 pl-5">
-              <Nav.Link className="" href="//">
+              <Nav.Link className="" href="/storefront/contact">
                 Contact
               </Nav.Link>
               <Nav.Link
