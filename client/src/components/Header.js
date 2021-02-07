@@ -68,7 +68,7 @@ export default function Header() {
           <Nav.Link className="ml-4 mr-4" href="#about" style={styles.navbar}>
             About
           </Nav.Link>
-          <Nav.Link className="ml-4 mr-4" href="//" style={styles.navbar}>
+          <Nav.Link className="ml-4 mr-4" href="/storefront/contact" style={styles.navbar}>
             Contact
           </Nav.Link>
         </Nav>

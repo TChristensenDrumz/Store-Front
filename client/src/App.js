@@ -36,10 +36,10 @@ function App() {
         <Route exact path="/storeEditor">
           <ProtectedRoute component={EditStore} />
         </Route>
-        <Route exact path="/storefront/:storeId" component={StoreLanding} />
         <Route exact path="/marketplace" component={MarketPlace} />
+        <Route exact path="/storefront/contact/" component={ContactStore} />
         <Route exact path="/storefront/allproducts/:storeId" component={AllProducts} />
-        <Route exact path="/storefront/contact/:storeId" component={ContactStore} />
+        <Route exact path="/storefront/:storeId" component={StoreLanding} />
         <Route exact path="/storefront/:storeId/:productId" component={Product} />
         <Route exact path="/cart" component={Cart} />
         {/* Default Route */}
