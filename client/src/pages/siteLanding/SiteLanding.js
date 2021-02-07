@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import api from "../../utils/api";
 import { useDispatch } from "react-redux";
-import { getAllStores } from "../../redux/actions/stores.actions";
+import { getAllStores, getCurrentStore } from "../../redux/actions/stores.actions";
 import Token from "../../utils/Token";
 
 // Import styling
@@ -30,8 +30,9 @@ function SiteLanding() {
       .landingStores()
       .then((allStores) => {
         dispatch(getAllStores(allStores.data));
+        dispatch(getCurrentStore({}));
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err));     
   }, []);
 
   const changeBg = () => {
@@ -170,14 +171,14 @@ function SiteLanding() {
         <Nav className="ml-auto mr-auto">
           <Row>
             <Col className="text-left mr-5 pr-5">
-              <Navbar.Brand className="ml-auto mr-auto" href="#home">
+              <Navbar.Brand className="ml-auto mr-auto" href="/">
                 Storefront
               </Navbar.Brand>
-              <Navbar.Text className="">Address</Navbar.Text>
+              <Navbar.Text className="">123 Internet Way</Navbar.Text>
             </Col>
 
             <Col className="text-right ml-5 pl-5">
-              <Nav.Link className="" href="//">
+              <Nav.Link className="" href="/storefront/contact">
                 Contact
               </Nav.Link>
               <Nav.Link

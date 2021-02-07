@@ -25,20 +25,24 @@ function ProductUpload() {
         description,
       })
       .then((productData) => {
-        api.uploadImage("prod-image", productData.data.id, fd).then((result) => {
-          api
-            .getStoreByOwner(ownerStore.UserId)
-            .then((data) => {
-              dispatch(getOwnerStore(data.data));
-              alert("Your product has been uploaded!");
-              setName("");
-              setPrice("");
-              setStock("");
-              setDescription("");
-              setImage("");
-            })
-            .catch((err) => console.log(err));
-        });
+        console.log(productData);
+        api
+          .uploadImage("prod-image", productData.data.id, fd)
+          .then((result) => {
+            console.log(result);
+            api
+              .getStoreByOwner(ownerStore.UserId)
+              .then((data) => {
+                dispatch(getOwnerStore(data.data));
+                alert("Your product has been uploaded!");
+                setName("");
+                setPrice("");
+                setStock("");
+                setDescription("");
+                setImage("");
+              })
+              .catch((err) => console.log(err));
+          });
       });
   };
 

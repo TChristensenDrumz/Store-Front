@@ -5,7 +5,7 @@ import Container from "react-bootstrap/Container";
 import Preview from "../../components/Preview/Preview";
 import api from "../../utils/api";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllStores } from "../../redux/actions/stores.actions";
+import {  getAllStores, getCurrentStore } from "../../redux/actions/stores.actions";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
@@ -23,6 +23,7 @@ function MarketPlace() {
       .landingStores()
       .then((allStores) => {
         dispatch(getAllStores(allStores.data));
+        dispatch(getCurrentStore({}));
       })
       .catch((err) => console.log(err));
   }, []);

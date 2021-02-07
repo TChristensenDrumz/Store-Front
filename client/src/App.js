@@ -9,18 +9,18 @@ import "react-bootstrap";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 // Import pages
-import Cart from "./pages/cart/Cart";
+import Cart from "./pages/Cart/Cart";
 
-import StoreLanding from "./pages/storeLanding/StoreLanding";
-import SiteLanding from "./pages/siteLanding/SiteLanding";
-import AllProducts from "./pages/allProducts/allProducts";
-import Product from "./pages/product/product";
-import ContactStore from "./pages/contactStore/ContactStore";
-import StoreLogin from "./pages/storeLogin/storeLogin";
-import CreateStoreAccount from "./pages/storeCreate/StoreCreate";
-import CustomerLogin from "./pages/customerLogin/CustomerLogin";
-import CreateAccount from "./pages/customerCreate/CustomerCreate";
-import EditStore from "./pages/editStore/EditStore";
+import StoreLanding from "./pages/StoreLanding/StoreLanding";
+import SiteLanding from "./pages/SiteLanding/SiteLanding";
+import AllProducts from "./pages/AllProducts/allProducts";
+import Product from "./pages/Product/product";
+import ContactStore from "./pages/ContactStore/ContactStore";
+import StoreLogin from "./pages/StoreLogin/storeLogin";
+import CreateStoreAccount from "./pages/StoreCreate/StoreCreate";
+import CustomerLogin from "./pages/CustomerLogin/CustomerLogin";
+import CreateAccount from "./pages/CustomerCreate/CustomerCreate";
+import EditStore from "./pages/EditStore/EditStore";
 import MarketPlace from "./pages/MarketPlace/MarketPlace";
 
 function App() {
@@ -36,9 +36,10 @@ function App() {
         <Route exact path="/storeEditor">
           <ProtectedRoute component={EditStore} />
         </Route>
-        <Route exact path="/storefront/:storeId" component={StoreLanding} />
         <Route exact path="/marketplace" component={MarketPlace} />
+        <Route exact path="/storefront/contact/" component={ContactStore} />
         <Route exact path="/storefront/allproducts/:storeId" component={AllProducts} />
+        <Route exact path="/storefront/:storeId" component={StoreLanding} />
         <Route exact path="/storefront/:storeId/:productId" component={Product} />
         <Route exact path="/cart" component={Cart} />
         {/* Default Route */}

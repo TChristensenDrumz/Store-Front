@@ -19,8 +19,10 @@ export default function Header() {
 
   useEffect(() => {
     if (location.pathname.includes("storefront")) {
-      setFont(currentStore.font);
-      setFontColor(currentStore.font_color);
+      if (currentStore) {
+        setFont(currentStore.font);
+        setFontColor(currentStore.font_color);
+      }
     }
   }, [location, currentStore]);
 
@@ -32,8 +34,10 @@ export default function Header() {
 
   const handleCart = () => {
     if (!userAuth) {
-      return alert("Please sign in or create an account to add to/view your cart");
-    };
+      return alert(
+        "Please sign in or create an account to add to/view your cart"
+      );
+    }
     history.push("/cart");
   };
 
@@ -68,7 +72,11 @@ export default function Header() {
           <Nav.Link className="ml-4 mr-4" href="#about" style={styles.navbar}>
             About
           </Nav.Link>
-          <Nav.Link className="ml-4 mr-4" href="//" style={styles.navbar}>
+          <Nav.Link
+            className="ml-4 mr-4"
+            href="/storefront/contact"
+            style={styles.navbar}
+          >
             Contact
           </Nav.Link>
         </Nav>
@@ -80,7 +88,11 @@ export default function Header() {
           >
             {isSeller ? "Store Editor" : userAuth ? "Logout" : "Login"}
           </Nav.Link>
-          <Nav.Link eventKey={2} style={{ color: fontColor }} onClick={handleCart}>
+          <Nav.Link
+            eventKey={2}
+            style={{ color: fontColor }}
+            onClick={handleCart}
+          >
             <i class="fas fa-shopping-cart"></i>
           </Nav.Link>
         </Nav>
