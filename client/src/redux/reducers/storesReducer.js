@@ -1,19 +1,26 @@
 const storesReducer = (state = {}, action) => {
+    let newState;
     switch (action.type) {
         case "GET_STORE_INFO":
             return action.payload;
         case "POPULATE_ALL_STORES":
-            const newState = {
+            newState = {
                 ...state,
                 allStores: action.payload,
-              }
+              };
             return newState;
         case "GET_OWNERS_STORE":
-            const ownerStore = {
+            newState = {
                 ...state,
                 ownerStore: action.payload
-            }
-            return ownerStore;
+            };
+            return newState;
+        case "GET_CURRENT_STORE":
+            newState = {
+                ...state,
+                currentStore: action.payload
+            };
+            return newState;
         default:
             return state;
     }

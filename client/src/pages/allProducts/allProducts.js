@@ -1,23 +1,20 @@
 
-import Preview from "../../components/Preview";
+import Preview from "../../components/Preview/Preview";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 function AllProducts(){
-    const { allStores } = useSelector(state => state.stores);
-    console.log(allStores);
-    const { storeId } = useParams();
-    console.log(storeId);
-    const {Products} = allStores.filter(store => store.id == storeId)[0];
-    console.log(Products);
+    const { currentStore } = useSelector(state => state.stores);
+    const {Products} = currentStore;
     const [details, setDetails] = useState(null);
 
     const checkDetails = () => {
-        setDetails(allStores);
+        setDetails(currentStore);
     }
 
     useEffect(() => {
-        console.log("hello")
         if (!details) {
             checkDetails();
         }
@@ -28,9 +25,9 @@ function AllProducts(){
     }
     return(
         <div>
-
+            <Header />
             <a name="#"></a>
-            <div >
+            <div style={{color: currentStore.body_color}}>
             <h3 style = {{textAlign:"center"}}>All Products</h3>
                 <div class="row pt-5 pb-5 text-center justify-content-center" style={{width: "75vw", margin: "0 auto"}}>
                     
@@ -48,6 +45,7 @@ function AllProducts(){
                 </div>
 
             </div>
+            <Footer />
         </div>
 
 

@@ -20,7 +20,7 @@ function CreateAccount() {
             return alert("Please provide all requested information");
         };
         api.register({email, password, first_name, last_name}).then(result => console.log(result));
-        setRedirect({url: "/login"});
+        setRedirect({url: "/customer-login"});
     }
   return (
     <>

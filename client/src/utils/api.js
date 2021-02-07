@@ -36,8 +36,8 @@ export default {
         return axios.put("/api/store/update/" + storeId, storeData);
     },
 
-    deleteStore: function(storeId) {
-        return axios.delete("/api/store/delete/" + storeId);
+    deleteStore: function(storeId, userId) {
+        return axios.delete("/api/store/delete/" + storeId + "/" + userId);
     },
     //========================================================
     // Routes for product data

@@ -10,6 +10,7 @@ function Cart() {
   const [cartItems, setCartItems] = useState([]);
   const [total, setTotal] = useState(null);
   const [change, setChange] = useState("");
+  const [itemAmount, setItemAmount] = useState("");
 
   useEffect(() => {
     const userId = Token.getId();
@@ -23,12 +24,28 @@ function Cart() {
   useEffect(() => {
     if (change) {
       let {id, price} = change;
+      let deletedItem = cartItems.filter(item => item.id == id)[0];
       let newItems = cartItems.filter((item) => item.id !== id);
       setCartItems(newItems);
-      let newTotal = total - price;
+      let newTotal = total - (price * deletedItem.quantity);
       setTotal(newTotal.toFixed(2));
-    }
-  }, [change]);
+      setChange("");
+    };
+    if (itemAmount) {
+      let { newAmount, id, setAmount } = itemAmount;
+      let item = cartItems.filter(item => item.id == id)[0];
+      if (newAmount > item.Product.stock) {
+        newAmount = item.Product.stock;
+        setAmount(newAmount);
+        alert(`Only ${newAmount} of this item currently in stock`);
+      };
+      let newTotal = total - (item.Product.price * item.quantity);
+      item.quantity = newAmount;
+      newTotal += item.Product.price * item.quantity;
+      setTotal(newTotal.toFixed(2));
+      setItemAmount("");
+    };
+  }, [change, itemAmount]);
 
   if (!total || !cartItems) {
     return <h1>Loading...</h1>;
@@ -56,6 +73,7 @@ function Cart() {
             id={product.id}
             setChange={setChange}
             quantity={product.quantity}
+            setItemAmount={setItemAmount}
           />
         ))}
         <div className="row align-items-center pt-3 pb-3">
