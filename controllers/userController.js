@@ -61,22 +61,13 @@ module.exports = {
         items.forEach(item => {
           combined[item.ProductId] = (combined[item.ProductId] || 0) + item.quantity;
         });
-        console.log("combined ", combined);
-        console.log(Object.keys(combined))
         let allIds = Object.keys(combined);
         let prices = [];
         allIds.forEach(id => {
           let item = items.filter(cart => cart.ProductId == id)[0];
-          console.log("item ", item);
-          console.log("id ", combined[id]);
-          console.log("price ", item.Product.dataValues.price);
           prices.push(parseInt(combined[id]) * parseFloat(item.Product.dataValues.price));
         });
-        // items.forEach(cart => {
-        //   prices.push(parseFloat(cart.Product.dataValues.price))
-        // });
         total = prices.reduce((a, b) => a+b);
-        console.log(total);
         res.json({items, total});
       })
       .catch(err => {
