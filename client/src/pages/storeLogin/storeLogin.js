@@ -15,10 +15,7 @@ function OwnerLogin() {
   const [redirect, setRedirect] = useState({ url: "/login" });
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log({ email, password });
   }, [email, password]);
-
-  console.log(api.getStoreByOwner(1));
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -26,7 +23,6 @@ function OwnerLogin() {
       return alert("Please provide all login information.");
     }
     api.login({ email, password }).then((result) => {
-      console.log(result);
       if (result.data.success) {
         let { isSeller, userId } = JSON.parse(
           atob(result.data.token.split(".")[1])
@@ -38,9 +34,8 @@ function OwnerLogin() {
         }
         localStorage.setItem("token", JSON.stringify(result.data.token));
         api.getStoreByOwner(userId).then(async (storeData) => {
-          console.log(storeData);
           await dispatch(getOwnerStore(storeData.data));
-          setRedirect({url: "/storeEditor"});
+          setRedirect({url: "/"});
         });
       } else {
         return alert(result.data.message);

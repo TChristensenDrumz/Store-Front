@@ -12,6 +12,8 @@ import { useDispatch } from "react-redux";
 import Token from "../../utils/Token";
 import { getOwnerStore } from "../../redux/actions/stores.actions";
 import "./EditStore.css";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 function EditStore() {
   const dispatch = useDispatch();
@@ -36,6 +38,7 @@ function EditStore() {
   }
   return (
     <div>
+      <Header />
       <div className="container border rounded" id="space">
         <div className="row">
           <div className="col-4 p-0">
@@ -66,6 +69,7 @@ function EditStore() {
           <div className="col-8">{edit}</div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

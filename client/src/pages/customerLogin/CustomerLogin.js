@@ -20,14 +20,12 @@ function LoginPage() {
             return alert("Please provide all login information.");
         };
         api.login({email, password}).then(result => {
-            console.log(result);
             if (result.data.success) {
                 localStorage.setItem("token", JSON.stringify(result.data.token));
                 api.landingStores().then(res => {
-                  console.log(res);
                   dispatch(getAllStores(res.data));
                 });
-                setRedirect({url: "/"});
+                setRedirect({url: "/marketplace"});
             } else {
                 return alert(result.data.message);
             };

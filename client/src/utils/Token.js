@@ -25,4 +25,12 @@ export default {
       return token.userId;
     }
   },
+
+  isSeller: function () {
+    const token = this.getToken();
+    if (token) {
+      return token.isSeller;
+    };
+    return false;
+  }
 };

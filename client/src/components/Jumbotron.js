@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import { useHistory } from "react-router-dom";
+import Header from "./Header";
 
 function Jumbo({
   image,
@@ -35,7 +36,7 @@ function Jumbo({
     },
     storeName: {
       textAlign: "center",
-      paddingTop: "40vh",
+      paddingTop: "15vh",
     },
     button: {
       backgroundColor: `${buttonColor}`,
@@ -46,6 +47,7 @@ function Jumbo({
   return (
     <div>
       <div style={styles.jumbo}>
+        <Header />
         <div style={styles.storeName}>
           <h1 className="display-2 mb-2">{name}</h1>
           <h3 className="display-6 mb-5" style={{ color: `${taglineColor}` }}>

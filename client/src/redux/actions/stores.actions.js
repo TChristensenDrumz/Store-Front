@@ -9,3 +9,7 @@ export const getAllStores = (payload) => {
 export const getOwnerStore = (payload) => {
     return { type: "GET_OWNERS_STORE", payload};
 };
+
+export const getCurrentStore = (payload) => {
+    return { type: "GET_CURRENT_STORE", payload};
+}

@@ -3,11 +3,12 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import api from "../../utils/api";
 import Token from "../../utils/Token";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 function Product() {
-  const { storeId, productId } = useParams();
-  const { allStores } = useSelector((state) => state.stores);
-  const currentStore = allStores.filter((store) => store.id == storeId)[0];
+  const { productId } = useParams();
+  const { currentStore } = useSelector((state) => state.stores);
   const product = currentStore.Products.filter(
     (product) => product.id == productId
   )[0];
@@ -23,7 +24,7 @@ function Product() {
 
   const subtract = () => {
     const newAmount = amount - 1;
-    if (newAmount < 0) {
+    if (newAmount < 1) {
       return;
     }
     setAmount(newAmount);
@@ -42,8 +43,9 @@ function Product() {
 
   return (
     <div>
+      <Header />
       <a name="#"></a>
-      <div className="container mt-5">
+      <div className="container mt-5" style={{color: currentStore.body_color}}>
         <div className="row p-5">
           <div className="col-md-6 col-12">
             <img src={product.image} height="300px"></img>
@@ -92,7 +94,6 @@ function Product() {
                 </button>
                 <button
                   className="btn btn-outline-secondary"
-                  id="subtract"
                   type="button"
                   onClick={subtract}
                 >
@@ -117,6 +118,10 @@ function Product() {
               <button
                 type="button"
                 className="btn btn-lg border btn-dark"
+                style={{
+                  color: currentStore.footer_color,
+                  backgroundColor: currentStore.accent_color
+                }}
                 onClick={handleAddToCart}
               >
                 Add to Cart
@@ -125,6 +130,7 @@ function Product() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

@@ -17,7 +17,7 @@ router.route("/create")
 router.route("/update/:storeid")
     .put(storeController.updateStore);
 
-router.route("/delete/:storeid")
+router.route("/delete/:storeid/:userId")
     .delete(storeController.deleteStore);
     
 module.exports = router;
