@@ -21,7 +21,7 @@ export default function Header() {
       setFont(currentStore.font);
       setFontColor(currentStore.font_color);
     }
-  }, [location]);
+  }, [location, currentStore]);
 
   const handleLogout = () => {
     if (!isSeller) {
