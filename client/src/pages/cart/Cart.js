@@ -20,6 +20,7 @@ function Cart() {
         setTotal(result.data.total.toFixed(2));
       }
       setCartItems(result.data.items);
+      console.log(cartItems)
     });
   }, []);
 
@@ -29,7 +30,7 @@ function Cart() {
       let deletedItem = cartItems.filter((item) => item.id == id)[0];
       let newItems = cartItems.filter((item) => item.id !== id);
       setCartItems(newItems);
-      let newTotal = total - price * deletedItem.quantity;
+      let newTotal = total - (price * deletedItem.quantity);
       setTotal(newTotal.toFixed(2));
       setChange("");
     }

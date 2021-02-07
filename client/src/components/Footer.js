@@ -2,17 +2,20 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+import windowDimensions from "../utils/GetWindowDimensions";
 
 // Import styling
 import { Navbar, Nav, Container, Row, Col } from "react-bootstrap";
 
 export default function Footer() {
+  let windowHeight = windowDimensions();
   const { currentStore } = useSelector((state) => state.stores);
   let location = useLocation();
   const [font, setFont] = useState("Helvetica Neue");
   const [fontColor, setFontColor] = useState("white");
   const [bgColor, setBgColor] = useState("black");
   const [address, setAddress] = useState("123 Internet Way");
+  const [footer, setFooter] = useState(0);
 
   useEffect(() => {
     if (location.pathname.includes("storefront")) {
@@ -22,20 +25,28 @@ export default function Footer() {
         setAddress(currentStore.address);
       }
     }
+    let footerPosition = document.querySelector("#foot");
+      let foot = footerPosition.getBoundingClientRect().bottom;
+      console.log(`windowHeight: ${window.innerHeight}, foot: ${foot}`)
+      if (window.innerHeight > foot) {
+        setFooter(window.innerHeight - foot);
+      };
   }, [location]);
 
   const styles = {
     footer: {
       fontFamily: `${font}`,
-      color: `${fontColor}`,
+      color: `${fontColor}`
     },
   };
 
   return (
+    <div style={{marginTop: footer}}>
     <Navbar
       expand="lg"
       bg="none"
       className="p-5"
+      id="foot"
       sticky="bottom"
       style={{ backgroundColor: bgColor }}
     >
@@ -63,5 +74,6 @@ export default function Footer() {
         </Row>
       </Nav>
     </Navbar>
+    </div>
   );
 }

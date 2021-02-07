@@ -57,9 +57,15 @@ module.exports = {
         result.Carts.forEach(cart => {
           items.push(cart.dataValues);
         });
+        let combined = {};
+        items.forEach(item => {
+          combined[item.ProductId] = (combined[item.ProductId] || 0) + item.quantity;
+        });
+        let allIds = Object.keys(combined);
         let prices = [];
-        result.Carts.forEach(cart => {
-          prices.push(parseFloat(cart.dataValues.Product.dataValues.price))
+        allIds.forEach(id => {
+          let item = items.filter(cart => cart.ProductId == id)[0];
+          prices.push(parseInt(combined[id]) * parseFloat(item.Product.dataValues.price));
         });
         total = prices.reduce((a, b) => a+b);
         res.json({items, total});

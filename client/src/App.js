@@ -9,18 +9,17 @@ import "react-bootstrap";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 // Import pages
-import Cart from "./pages/Cart/Cart";
-
-import StoreLanding from "./pages/StoreLanding/StoreLanding";
-import SiteLanding from "./pages/SiteLanding/SiteLanding";
-import AllProducts from "./pages/AllProducts/allProducts";
-import Product from "./pages/Product/product";
-import ContactStore from "./pages/ContactStore/ContactStore";
-import StoreLogin from "./pages/StoreLogin/storeLogin";
-import CreateStoreAccount from "./pages/StoreCreate/StoreCreate";
-import CustomerLogin from "./pages/CustomerLogin/CustomerLogin";
-import CreateAccount from "./pages/CustomerCreate/CustomerCreate";
-import EditStore from "./pages/EditStore/EditStore";
+import Cart from "./pages/cart/Cart";
+import StoreLanding from "./pages/storeLanding/StoreLanding";
+import SiteLanding from "./pages/siteLanding/SiteLanding";
+import AllProducts from "./pages/allProducts/allProducts";
+import Product from "./pages/product/product";
+import ContactStore from "./pages/contactStore/ContactStore";
+import StoreLogin from "./pages/storeLogin/storeLogin";
+import CreateStoreAccount from "./pages/storeCreate/StoreCreate";
+import CustomerLogin from "./pages/customerLogin/CustomerLogin";
+import CreateAccount from "./pages/customerCreate/CustomerCreate";
+import EditStore from "./pages/editStore/EditStore";
 import MarketPlace from "./pages/MarketPlace/MarketPlace";
 
 function App() {
