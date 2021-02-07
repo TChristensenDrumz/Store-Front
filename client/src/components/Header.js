@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Token from "../utils/Token";
 import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 
 // Import styling
 import { Navbar, Nav } from "react-bootstrap";
@@ -12,7 +12,8 @@ export default function Header() {
   const userAuth = Token.authenticate();
   const isSeller = Token.isSeller();
   const { currentStore } = useSelector((state) => state.stores);
-  let location = useLocation();
+  const location = useLocation();
+  const history = useHistory();
   const [font, setFont] = useState("Helvetica Neue");
   const [fontColor, setFontColor] = useState("black");
 
@@ -27,6 +28,13 @@ export default function Header() {
     if (!isSeller) {
       localStorage.removeItem("token");
     }
+  };
+
+  const handleCart = () => {
+    if (!userAuth) {
+      return alert("Please sign in or create an account to add to/view your cart");
+    };
+    history.push("/cart");
   };
 
   const styles = {
@@ -72,7 +80,7 @@ export default function Header() {
           >
             {isSeller ? "Store Editor" : userAuth ? "Logout" : "Login"}
           </Nav.Link>
-          <Nav.Link eventKey={2} href="/cart" style={{ color: fontColor }}>
+          <Nav.Link eventKey={2} style={{ color: fontColor }} onClick={handleCart}>
             <i class="fas fa-shopping-cart"></i>
           </Nav.Link>
         </Nav>

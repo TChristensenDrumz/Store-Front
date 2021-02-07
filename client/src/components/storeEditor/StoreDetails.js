@@ -18,6 +18,7 @@ function StoreDetails() {
       console.log(result);
       api.getStoreByOwner(ownerStore.UserId).then(data =>{
         dispatch(getOwnerStore(data.data));
+        alert("Store updated!");
       });
     });
   };

@@ -35,6 +35,7 @@ function LoginPage() {
     <>
       <Header />
         <form
+          className="mb-5"
           style={{
             width: "50%",
             margin: "auto"
