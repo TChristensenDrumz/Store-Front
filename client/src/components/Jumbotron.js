@@ -30,9 +30,10 @@ function Jumbo({
       width: "100vw",
       padding: "0",
       backgroundImage: `url(${image})`,
-      backgroundSize: "100%",
+      backgroundSize: "cover",
       backgroundPosition: "center",
       backgroundAttachment: `${bg_scroll}`,
+      backgroundRepeat: "no-repeat"
     },
     storeName: {
       textAlign: "center",

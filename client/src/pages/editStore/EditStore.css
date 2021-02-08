@@ -1,4 +1,12 @@
+#space {
+    margin-bottom: 2vw;
+}
+
 .list-group-item:hover {
     cursor: pointer;
     background-color: lightblue;
+}
+
+.borderClass {
+    border-bottom: 1px solid rgb(223, 221, 221);
 }

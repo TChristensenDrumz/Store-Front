@@ -8,9 +8,10 @@ function About({ image, info, color, about_scroll }) {
       width: "100vw",
       padding: "0",
       backgroundImage: `url("${image}")`,
-      backgroundSize: "100%",
+      backgroundSize: "cover",
       backgroundPosition: "center",
       backgroundAttachment: `${about_scroll}`,
+      backgroundRepeat: "no-repeat",
       marginBottom: "0"
     },
     text: {

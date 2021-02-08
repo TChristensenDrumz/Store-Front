@@ -20,7 +20,9 @@ function ContactStore() {
   
   const style = {
     page: {
-      color: `${body_color}`
+      color: `${body_color}`,
+      textShadow: `-.5px 0 ${accent_color}, 0 .5px ${accent_color}, 1px 0 ${accent_color}, 0 -.5px ${accent_color}`,
+      letterSpacing: "2px"
     },
     button: {
       backgroundColor: `${accent_color}`,
