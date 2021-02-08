@@ -4,6 +4,7 @@ import Token from "../utils/Token";
 import { useSelector } from "react-redux";
 import { useLocation, useHistory } from "react-router-dom";
 import Alert from "./Alert";
+import { Link } from "react-router-dom"
 
 // Import styling
 import { Navbar, Nav } from "react-bootstrap";
@@ -83,9 +84,15 @@ export default function Header() {
           >
             Shop
           </Nav.Link>
-          <Nav.Link className="ml-4 mr-4" href="#about" style={styles.navbar}>
+          <Link className="ml-4 mr-4" to ="#about" style={
+            {
+              fontFamily: `${font}`,
+              color: `${fontColor}`,
+              marginTop:"8px"
+            }
+          }>
             About
-          </Nav.Link>
+          </Link>
           <Nav.Link
             className="ml-4 mr-4"
             href="/storefront/contact"

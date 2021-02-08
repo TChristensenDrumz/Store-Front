@@ -3,21 +3,33 @@ import Jumbo from "../../components/Jumbotron";
 import About from "../../components/About";
 import Preview from "../../components/Preview/Preview";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import Footer from "../../components/Footer";
 import { getCurrentStore } from "../../redux/actions/stores.actions";
 
-function StoreLanding() {
+
+function StoreLanding(props) {
   const params = useParams();
   const dispatch = useDispatch();
   const stores = useSelector((state) => state.stores);
   const selectedStore = stores.allStores.filter(
     (store) => store.id == params.storeId
   )[0];
-
+  
   useEffect(() => {
     dispatch(getCurrentStore(selectedStore));
   }, []);
+
+  useEffect(() => {
+    let hash = props.history.location.hash
+    if (hash && document.getElementById(hash.substr(1))) {
+      // Check if there is a hash and if an element with that id exists
+      document.getElementById(hash.substr(1)).scrollIntoView({behavior: "smooth"})
+    };
+    
+    
+    
+}, [props.history.location.hash]) // Fires every time hash changes
 
   let products = selectedStore.Products;
   if (products.length > 3) {
@@ -60,12 +72,14 @@ function StoreLanding() {
           ))}
         </div>
       </div>
+      <div id = "about">
         <About
           image={selectedStore.about_image}
           info={selectedStore.about}
           color={selectedStore.body_color}
           about_scroll={selectedStore.about_scroll}
         />
+      </div>
       <Footer />
     </div>
   );
