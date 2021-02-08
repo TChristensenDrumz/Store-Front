@@ -11,8 +11,6 @@ module.exports = {
         const file = await getContent(req);
         return uploader.upload(file.content).then(result => {
           const image = result.url;
-          console.log("---------------------------------------");
-          console.log(result);
           const bgImage = (res, image, storeid) => {
             db.Store.update({
               background_image: image
@@ -28,7 +26,10 @@ module.exports = {
                   image
                 }
               });
-            });
+            }).catch(err => {
+              console.log(err);
+              res.json(err);
+            })
           };
       
           const aboutImage = (res, image, storeid) => {

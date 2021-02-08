@@ -5,12 +5,19 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Token from "../../utils/Token";
 import api from "../../utils/api";
+import Button from 'react-bootstrap/Button';
+import Modal from "react-bootstrap/Modal";
 
 function Cart() {
   const [cartItems, setCartItems] = useState([]);
   const [total, setTotal] = useState(null);
   const [change, setChange] = useState("");
   const [itemAmount, setItemAmount] = useState("");
+  const [show, setShow] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   useEffect(() => {
     const userId = Token.getId();
@@ -40,8 +47,9 @@ function Cart() {
       if (newAmount > item.Product.stock) {
         newAmount = item.Product.stock;
         setAmount(newAmount);
-        alert(`Only ${newAmount} of this item currently in stock`);
-      }
+        setMessage(`Only ${newAmount} of this item currently in stock`);
+        handleShow();
+      };
       let newTotal = total - item.Product.price * item.quantity;
       item.quantity = newAmount;
       newTotal += item.Product.price * item.quantity;
@@ -49,6 +57,11 @@ function Cart() {
       setItemAmount("");
     }
   }, [change, itemAmount]);
+
+  const handlePayPalSuccess = details => {
+    setMessage("Transaction completed by " + details.payer.name.given_name);
+    handleShow();
+  };
 
   if (!total || !cartItems || cartItems.length === 0) {
     return (
@@ -68,6 +81,17 @@ function Cart() {
 
   return (
     <div>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Store Front</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{message}</Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleClose}>
+            OK
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <Header />
       <div className="container">
         <h2>Shopping Cart</h2>
@@ -118,10 +142,7 @@ function Cart() {
               onApprove={(data, actions) => {}}
               onSuccess={(details, data) => {
                 console.log(details, data);
-
-                alert(
-                  "Transaction completed by " + details.payer.name.given_name
-                );
+                handlePayPalSuccess(details);
 
                 // OPTIONAL: Call your server to save the transaction
                 // return fetch("/paypal-transaction-complete", {

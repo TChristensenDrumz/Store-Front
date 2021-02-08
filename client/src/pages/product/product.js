@@ -6,6 +6,8 @@ import Token from "../../utils/Token";
 import { useHistory } from "react-router-dom";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import Button from 'react-bootstrap/Button';
+import Modal from "react-bootstrap/Modal";
 
 function Product() {
   const history = useHistory();
@@ -16,12 +18,30 @@ function Product() {
     (product) => product.id == productId
   )[0];
   const [amount, setAmount] = useState(1);
+  const [message, setMessage] = useState("");
+  const [show, setShow] = useState(false);
+  const [redirect, setRedirect] = useState(false);
+
+  const handleClose = () => {
+    setShow(false);
+    if (redirect) {
+      history.push("/customer-login");
+    };
+  };
+
+  const handleShow = (loggedIn = true) => {
+    setShow(true);
+    if (!loggedIn) {
+      setRedirect(true);
+    };
+  };
 
   const add = () => {
     const newAmount = amount + 1;
     if (newAmount > product.stock) {
-      return alert("Exceeds stock limit of this item");
-    }
+      setMessage("Exceeds stock limit of this item");
+      handleShow();
+    };
     setAmount(newAmount);
   };
 
@@ -35,21 +55,34 @@ function Product() {
 
   const handleAddToCart = () => {
     if (!userAuth) {
-      alert("Please sign in or create an account to add items to your cart");
-      history.push("/customer-login");
+      setMessage("Please sign in or create an account to add items to your cart");
+      return handleShow(false);
     };
     if (amount > product.stock) {
-      return alert("Exceeds stock limit of this item");
+      setMessage("Exceeds stock limit of this item");
+      return handleShow();
     }
     let { id, price } = product;
     let userid = Token.getId();
     api.addItem({ quantity: amount, userid, productid: id, price }).then((result) => {
-      console.log(result);
+      setMessage("Item added to cart!");
+      handleShow();
     });
   };
 
   return (
     <div>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+        <Modal.Title>{currentStore.store_name}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{message}</Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleClose}>
+            OK
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <Header />
       <a name="#"></a>
       <div className="container mt-5" style={{color: currentStore.body_color}}>
