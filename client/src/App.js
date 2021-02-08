@@ -42,7 +42,7 @@ function App() {
         <Route exact path="/storefront/:storeId/:productId" component={Product} />
         <Route exact path="/cart" component={Cart} />
         {/* Default Route */}
-        <Route component={SiteLanding} />
+        <Route exact path="/" component={SiteLanding} />
       </Switch>
     </Router>
   );

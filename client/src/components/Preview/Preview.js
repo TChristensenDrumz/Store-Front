@@ -13,6 +13,7 @@ function Preview({image, name, storeId, productId, type}) {
 
   const goToPage = () => {
     if (type === "store") {
+      console.log("you clicked a preview card")
       let currentStore = allStores.filter(store => store.id == storeId)[0];
       dispatch(getCurrentStore(currentStore));
     history.push(`/storefront/${storeId}`);

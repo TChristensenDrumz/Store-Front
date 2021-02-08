@@ -35,6 +35,22 @@ function MarketPlace() {
     <>
       <Header />
       <Container fluid>
+        {/* <div className="d-flex justify-content-center">
+          <input 
+            type="text"
+            list="storeName"
+            placeholder="Search for store"
+            style={{width: "50vw"}}
+          />
+          <datalist id="states">
+            {openStores.map(store => (
+              <option 
+                value={store.store_name}
+                key={store.id}
+              />
+            ))}
+          </datalist>
+        </div> */}
         <Row className="justify-content-md-center">
           {openStores.map((store) => (
             <Col>
