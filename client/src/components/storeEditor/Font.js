@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getOwnerStore } from "../../redux/actions/stores.actions";
 import api from "../../utils/api";
+import Button from 'react-bootstrap/Button';
+import Modal from "react-bootstrap/Modal";
 
 function Font() {
   const dispatch = useDispatch();
@@ -10,6 +12,10 @@ function Font() {
   const [font_color, setFontColor] = useState(ownerStore.font_color);
   const [body_color, setBodyColor] = useState(ownerStore.body_color);
   const [footer_color, setFooterColor] = useState(ownerStore.footer_color);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const handleFontSubmit = (event) => {
     event.preventDefault();
@@ -23,12 +29,23 @@ function Font() {
       .then((result) => {
         api.getStoreByOwner(ownerStore.UserId).then((data) => {
           dispatch(getOwnerStore(data.data));
-          alert("Store updated!");
+          handleShow();
         });
       });
   };
   return (
     <div>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Store Editor</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Font updated!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleClose}>
+            OK
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <div
         className="tab-pane fade show active"
         id="list-font"
