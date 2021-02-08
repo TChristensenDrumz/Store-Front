@@ -23,11 +23,10 @@ export default function Footer() {
         setFont(currentStore.font);
         setFontColor(currentStore.footer_color);
         setAddress(currentStore.address);
-      }
-    }
+      };
+    };
     let footerPosition = document.querySelector("#foot");
       let foot = footerPosition.getBoundingClientRect().bottom;
-      console.log(`windowHeight: ${window.innerHeight}, foot: ${foot}`)
       if (window.innerHeight > foot) {
         setFooter(window.innerHeight - foot);
       };
