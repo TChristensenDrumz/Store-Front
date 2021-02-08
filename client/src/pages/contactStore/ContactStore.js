@@ -21,7 +21,7 @@ function ContactStore() {
   const style = {
     page: {
       color: `${body_color}`,
-      textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black",
+      textShadow: `-1px 0 ${accent_color}, 0 1px ${accent_color}, 1px 0 ${accent_color}, 0 -1px ${accent_color}`,
     },
     button: {
       backgroundColor: `${accent_color}`,
