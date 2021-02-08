@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getOwnerStore } from "../../redux/actions/stores.actions";
 import api from "../../utils/api";
+import Button from 'react-bootstrap/Button';
+import Modal from "react-bootstrap/Modal";
 
 function BackgroundImages() {
   const dispatch = useDispatch();
@@ -10,6 +12,14 @@ function BackgroundImages() {
   const [bg_scroll, setBgScroll] = useState(ownerStore.bg_scroll);
   const [about_image, setAboutImage] = useState(ownerStore.about_image);
   const [about_scroll, setAboutScroll] = useState(ownerStore.about_scroll);
+  const [showSubmit, setShowSubmit] = useState(false);
+  const [showImage, setShowImage] = useState(false);
+
+  const handleSubmitClose = () => setShowSubmit(false);
+  const handleSubmitShow = () => setShowSubmit(true);
+
+  const handleImageClose = () => setShowImage(false);
+  const handleImageShow = () => setShowImage(true);
 
   const bgUpload = () => {
     handleImageUpload("bg-image");
@@ -32,7 +42,7 @@ function BackgroundImages() {
       api.getStoreByOwner(ownerStore.UserId).then((data) => {
         console.log(data);
         dispatch(getOwnerStore(data.data));
-        alert("Your image has been uploaded!");
+        handleImageShow();
       }).catch(err => console.log(err));
     });
   };
@@ -44,13 +54,35 @@ function BackgroundImages() {
       .then((result) => {
         api.getStoreByOwner(ownerStore.UserId).then((data) => {
           dispatch(getOwnerStore(data.data));
-          alert("Store updated!");
+          handleSubmitShow();
         });
       });
   };
 
   return (
     <div>
+      <Modal show={showImage} onHide={handleImageClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Store Editor</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Your image has been uploaded!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleImageClose}>
+            OK
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      <Modal show={showSubmit} onHide={handleSubmitClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Store Editor</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Background Images updated!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleSubmitClose}>
+            OK
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <div
         className="tab-pane fade show active"
         id="list-background"

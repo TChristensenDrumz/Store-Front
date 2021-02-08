@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getOwnerStore } from "../../redux/actions/stores.actions";
 import api from "../../utils/api";
+import Button from 'react-bootstrap/Button';
+import Modal from "react-bootstrap/Modal";
 
 function ProductUpload() {
   const dispatch = useDispatch();
@@ -11,6 +13,10 @@ function ProductUpload() {
   const [stock, setStock] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const handleProductSubmit = (event) => {
     event.preventDefault();
@@ -34,7 +40,7 @@ function ProductUpload() {
               .getStoreByOwner(ownerStore.UserId)
               .then((data) => {
                 dispatch(getOwnerStore(data.data));
-                alert("Your product has been uploaded!");
+                handleShow();
                 setName("");
                 setPrice("");
                 setStock("");
@@ -48,6 +54,17 @@ function ProductUpload() {
 
   return (
     <div>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Store Editor</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Your product has been uploaded!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleClose}>
+            OK
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <div
         className="tab-pane fade show active"
         id="list-product-upload"
@@ -132,7 +149,7 @@ function ProductUpload() {
 
           <div className="text-right">
             <button type="submit" className="btn btn-dark">
-              Update
+              Add Product
             </button>
           </div>
 

@@ -27,6 +27,10 @@ function DeleteStore() {
             <label for="exampleFormControlInput1">
               Are you sure you want to delete your store?
             </label>
+            <br />
+            <label for="exampleFormControlInput1" style={{fontWeight: "bold"}}>
+              THIS ACTION IS IRREVERSIBLE
+            </label>
           </div>
           <div className="text-left">
             <button

@@ -3,28 +3,47 @@ import { useSelector, useDispatch } from "react-redux";
 import { getOwnerStore } from "../../redux/actions/stores.actions";
 import api from "../../utils/api";
 import HandleStoreUpdate from "../../utils/HandleStoreUpdate";
+import Button from 'react-bootstrap/Button';
+import Modal from "react-bootstrap/Modal";
 
 function StoreDetails() {
   const dispatch = useDispatch();
-  const { ownerStore } = useSelector(state => state.stores);
+  const { ownerStore } = useSelector((state) => state.stores);
   const [store_name, setStoreName] = useState(ownerStore.store_name);
   const [tagline, setTagline] = useState(ownerStore.tagline);
   const [about, setAbout] = useState(ownerStore.about);
   const [address, setAddress] = useState(ownerStore.address);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const handleDetailSubmit = (event) => {
     event.preventDefault();
-    api.updateStore(ownerStore.id, {store_name, tagline, about, address}).then(result => {
-      console.log(result);
-      api.getStoreByOwner(ownerStore.UserId).then(data =>{
-        dispatch(getOwnerStore(data.data));
-        alert("Store updated!");
+    api
+      .updateStore(ownerStore.id, { store_name, tagline, about, address })
+      .then((result) => {
+        console.log(result);
+        api.getStoreByOwner(ownerStore.UserId).then((data) => {
+          dispatch(getOwnerStore(data.data));
+          handleShow();
+        });
       });
-    });
   };
 
   return (
     <div>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Store Editor</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Store Details updated!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleClose}>
+            OK
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <div
         className="tab-pane fade show active"
         id="list-store"
