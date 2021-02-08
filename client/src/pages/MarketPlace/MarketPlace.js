@@ -35,7 +35,8 @@ function MarketPlace() {
   const styles = {
     h1: {
       display: "flex",
-      justifyContent: "center"
+      justifyContent: "center",
+      textDecoration: "underline"
     }
   }
   return (
