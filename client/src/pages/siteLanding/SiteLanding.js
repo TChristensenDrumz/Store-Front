@@ -4,6 +4,8 @@ import api from "../../utils/api";
 import { useDispatch } from "react-redux";
 import { getAllStores, getCurrentStore } from "../../redux/actions/stores.actions";
 import Token from "../../utils/Token";
+import { Link } from "react-router-dom"
+
 
 // Import styling
 import {
@@ -19,11 +21,20 @@ import "./SiteLanding.css";
 
 // Import components
 
-function SiteLanding() {
+function SiteLanding(props) {
   const [bg, setBg] = useState(false);
   const dispatch = useDispatch();
   const isSeller = Token.isSeller();
   const userAuth = Token.authenticate();
+
+  useEffect(() => {
+    const hash = props.history.location.hash
+    console.log(hash)
+    if (hash && document.getElementById(hash.substr(1))) {
+        // Check if there is a hash and if an element with that id exists
+        document.getElementById(hash.substr(1)).scrollIntoView({behavior: "smooth"})
+    }
+}, [props.history.location.hash]) // Fires every time hash changes
 
   useEffect(() => {
     api
@@ -84,13 +95,13 @@ function SiteLanding() {
             ) : (
               <div />
             )}
-            <Nav.Link
+            <Link
               className="ml-4 mr-4"
-              style={{ color: "white" }}
-              href="/about"
+              style={{ color: "white", marginTop:"8px"}}
+              to="/#about"
             >
               About
-            </Nav.Link>
+            </Link>
           </Nav>
           <Nav className="mr-5">
             <Nav.Link
@@ -151,7 +162,7 @@ function SiteLanding() {
 
       {/* Third jumbotron */}
       <Jumbotron className="margin0">
-        <Container style={{ height: "60vh" }}>
+        <Container style={{ height: "60vh" }}id ="about">
           <h1>How It Works</h1>
           <p>
             This is a modified jumbotron that occupies the entire horizontal
