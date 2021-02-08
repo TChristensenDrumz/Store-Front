@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import EmailPassword from "../../components/EmailPassword";
 import NameInput from "../../components/NameInput";
 import api from "../../utils/api";
@@ -9,16 +9,27 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
 function CreateAccount() {
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
-  const [redirect, setRedirect] = useState({ url: "/new-customer" });
+  const [redirect, setRedirect] = useState(false);
   const [show, setShow] = useState(false);
   const [message, setMessage] = useState("");
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => {
+    setShow(false);
+    if (redirect) {
+      history.push("/customer-login");
+    }
+  };
+  const handleShow = (created = false) => {
+    setShow(true);
+    if (created) {
+      setRedirect(true);
+    }
+  };
 
   const handleCreateAccount = (event) => {
     event.preventDefault();
@@ -26,12 +37,22 @@ function CreateAccount() {
       setMessage("Please provide all requested information");
       return handleShow();
     };
-    api
-      .register({ email, password, first_name, last_name })
-      .then((result) => {
-        console.log(result);
-      });
-    // setRedirect({ url: "/customer-login" });
+    api.checkEmail(email).then((result) => {
+      if (result.data) {
+        setMessage(
+          "An account with this email address already exists. Please proceed to customer login."
+        );
+        return handleShow();
+      } 
+      else {
+        api
+          .register({ email, password, first_name, last_name })
+          .then((result) => {
+            setMessage("Account created! Please proceed to log in.");
+            handleShow(true);
+          });
+      };
+    });
   };
   return (
     <>
@@ -64,7 +85,6 @@ function CreateAccount() {
             <a href="/signup">Store owner? Create account here</a>
           </small>
         </div>
-        <Redirect to={redirect.url} />
       </form>
       <Footer />
     </>
