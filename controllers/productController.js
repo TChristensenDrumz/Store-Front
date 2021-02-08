@@ -43,6 +43,20 @@ module.exports = {
         });
     },
 
+    updateProduct: function(req, res) {
+        console.log(req);
+        db.Product.update(req.body, {
+            where: {
+              id: req.params.productid
+            }
+        }).then(result => {
+            res.json(result);
+        })
+        .catch(err => {
+            res.json(err);
+        });
+    },
+
     deleteProduct: function(req, res) {
         db.Product.destroy({
             where: {

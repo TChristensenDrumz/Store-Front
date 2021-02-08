@@ -53,6 +53,10 @@ export default {
         return axios.post("/api/product/create", productData);
     },
 
+    updateProduct: function(productId, productData) {
+        return axios.put("/api/product/" + productId, productData);
+    },
+
     deleteProduct: function(productId) {
         return axios.delete("/api/product/" + productId);
     },

@@ -5,6 +5,7 @@ const { getContent } = require("../config/middleware/multer");
 module.exports = {
 
     uploadImage: async function(req, res) {
+      console.log(req);
       const imageType = req.params.imageType;
       if (req.file) {
         const file = await getContent(req);

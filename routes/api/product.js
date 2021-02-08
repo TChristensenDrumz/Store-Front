@@ -12,6 +12,9 @@ router.route("/create")
     .post(productController.createProduct);
 
 router.route("/:productid")
+    .put(productController.updateProduct);
+
+router.route("/:productid")
     .delete(productController.deleteProduct);
     
 module.exports = router;
