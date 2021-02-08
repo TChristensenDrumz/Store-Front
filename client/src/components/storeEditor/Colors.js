@@ -59,7 +59,7 @@ function Colors() {
           </div>
 
           <div className=" text-right">
-            <button type="submit" className="btn button-color">
+            <button type="submit" className="btn btn-dark">
               Update
             </button>
           </div>
