@@ -22,6 +22,7 @@ function ContactStore() {
     page: {
       color: `${body_color}`,
       textShadow: `-1px 0 ${accent_color}, 0 1px ${accent_color}, 1px 0 ${accent_color}, 0 -1px ${accent_color}`,
+      letterSpacing: "2px"
     },
     button: {
       backgroundColor: `${accent_color}`,
