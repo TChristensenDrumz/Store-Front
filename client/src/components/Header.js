@@ -1,7 +1,7 @@
 // Import dependencies
 import React, { useState, useEffect } from "react";
 import Token from "../utils/Token";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useLocation, useHistory } from "react-router-dom";
 import Alert from "./Alert";
 import Button from "react-bootstrap/Button";
@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 // Import styling
 import { Navbar, Nav } from "react-bootstrap";
 import "@fortawesome/fontawesome-free/js/all";
+import { getCurrentStore } from "../redux/actions/stores.actions";
 
 export default function Header() {
   const userAuth = Token.authenticate();
@@ -18,9 +19,11 @@ export default function Header() {
   const { currentStore } = useSelector((state) => state.stores);
   const location = useLocation();
   const history = useHistory();
+  const dispatch = useDispatch();
   const [font, setFont] = useState("Helvetica Neue");
   const [fontColor, setFontColor] = useState("black");
   const [show, setShow] = useState(false);
+  const [redirect, setRedirect] = useState("/#about");
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -31,8 +34,16 @@ export default function Header() {
         setFont(currentStore.font);
         setFontColor(currentStore.font_color);
       }
+    } else {
+      console.log("taking away current store");
+      dispatch(getCurrentStore({}));
+    };
+    if (currentStore) {
+      if (currentStore.id) {
+        setRedirect(`/storefront/${currentStore.id}#about`);
+      };
     }
-  }, [location, currentStore]);
+  }, [location.pathname]);
 
   const handleManager = () => {
     if(isSeller || userAuth) {
@@ -166,5 +177,6 @@ export default function Header() {
         </Navbar.Collapse>
       </Navbar>
     </>
+
   );
 }
