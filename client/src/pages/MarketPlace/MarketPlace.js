@@ -31,10 +31,18 @@ function MarketPlace() {
   if (!allStores) {
     return <h1>Loading...</h1>;
   }
+
+  const styles = {
+    h1: {
+      display: "flex",
+      justifyContent: "center"
+    }
+  }
   return (
     <>
       <Header />
       <Container fluid>
+        <h1 style={styles.h1}>Store Front Marketplace</h1>
         <Row className="justify-content-md-center">
           {openStores.map((store) => (
             <Col>
