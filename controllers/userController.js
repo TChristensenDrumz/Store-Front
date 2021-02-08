@@ -6,6 +6,7 @@ module.exports = {
     create: function(req, res) {   
         db.User.create(req.body).then((result, err) => {
                 if (err) {
+                  console.log(err);
                     res.json(err);
                 } else {
                     res.json(result);

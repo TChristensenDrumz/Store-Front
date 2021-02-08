@@ -74,6 +74,7 @@ function Product() {
     <div>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
+        <Modal.Title>{currentStore.store_name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>{message}</Modal.Body>
         <Modal.Footer>
