@@ -5,7 +5,10 @@ import Container from "react-bootstrap/Container";
 import Preview from "../../components/Preview/Preview";
 import api from "../../utils/api";
 import { useSelector, useDispatch } from "react-redux";
-import {  getAllStores, getCurrentStore } from "../../redux/actions/stores.actions";
+import {
+  getAllStores,
+  getCurrentStore,
+} from "../../redux/actions/stores.actions";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
@@ -31,26 +34,29 @@ function MarketPlace() {
   if (!allStores) {
     return <h1>Loading...</h1>;
   }
+
+  const styles = {
+    div: {
+      display: "flex",
+      justifyContent: "center",
+      lineHeight: "1"
+    },
+
+    h1: {
+      // textDecoration: "underline",
+      // textDecorationColor: "black"
+      borderBottom: "1.5px solid",
+      display: "inline-block",
+      lineHeight: "0.85",
+    },
+  };
   return (
     <>
       <Header />
       <Container fluid>
-        {/* <div className="d-flex justify-content-center">
-          <input 
-            type="text"
-            list="storeName"
-            placeholder="Search for store"
-            style={{width: "50vw"}}
-          />
-          <datalist id="states">
-            {openStores.map(store => (
-              <option 
-                value={store.store_name}
-                key={store.id}
-              />
-            ))}
-          </datalist>
-        </div> */}
+        <div style={styles.div}>
+          <h1 style={styles.h1}>Store Front Marketplace</h1>
+        </div>
         <Row className="justify-content-md-center">
           {openStores.map((store) => (
             <Col>
