@@ -11,6 +11,7 @@ function About({ image, info, color, about_scroll }) {
       backgroundSize: "100%",
       backgroundPosition: "center",
       backgroundAttachment: `${about_scroll}`,
+      backgroundRepeat: "no-repeat",
       marginBottom: "0"
     },
     text: {
