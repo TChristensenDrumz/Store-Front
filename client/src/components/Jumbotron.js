@@ -33,6 +33,7 @@ function Jumbo({
       backgroundSize: "100%",
       backgroundPosition: "center",
       backgroundAttachment: `${bg_scroll}`,
+      backgroundRepeat: "no-repeat"
     },
     storeName: {
       textAlign: "center",
