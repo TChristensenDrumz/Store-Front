@@ -5,8 +5,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Token from "../../utils/Token";
 import api from "../../utils/api";
-import Button from 'react-bootstrap/Button';
-import Modal from "react-bootstrap/Modal";
+import Alert from "../../components/Alert";
 
 function Cart() {
   const [cartItems, setCartItems] = useState([]);
@@ -81,17 +80,12 @@ function Cart() {
 
   return (
     <div>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Store Front</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>{message}</Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
-            OK
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      <Alert 
+        show = {show}
+        handleClose = {handleClose}
+        title = {"Store Front"}
+        message = {message}
+      />
       <Header />
       <div className="container">
         <h2>Shopping Cart</h2>

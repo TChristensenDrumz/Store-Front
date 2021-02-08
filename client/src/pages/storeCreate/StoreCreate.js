@@ -5,8 +5,7 @@ import NameInput from "../../components/NameInput";
 import api from "../../utils/api";
 import { useDispatch } from "react-redux";
 import { getStoreInfo } from "../../redux/actions/stores.actions";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
+import Alert from "../../components/Alert";
 
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
@@ -100,17 +99,12 @@ function CreateOwnerAccount() {
   };
   return (
     <>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Store Front</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>{message}</Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
-            OK
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      <Alert
+        show={show}
+        handleClose={handleClose}
+        title={"Store Front"}
+        message={message}
+      />
       <Header />
       <form className="container mb-5" onSubmit={handleCreateAccount}>
         <h2>Create Store Owner Account</h2>
