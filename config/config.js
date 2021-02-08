@@ -1,7 +1,7 @@
 module.exports = {
     "development": {
       "username": "root",
-      "password": "Hersh6624!",
+      "password": process.env.sqlpassword,
       "database": "store_frontV2DB",
       "host": "127.0.0.1",
       "dialect": "mysql"
