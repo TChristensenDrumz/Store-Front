@@ -5,7 +5,10 @@ import Container from "react-bootstrap/Container";
 import Preview from "../../components/Preview/Preview";
 import api from "../../utils/api";
 import { useSelector, useDispatch } from "react-redux";
-import {  getAllStores, getCurrentStore } from "../../redux/actions/stores.actions";
+import {
+  getAllStores,
+  getCurrentStore,
+} from "../../redux/actions/stores.actions";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
@@ -33,17 +36,27 @@ function MarketPlace() {
   }
 
   const styles = {
-    h1: {
+    div: {
       display: "flex",
       justifyContent: "center",
-      textDecoration: "underline"
-    }
-  }
+      lineHeight: "1"
+    },
+
+    h1: {
+      // textDecoration: "underline",
+      // textDecorationColor: "black"
+      borderBottom: "1.5px solid",
+      display: "inline-block",
+      lineHeight: "0.85",
+    },
+  };
   return (
     <>
       <Header />
       <Container fluid>
-        <h1 style={styles.h1}>Store Front Marketplace</h1>
+        <div style={styles.div}>
+          <h1 style={styles.h1}>Store Front Marketplace</h1>
+        </div>
         <Row className="justify-content-md-center">
           {openStores.map((store) => (
             <Col>
