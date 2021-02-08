@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getOwnerStore } from "../../redux/actions/stores.actions";
 import api from "../../utils/api";
-import Button from 'react-bootstrap/Button';
-import Modal from "react-bootstrap/Modal";
+import Alert from "../Alert";
 
 function ProductUpload() {
   const dispatch = useDispatch();
@@ -54,17 +53,12 @@ function ProductUpload() {
 
   return (
     <div>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Store Editor</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Your product has been uploaded!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
-            OK
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      <Alert 
+        show = {show}
+        handleClose = {handleClose}
+        title = {"Store Editor"}
+        message = {"Your product has been uploaded!"}
+      />
       <div
         className="tab-pane fade show active"
         id="list-product-upload"

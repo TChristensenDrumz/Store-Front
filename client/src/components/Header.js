@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Token from "../utils/Token";
 import { useSelector } from "react-redux";
 import { useLocation, useHistory } from "react-router-dom";
+import Alert from "./Alert";
 
 // Import styling
 import { Navbar, Nav } from "react-bootstrap";
@@ -16,6 +17,10 @@ export default function Header() {
   const history = useHistory();
   const [font, setFont] = useState("Helvetica Neue");
   const [fontColor, setFontColor] = useState("black");
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   useEffect(() => {
     if (location.pathname.includes("storefront")) {
@@ -34,8 +39,17 @@ export default function Header() {
 
   const handleCart = () => {
     if (!userAuth) {
-      return alert(
-        "Please sign in or create an account to add to/view your cart"
+      handleShow();
+      return (
+        <Alert
+          show={show}
+          handleClose={handleClose}
+          title={"Store Editor"}
+          message={
+            "Please sign in or create an account to add to/view your cart"
+          }
+          button={"OK"}
+        />
       );
     }
     history.push("/cart");

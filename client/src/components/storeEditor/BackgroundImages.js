@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getOwnerStore } from "../../redux/actions/stores.actions";
 import api from "../../utils/api";
-import Button from 'react-bootstrap/Button';
-import Modal from "react-bootstrap/Modal";
+import Alert from "../Alert";
 
 function BackgroundImages() {
   const dispatch = useDispatch();
@@ -61,28 +60,18 @@ function BackgroundImages() {
 
   return (
     <div>
-      <Modal show={showImage} onHide={handleImageClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Store Editor</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Your image has been uploaded!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={handleImageClose}>
-            OK
-          </Button>
-        </Modal.Footer>
-      </Modal>
-      <Modal show={showSubmit} onHide={handleSubmitClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Store Editor</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Background Images updated!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={handleSubmitClose}>
-            OK
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      <Alert 
+        show = {showImage}
+        handleClose = {handleImageClose}
+        title = {"Store Editor"}
+        message = {"Your image has been uploaded!"}
+      />
+      <Alert 
+        show = {showSubmit}
+        handleClose = {handleSubmitClose}
+        title = {"Store Editor"}
+        message = {"Background Images updated!"}
+      />
       <div
         className="tab-pane fade show active"
         id="list-background"
