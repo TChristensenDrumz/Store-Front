@@ -42,6 +42,7 @@ function StoreLanding(props) {
       paddingBottom: "10vh",
       color: selectedStore.body_color,
       textShadow: `-.5px 0 ${selectedStore.accent_color}, 0 .5px ${selectedStore.accent_color}, 1px 0 ${selectedStore.accent_color}, 0 -.5px ${selectedStore.accent_color}`,
+      letterSpacing: "2px"
     },
   };
   return (
