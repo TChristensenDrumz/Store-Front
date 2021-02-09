@@ -1,7 +1,7 @@
 // Import dependencies
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import windowDimensions from "../utils/GetWindowDimensions";
 
 // Import styling
@@ -9,9 +9,9 @@ import { Navbar, Nav, Container, Row, Col } from "react-bootstrap";
 
 export default function Footer({position = ""}) {
   let windowHeight = windowDimensions();
-  const { currentStore, ownerStore } = useSelector((state) => state.stores);
+  const { currentStore } = useSelector((state) => state.stores);
   let location = useLocation();
-  const [font, setFont] = useState("Helvetica Neue");
+  const [font, setFont] = useState("Roboto");
   const [fontColor, setFontColor] = useState("white");
   const [bgColor, setBgColor] = useState("black");
   const [address, setAddress] = useState("123 Internet Way");
@@ -30,15 +30,6 @@ export default function Footer({position = ""}) {
         setStoreName(currentStore.store_name);
         setRedirect(`/storefront/${currentStore.id}`);
       };
-    } else if (location.pathname === "/storeEditor") {
-      if (ownerStore.id) {
-        setFont(ownerStore.font);
-        setFontColor(ownerStore.footer_color);
-        setBgColor(ownerStore.accent_color);
-        setAddress(ownerStore.address);
-        setStoreName(ownerStore.store_name);
-        setRedirect(`/storefront/${ownerStore.id}`);
-      };
     };
     let footerPosition = document.querySelector("#foot");
       let foot = footerPosition.getBoundingClientRect().bottom;
@@ -46,10 +37,8 @@ export default function Footer({position = ""}) {
         setFooter(window.innerHeight - foot);
       };
   }, [location]);
-
   const styles = {
     footer: {
-      
       fontFamily: `${font}`,
       color: `${fontColor}`
     }
@@ -68,14 +57,14 @@ export default function Footer({position = ""}) {
     >
       <Nav className="ml-auto mr-auto">
         <Row style={{width: "50vw"}}>
-          <Col className="text-left mr-5 pr-5" style ={{marginTop:"4px", fontSize:"20px"}}>
-            <Link
+          <Col className="text-left mr-5 pr-5">
+            <Navbar.Brand
               className="ml-auto mr-auto"
-              to="#top"
+              href={redirect}
               style={styles.footer}
             >
               {storeName}
-            </Link>
+            </Navbar.Brand>
           </Col>
           <Col className="text-right ml-5 pl-5">
           <Navbar.Brand href="/storefront/contact" className="ml-auto mr-auto" style={styles.footer}>
@@ -87,4 +76,4 @@ export default function Footer({position = ""}) {
     </Navbar>
     </div>
   );
-}
+};
