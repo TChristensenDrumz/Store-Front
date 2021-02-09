@@ -122,8 +122,8 @@ function BackgroundImages() {
               <option value={bg_scroll} selected>
                 {bg_scroll}
               </option>
-              <option value="scroll">Scroll</option>
-              <option value="fixed">Fixed</option>
+              <option value="Scroll">Scroll</option>
+              <option value="Fixed">Fixed</option>
             </select>
             <div className="input-group-append">
               <label className="input-group-text" for="inputGroupSelect02">
@@ -172,8 +172,8 @@ function BackgroundImages() {
               <option value={about_scroll} selected>
                 {about_scroll}
               </option>
-              <option value="scroll">Scroll</option>
-              <option value="fixed">Fixed</option>
+              <option value="Scroll">Scroll</option>
+              <option value="Fixed">Fixed</option>
             </select>
             <div className="input-group-append">
               <label className="input-group-text" for="inputGroupSelect02">

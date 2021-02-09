@@ -17,15 +17,19 @@ function About({ image, info, color, about_scroll, font }) {
     },
     text: {
       textAlign: "center",
-      paddingTop: "20vh",
       paddingLeft: "5vw",
       paddingRight: "5vw",
     },
+    title: {
+      textAlign: "center",
+      padding: "5rem",
+      fontSize: "3.5rem"
+    }
   };
   return (
     <div>
       <div style={styles.jumbo}>
-        <h1 className="display-2 text-center pt-4">About Us</h1>
+        <h1 style={styles.title}>About Us</h1>
         <p style={styles.text}>{info}</p>
       </div>
     </div>

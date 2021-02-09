@@ -11,7 +11,7 @@ export default function Footer({position = ""}) {
   let windowHeight = windowDimensions();
   const { currentStore, ownerStore } = useSelector((state) => state.stores);
   let location = useLocation();
-  const [font, setFont] = useState("Helvetica Neue");
+  const [font, setFont] = useState("Roboto");
   const [fontColor, setFontColor] = useState("white");
   const [bgColor, setBgColor] = useState("black");
   const [address, setAddress] = useState("123 Internet Way");
@@ -28,7 +28,7 @@ export default function Footer({position = ""}) {
         setBgColor(currentStore.accent_color);
         setAddress(currentStore.address);
         setStoreName(currentStore.store_name);
-        setRedirect(`/storefront/${currentStore.id}`);
+        setRedirect(`/`);
       };
     } else if (location.pathname === "/storeEditor") {
       if (ownerStore.id) {

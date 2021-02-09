@@ -32,6 +32,9 @@ function Font() {
         });
       });
   };
+
+  const fonts = ['Anton', 'Dancing Script', 'Hachi Maru Pop', 'IBM Plex Sans', 'Indie Flower', 'Julius Sans One', 'Merriweather', 'Montserrat', 'Permanent Marker', 'Roboto', 'UnifrakturCook']
+
   return (
     <div>
       <Alert 
@@ -54,27 +57,10 @@ function Font() {
               id="font-select"
               onChange={(e) => setFont(e.target.value)}
             >
-              <option selected value={font}>
-                {font}
-              </option>
-              <option className="helvetica" value="helvetica neue">
-                Helvetica Neue
-              </option>
-              <option className="ibm" value="IBM Plex Sans">
-                IBM Plex Sans
-              </option>
-              <option className="julius" value="Julius Sans One">
-                Julius Sans One
-              </option>
-              <option className="lora" value="Lora">
-                Lora
-              </option>
-              <option className="bungee" value="Bungee">
-                Bungee
-              </option>
-              <option className="creepster" value="Creepster">
-                Creepster
-              </option>
+              <option selected style={{fontFamily:font}} value={font}></option>
+              {fonts.map(font => (
+                <option style={{fontFamily:font}} value={font} key={font}>{font}</option>
+              ))}
             </select>
 
             <div className="input-group-append">
