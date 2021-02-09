@@ -7,7 +7,7 @@ import Alert from "../../components/Alert";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Token from "../../utils/Token";
-import { getOwnerStore } from "../../redux/actions/stores.actions";
+import { getCurrentStore, getOwnerStore } from "../../redux/actions/stores.actions";
 
 function OwnerLogin() {
   const [email, setEmail] = useState("");
@@ -47,7 +47,8 @@ function OwnerLogin() {
         localStorage.setItem("token", JSON.stringify(result.data.token));
         api.getStoreByOwner(userId).then(async (storeData) => {
           await dispatch(getOwnerStore(storeData.data));
-          setRedirect({ url: "/" });
+          await dispatch(getCurrentStore(storeData.data));
+          setRedirect({ url: "/storefront/" + storeData.data.id });
         });
       } else {
         setSuccessMessage(result.data.message)
