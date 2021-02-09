@@ -133,7 +133,7 @@ function ProductUpload() {
                 aria-describedby="inputGroupFileAddon02"
                 id="prod-image-file"
               >
-                Choose file
+                {!image.name? "Choose File" :image.name}
               </label>
             </div>
             {/* {{!-- <div className="input-group-append">
