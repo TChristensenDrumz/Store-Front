@@ -13,7 +13,7 @@ import { Navbar, Nav } from "react-bootstrap";
 import "@fortawesome/fontawesome-free/js/all";
 import { getCurrentStore } from "../redux/actions/stores.actions";
 
-export default function Header() {
+export default function Header({customFont = null, headerColor = null}) {
   const userAuth = Token.authenticate();
   const isSeller = Token.isSeller();
   const { currentStore, ownerStore } = useSelector((state) => state.stores);
@@ -45,11 +45,16 @@ export default function Header() {
     } else if (location.pathname === "/storeEditor") {
         if (ownerStore.id) {
           setFont(ownerStore.font);
-          setFontColor(ownerStore.fontColor);
+          setFontColor(ownerStore.font_color);
           setStoreName(ownerStore.store_name);
-          setShop("/storefront/allproducts/" + ownerStore.id);
           setStoreLink("/storefront/" + ownerStore.id);
         };
+        if (customFont) {
+          setFont(customFont);
+        };
+        if (headerColor) {
+          setFontColor(headerColor);
+        }
     } else {
       dispatch(getCurrentStore({}));
     }
@@ -58,7 +63,7 @@ export default function Header() {
         setRedirect(`/storefront/${currentStore.id}#about`);
       }
     }
-  }, [location]);
+  }, [location, customFont, headerColor]);
 
   const handleManager = () => {
     if (isSeller || userAuth) {

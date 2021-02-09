@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getOwnerStore } from "../../redux/actions/stores.actions";
+import { getCurrentStore, getOwnerStore } from "../../redux/actions/stores.actions";
 import api from "../../utils/api";
 import Alert from "../Alert";
 
-function Colors() {
+function Colors({setFooterBg}) {
   const dispatch = useDispatch();
   const { ownerStore } = useSelector((state) => state.stores);
   const [accent_color, setAccentColor] = useState(ownerStore.accent_color);
@@ -15,6 +15,7 @@ function Colors() {
 
   const handleColorSubmit = (event) => {
     event.preventDefault();
+    setFooterBg(accent_color);
     api
       .updateStore(ownerStore.id, {
         accent_color
@@ -22,6 +23,7 @@ function Colors() {
       .then((result) => {
         api.getStoreByOwner(ownerStore.UserId).then((data) => {
           dispatch(getOwnerStore(data.data));
+          dispatch(getCurrentStore(data.data))
           handleShow();
         });
       });

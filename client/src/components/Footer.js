@@ -7,7 +7,7 @@ import windowDimensions from "../utils/GetWindowDimensions";
 // Import styling
 import { Navbar, Nav, Container, Row, Col } from "react-bootstrap";
 
-export default function Footer({position = ""}) {
+export default function Footer({position = "", customFont = null, footerColor = null, footerBg = null}) {
   let windowHeight = windowDimensions();
   const { currentStore, ownerStore } = useSelector((state) => state.stores);
   let location = useLocation();
@@ -39,13 +39,22 @@ export default function Footer({position = ""}) {
         setStoreName(ownerStore.store_name);
         setRedirect(`/storefront/${ownerStore.id}`);
       };
+      if (customFont) {
+        setFont(customFont);
+      };
+      if (footerColor) {
+        setFontColor(footerColor);
+      };
+      if (footerBg) {
+        setBgColor(footerBg);
+      };
     };
     let footerPosition = document.querySelector("#foot");
       let foot = footerPosition.getBoundingClientRect().bottom;
       if (window.innerHeight > foot) {
         setFooter(window.innerHeight - foot);
       };
-  }, [location]);
+  }, [location, customFont, footerColor, footerBg]);
 
   const styles = {
     footer: {

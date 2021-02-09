@@ -11,10 +11,8 @@ import { getCurrentStore } from "../../redux/actions/stores.actions";
 function StoreLanding(props) {
   const params = useParams();
   const dispatch = useDispatch();
-  const stores = useSelector((state) => state.stores);
-  const selectedStore = stores.allStores.filter(
-    (store) => store.id == params.storeId
-  )[0];
+  const {currentStore} = useSelector((state) => state.stores);
+  const selectedStore = currentStore;
   
   useEffect(() => {
     dispatch(getCurrentStore(selectedStore));

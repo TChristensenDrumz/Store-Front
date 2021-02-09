@@ -19,6 +19,10 @@ function EditStore() {
   const dispatch = useDispatch();
   const [edit, setEdit] = useState(<StoreDetails />);
   const [details, setDetails] = useState(null);
+  const [customFont, setCustomFont] = useState("");
+  const [headerColor, setHeaderColor] = useState("");
+  const [footerColor, setFooterColor2] = useState("");
+  const [footerBg, setFooterBg] = useState("");
 
   const getOwnerDetails = () => {
     const userId = Token.getId();
@@ -38,7 +42,10 @@ function EditStore() {
   }
   return (
     <div>
-      <Header />
+      <Header 
+        customFont={customFont}
+        headerColor={headerColor}
+      />
       <div className="container border rounded" id="space">
         <div className="row pb-5">
           <div className="col-4 p-0">
@@ -46,10 +53,14 @@ function EditStore() {
               <ListGroup.Item onClick={() => setEdit(<StoreDetails />)}>
                 Store Details
               </ListGroup.Item>
-              <ListGroup.Item onClick={() => setEdit(<Font />)}>
+              <ListGroup.Item onClick={() => setEdit(<Font 
+                setCustomFont={setCustomFont}
+                setHeaderColor={setHeaderColor}
+                setFooterColor2={setFooterColor2}
+              />)}>
                 Font
               </ListGroup.Item>
-              <ListGroup.Item onClick={() => setEdit(<Colors />)}>
+              <ListGroup.Item onClick={() => setEdit(<Colors setFooterBg={setFooterBg}/>)}>
                 Colors
               </ListGroup.Item>
               <ListGroup.Item onClick={() => setEdit(<BackgroundImages />)}>
@@ -69,7 +80,11 @@ function EditStore() {
           <div className="col-8">{edit}</div>
         </div>
       </div>
-      <Footer />
+      <Footer 
+        customFont={customFont}
+        footerColor={footerColor}
+        footerBg={footerBg}
+      />
     </div>
   );
 }

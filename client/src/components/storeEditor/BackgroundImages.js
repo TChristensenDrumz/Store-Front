@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getOwnerStore } from "../../redux/actions/stores.actions";
+import { getCurrentStore, getOwnerStore } from "../../redux/actions/stores.actions";
 import api from "../../utils/api";
 import Alert from "../Alert";
 
@@ -40,6 +40,7 @@ function BackgroundImages() {
       api.getStoreByOwner(ownerStore.UserId).then((data) => {
         console.log(data);
         dispatch(getOwnerStore(data.data));
+        dispatch(getCurrentStore(data.data));
         handleImageShow();
       }).catch(err => console.log(err));
     });
@@ -52,6 +53,7 @@ function BackgroundImages() {
       .then((result) => {
         api.getStoreByOwner(ownerStore.UserId).then((data) => {
           dispatch(getOwnerStore(data.data));
+          dispatch(getCurrentStore(data.data));
           handleSubmitShow();
         });
       });

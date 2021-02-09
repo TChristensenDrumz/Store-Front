@@ -19,13 +19,4 @@ const store = createStore(
 
 const persistor = persistStore(store);
 
-// const configureStore = () => {
-//     const store = createStore(
-//         combineReducers({
-//             stores: storesReducer
-//         }),composeWithDevTools()
-//     );
-//     return store;
-// };
-
 export {store, persistor};
