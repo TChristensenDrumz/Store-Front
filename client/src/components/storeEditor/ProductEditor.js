@@ -173,7 +173,7 @@ function ProductEditor({ image, name, id }) {
                     aria-describedby="inputGroupFileAddon02"
                     id="prod-image-file"
                   >
-                    Choose file
+                    {!editImage.name? "Choose File" :editImage.name}
                   </label>
                 </div>
                 {/* {{!-- <div className="input-group-append">
