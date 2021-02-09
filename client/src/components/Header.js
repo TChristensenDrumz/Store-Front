@@ -25,6 +25,8 @@ export default function Header() {
   const [show, setShow] = useState(false);
   const [redirect, setRedirect] = useState("/#about");
   const [shop, setShop] = useState("/marketplace");
+  const [storeName, setStoreName] = useState("Store Front");
+
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -35,12 +37,13 @@ export default function Header() {
         setFont(currentStore.font);
         setFontColor(currentStore.font_color);
         setShop("/storefront/allproducts/" + currentStore.id);
-
+        setStoreName(currentStore.store_name);
       }
     } else if (location.pathname === "/storeEditor") {
         if (ownerStore.id) {
           setFont(ownerStore.font);
           setFontColor(ownerStore.fontColor);
+          setStoreName(ownerStore.store_name);
         };
     } else {
       dispatch(getCurrentStore({}));
@@ -86,7 +89,7 @@ export default function Header() {
       {isSeller ? (
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Account Manager</Modal.Title>
+            <Modal.Title>Account</Modal.Title>
           </Modal.Header>
           <Modal.Body>Would you like to edit your store or logout?</Modal.Body>
           <Modal.Footer>
@@ -104,7 +107,7 @@ export default function Header() {
       ) : userAuth ? (
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Account Manager</Modal.Title>
+            <Modal.Title>Account</Modal.Title>
           </Modal.Header>
           <Modal.Body>Would you like to logout?</Modal.Body>
           <Modal.Footer>
@@ -134,7 +137,7 @@ export default function Header() {
         className="p-5"
       >
         <Navbar.Brand className="ml-5" href="/" style={styles.navbar}>
-          Store Front
+          {storeName}
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -167,7 +170,7 @@ export default function Header() {
           </Nav>
           <Nav className="mr-5">
             <Nav.Link style={styles.navbar} onClick={handleManager}>
-              {isSeller || userAuth ? "Account Manager" : "Login"}
+              {isSeller || userAuth ? "Account" : "Login"}
             </Nav.Link>
             <Nav.Link
               eventKey={2}

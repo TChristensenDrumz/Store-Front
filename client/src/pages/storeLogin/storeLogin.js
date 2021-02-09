@@ -47,7 +47,7 @@ function OwnerLogin() {
         localStorage.setItem("token", JSON.stringify(result.data.token));
         api.getStoreByOwner(userId).then(async (storeData) => {
           await dispatch(getOwnerStore(storeData.data));
-          setRedirect({ url: "/" });
+          setRedirect({ url: "/storeEditor" });
         });
       } else {
         setSuccessMessage(result.data.message)

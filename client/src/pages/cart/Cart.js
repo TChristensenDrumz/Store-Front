@@ -78,7 +78,14 @@ function Cart() {
       <>
         <Header />
         <div className="container">
-          <h2>Shopping Cart</h2>
+          <h3>Shopping Cart</h3>
+          <div className="row pl-3 pr-3 mb-1">
+          <p className="col-1 m-0">Item</p>
+          <p className="col-6 m-0"></p>
+          <p className="col-3 m-0 text-right">Quantity</p>
+          <p className="col-2 m-0 text-right">Price</p>
+        </div>
+        <hr />
           <div className="mt-5 mb-5 text-center">
             <h4 className="mb-5">Cart is empty</h4>
             <a href="/marketplace">Return to Marketplace</a>
@@ -99,7 +106,7 @@ function Cart() {
       />
       <Header />
       <div className="container">
-        <h2>Shopping Cart</h2>
+        <h3>Shopping Cart</h3>
         <div className="row pl-3 pr-3 mb-1">
           <p className="col-1 m-0">Item</p>
           <p className="col-6 m-0"></p>

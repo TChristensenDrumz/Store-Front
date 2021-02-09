@@ -28,7 +28,7 @@ export default function Footer({position = ""}) {
         setBgColor(currentStore.accent_color);
         setAddress(currentStore.address);
         setStoreName(currentStore.store_name);
-        setRedirect(`/storefront/${currentStore.id}`);
+        setRedirect(`/`);
       };
     } else if (location.pathname === "/storeEditor") {
       if (ownerStore.id) {
@@ -73,7 +73,7 @@ export default function Footer({position = ""}) {
               href={redirect}
               style={styles.footer}
             >
-              {storeName}
+              Store Front
             </Navbar.Brand>
           </Col>
           <Col className="text-right ml-5 pl-5">

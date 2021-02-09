@@ -71,7 +71,7 @@ function SiteLanding(props) {
         fixed="top"
         id="top"
       >
-        <Navbar.Brand className="ml-5" href="#home">
+        <Navbar.Brand className="ml-5" href="/">
           Store Front
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -183,9 +183,8 @@ function SiteLanding(props) {
           <Row>
             <Col className="text-left mr-5 pr-5">
               <Navbar.Brand className="ml-auto mr-auto" href="/">
-                Storefront
+                Store Front
               </Navbar.Brand>
-              <Navbar.Text className="">123 Internet Way</Navbar.Text>
             </Col>
 
             <Col className="text-right ml-5 pl-5">
