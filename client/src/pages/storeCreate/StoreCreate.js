@@ -107,7 +107,7 @@ function CreateOwnerAccount() {
       />
       <Header />
       <form className="container mb-5" onSubmit={handleCreateAccount}>
-        <h2>Create Store Owner Account</h2>
+        <h2>Create Store Front</h2>
         <div className="form-group">
           <label for="store-name">Store Name</label>
           <input
