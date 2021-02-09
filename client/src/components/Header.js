@@ -123,7 +123,7 @@ export default function Header() {
         <Alert
           show={show}
           handleClose={handleClose}
-          title={"Store Editor"}
+          title={"Store Front"}
           message={
             "Please sign in or create an account to add to/view your cart"
           }

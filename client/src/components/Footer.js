@@ -70,6 +70,15 @@ export default function Footer({position = ""}) {
           <Col className="text-left mr-5 pr-5">
             <Navbar.Brand
               className="ml-auto mr-auto"
+              href="/marketplace"
+              style={styles.footer}
+            >
+              Marketplace
+            </Navbar.Brand>
+          </Col>
+          <Col className="text-center">
+            <Navbar.Brand
+              className="ml-auto mr-auto"
               href={redirect}
               style={styles.footer}
             >

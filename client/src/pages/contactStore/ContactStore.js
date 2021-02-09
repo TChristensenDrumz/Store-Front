@@ -24,7 +24,8 @@ function ContactStore() {
     page: {
       color: `${body_color}`,
       textShadow: `-.5px 0 ${accent_color}, 0 .5px ${accent_color}, 1px 0 ${accent_color}, 0 -.5px ${accent_color}`,
-      letterSpacing: "2px"
+      letterSpacing: "2px",
+      marginBottom: "200px"
     },
     button: {
       backgroundColor: `${accent_color}`,
@@ -35,7 +36,7 @@ function ContactStore() {
   return (
     <>
       <Header />
-      <div className="container mb-5" style={style.page}>
+      <div className="container" style={style.page}>
         <h1>Contact {storeName}</h1>
         <NameInput />
         <label for="exampleInputEmail1">Email address</label>
@@ -52,7 +53,7 @@ function ContactStore() {
         </div>
         <button style={style.button}>Submit</button>
       </div>
-      <Footer position="bottom" />
+      <Footer />
     </>
   );
 }
