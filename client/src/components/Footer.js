@@ -25,6 +25,7 @@ export default function Footer({position = ""}) {
       if (currentStore.id) {
         setFont(currentStore.font);
         setFontColor(currentStore.footer_color);
+        setBgColor(currentStore.accent_color);
         setAddress(currentStore.address);
         setStoreName(currentStore.store_name);
         setRedirect(`/storefront/${currentStore.id}`);
