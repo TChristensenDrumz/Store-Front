@@ -1,7 +1,7 @@
 // Import dependencies
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import windowDimensions from "../utils/GetWindowDimensions";
 
 // Import styling
@@ -63,10 +63,10 @@ export default function Footer() {
             <Navbar.Text style={styles.footer}>{address}</Navbar.Text>
           </Col>
 
-          <Col className="text-right ml-5 pl-5">
-            <Nav.Link href="#" style={styles.footer}>
+          <Col className="text-right ml-5 pl-5" style = {{marginTop:"8px"}}>
+            <Link to="#top" style={styles.footer}>
               Back to Top
-            </Nav.Link>
+            </Link>
             <Nav.Link href="/storefront/contact" style={styles.footer}>
               Contact
             </Nav.Link>

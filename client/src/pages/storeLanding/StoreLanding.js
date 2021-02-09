@@ -9,6 +9,10 @@ import { getCurrentStore } from "../../redux/actions/stores.actions";
 
 
 function StoreLanding(props) {
+  let hash = props.history.location.hash
+  const removeHash = () => {
+    hash = ""
+  }
   const params = useParams();
   const dispatch = useDispatch();
   const stores = useSelector((state) => state.stores);
@@ -21,7 +25,6 @@ function StoreLanding(props) {
   }, []);
 
   useEffect(() => {
-    let hash = props.history.location.hash
     if (hash && document.getElementById(hash.substr(1))) {
       // Check if there is a hash and if an element with that id exists
       document.getElementById(hash.substr(1)).scrollIntoView({behavior: "smooth"})
@@ -44,7 +47,7 @@ function StoreLanding(props) {
     },
   };
   return (
-    <div>
+    <div id = "top">
       <Jumbo
         image={selectedStore.background_image}
         name={selectedStore.store_name}
@@ -74,6 +77,7 @@ function StoreLanding(props) {
       </div>
       <div id = "about">
         <About
+        
           image={selectedStore.about_image}
           info={selectedStore.about}
           color={selectedStore.body_color}
