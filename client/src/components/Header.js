@@ -24,6 +24,7 @@ export default function Header() {
   const [fontColor, setFontColor] = useState("black");
   const [show, setShow] = useState(false);
   const [redirect, setRedirect] = useState("/#about");
+  const [shop, setShop] = useState("/marketplace");
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -33,6 +34,8 @@ export default function Header() {
       if (currentStore.id) {
         setFont(currentStore.font);
         setFontColor(currentStore.font_color);
+        setShop("/storefront/allproducts/" + currentStore.id);
+
       }
     } else if (location.pathname === "/storeEditor") {
         if (ownerStore.id) {
@@ -138,7 +141,7 @@ export default function Header() {
           <Nav className="ml-auto mr-auto">
             <Nav.Link
               className="ml-4 mr-4"
-              href="/marketplace"
+              href={shop}
               style={styles.navbar}
             >
               Shop
