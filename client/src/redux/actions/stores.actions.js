@@ -12,4 +12,4 @@ export const getOwnerStore = (payload) => {
 
 export const getCurrentStore = (payload) => {
     return { type: "GET_CURRENT_STORE", payload};
-}
+};

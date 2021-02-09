@@ -6,6 +6,7 @@ import NameInput from "../../components/NameInput";
 
 function ContactStore() {
   const { currentStore } = useSelector(state => state.stores);
+  const [font, setFont] = useState("Roboto");
   const [accent_color, setAccentColor] = useState("black");
   const [body_color, setBodyColor] = useState("black");
   const [footer_color, setFooterColor] = useState("white");
@@ -13,6 +14,7 @@ function ContactStore() {
 
   useEffect(() => {
     if(currentStore.id) {
+      setFont(currentStore.font);
       setAccentColor(currentStore.accent_color);
       setBodyColor(currentStore.body_color);
       setFooterColor(currentStore.footer_color);
@@ -22,6 +24,7 @@ function ContactStore() {
   
   const style = {
     page: {
+      fontFamily: `${font}`,
       color: `${body_color}`,
       textShadow: `-.5px 0 ${accent_color}, 0 .5px ${accent_color}, 1px 0 ${accent_color}, 0 -.5px ${accent_color}`,
       letterSpacing: "2px",

@@ -6,7 +6,7 @@ const storesReducer = (state = {}, action) => {
         case "POPULATE_ALL_STORES":
             newState = {
                 ...state,
-                allStores: action.payload,
+                allStores: action.payload
               };
             return newState;
         case "GET_OWNERS_STORE":

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getOwnerStore } from "../../redux/actions/stores.actions";
+import { getCurrentStore, getOwnerStore } from "../../redux/actions/stores.actions";
 import api from "../../utils/api";
 import Alert from "../Alert";
 
@@ -39,6 +39,7 @@ function ProductUpload() {
               .getStoreByOwner(ownerStore.UserId)
               .then((data) => {
                 dispatch(getOwnerStore(data.data));
+                dispatch(getCurrentStore(data.data));
                 handleShow();
                 setName("");
                 setPrice("");

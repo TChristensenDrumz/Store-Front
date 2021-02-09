@@ -13,7 +13,7 @@ import { Navbar, Nav } from "react-bootstrap";
 import "@fortawesome/fontawesome-free/js/all";
 import { getCurrentStore } from "../redux/actions/stores.actions";
 
-export default function Header() {
+export default function Header({customFont = null, headerColor = null}) {
   const userAuth = Token.authenticate();
   const isSeller = Token.isSeller();
   const { currentStore, ownerStore } = useSelector((state) => state.stores);
@@ -26,6 +26,7 @@ export default function Header() {
   const [redirect, setRedirect] = useState("/#about");
   const [shop, setShop] = useState("/marketplace");
   const [storeName, setStoreName] = useState("Store Front");
+  const [storeLink, setStoreLink] = useState("/");
 
 
   const handleClose = () => setShow(false);
@@ -38,13 +39,22 @@ export default function Header() {
         setFontColor(currentStore.font_color);
         setShop("/storefront/allproducts/" + currentStore.id);
         setStoreName(currentStore.store_name);
+        setStoreLink("/storefront/" + currentStore.id);
+
       }
     } else if (location.pathname === "/storeEditor") {
         if (ownerStore.id) {
           setFont(ownerStore.font);
-          setFontColor(ownerStore.fontColor);
+          setFontColor(ownerStore.font_color);
           setStoreName(ownerStore.store_name);
+          setStoreLink("/storefront/" + ownerStore.id);
         };
+        if (customFont) {
+          setFont(customFont);
+        };
+        if (headerColor) {
+          setFontColor(headerColor);
+        }
     } else {
       dispatch(getCurrentStore({}));
     }
@@ -53,7 +63,7 @@ export default function Header() {
         setRedirect(`/storefront/${currentStore.id}#about`);
       }
     }
-  }, [location]);
+  }, [location, customFont, headerColor]);
 
   const handleManager = () => {
     if (isSeller || userAuth) {
@@ -136,7 +146,7 @@ export default function Header() {
         variant="light"
         className="p-5"
       >
-        <Navbar.Brand className="ml-5" href="/" style={styles.navbar}>
+        <Navbar.Brand className="ml-5" href={storeLink} style={styles.navbar}>
           {storeName}
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />

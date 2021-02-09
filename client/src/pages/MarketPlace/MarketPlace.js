@@ -53,7 +53,7 @@ function MarketPlace() {
   return (
     <>
       <Header />
-      <Container fluid>
+      <Container fluid style={{maxWidth: "75vw"}}>
         <div style={styles.div}>
           <h1 style={styles.h1}>Store Front Marketplace</h1>
         </div>

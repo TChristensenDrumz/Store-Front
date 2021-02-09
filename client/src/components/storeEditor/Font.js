@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getOwnerStore } from "../../redux/actions/stores.actions";
+import { getCurrentStore, getOwnerStore } from "../../redux/actions/stores.actions";
 import api from "../../utils/api";
 import Alert from "../Alert";
 
-function Font() {
+function Font({setCustomFont, setHeaderColor, setFooterColor2}) {
   const dispatch = useDispatch();
   const { ownerStore } = useSelector((state) => state.stores);
   const [font, setFont] = useState(ownerStore.font);
@@ -18,6 +18,9 @@ function Font() {
 
   const handleFontSubmit = (event) => {
     event.preventDefault();
+    setCustomFont(font);
+    setHeaderColor(font_color);
+    setFooterColor2(footer_color);
     api
       .updateStore(ownerStore.id, {
         font,
@@ -28,6 +31,7 @@ function Font() {
       .then((result) => {
         api.getStoreByOwner(ownerStore.UserId).then((data) => {
           dispatch(getOwnerStore(data.data));
+          dispatch(getCurrentStore(data.data));
           handleShow();
         });
       });
@@ -57,7 +61,7 @@ function Font() {
               id="font-select"
               onChange={(e) => setFont(e.target.value)}
             >
-              <option selected style={{fontFamily:font}} value={font}></option>
+              <option selected style={{fontFamily:font}} value={font}>{font}</option>
               {fonts.map(font => (
                 <option style={{fontFamily:font}} value={font} key={font}>{font}</option>
               ))}

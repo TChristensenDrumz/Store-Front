@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import api from "../../utils/api";
 import { useSelector, useDispatch } from "react-redux";
-import { getOwnerStore } from "../../redux/actions/stores.actions";
+import { getCurrentStore, getOwnerStore } from "../../redux/actions/stores.actions";
 import Modal from "react-bootstrap/Modal";
 
 function ProductEditor({ image, name, id }) {
@@ -44,6 +44,7 @@ function ProductEditor({ image, name, id }) {
       .getStoreByOwner(ownerStore.UserId)
       .then((data) => {
         dispatch(getOwnerStore(data.data));
+        dispatch(getCurrentStore(data.data));
         setUpdate(true);
       })
       .catch((err) => console.log(err));
@@ -53,6 +54,7 @@ function ProductEditor({ image, name, id }) {
     api.deleteProduct(id).then((result) => {
       api.getStoreByOwner(ownerStore.UserId).then((data) => {
         dispatch(getOwnerStore(data.data));
+        dispatch(getCurrentStore(data.data));
       });
     });
   };
