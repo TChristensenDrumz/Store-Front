@@ -79,7 +79,7 @@ function OwnerLogin() {
         }}
         onSubmit={handleLogin}
       >
-        <h3>Store Owner Login</h3>
+        <h3>Store Login</h3>
         <EmailPassword setEmail={setEmail} setPassword={setPassword} />
         <button type="submit" class="btn btn-dark mb-2">
           Submit

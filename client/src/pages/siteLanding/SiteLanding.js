@@ -19,7 +19,11 @@ import {
 } from "react-bootstrap";
 import "./SiteLanding.css";
 
-// Import components
+// Import images
+import bg1 from "../../assets/bg1.jpg"
+import bg2 from "../../assets/bg2.jpg"
+import bg3 from "../../assets/bg3.png"
+import bg5 from "../../assets/bg5.png"
 
 function SiteLanding(props) {
   const [bg, setBg] = useState(false);
@@ -59,6 +63,55 @@ function SiteLanding(props) {
   const handleLogout = () => {
     localStorage.removeItem("token");
   };
+
+  const bgs = {
+    first: {
+      backgroundImage: `url(${bg1})` 
+    },
+
+    second: {
+      backgroundImage: `url(${bg2})`
+    },
+
+    third: {
+      backgroundImage: `url(${bg3})`
+    },
+
+    fifth: {
+      backgroundImage: `url(${bg5})`
+    }
+  }
+
+  const styles = {
+    first: {
+      backgroundRepeat: "no-repeat",
+      paddingTop: "12rem",
+      marginLeft: "-12rem",
+      color: "white"
+    },
+
+    second: {
+      backgroundRepeat: "no-repeat",
+      paddingTop: "3rem",
+      marginRight: "-6rem", 
+    },
+
+    third: {
+      backgroundRepeat: "no-repeat",
+      paddingTop: "2rem",
+      marginLeft: "-4.5rem"
+    },
+
+    fourth: {
+      backgroundRepeat: "no-repeat",
+      paddingTop: "5rem"
+    },
+
+    fifth: {
+      marginLeft: "-12.5rem",
+      paddingTop: "2rem"
+    }
+  }
 
   return (
     <div>
@@ -122,52 +175,73 @@ function SiteLanding(props) {
       </Navbar>
 
       {/* First jumbotron */}
-      <Jumbotron className="margin0">
-        <Container style={{ height: "90vh" }}>
+      <Jumbotron className="margin0" style={bgs.first}>
+        <Container style={{ height: "88vh" }}>
           <div className="align-items-center justify-content-center">
+            <div style={styles.first}>
             <h1>Customize your own web store.</h1>
             <p>
-              This is a modified jumbotron that occupies the entire horizontal
-              space of its parent.
+              Create your own store front. Sell Products. Shop other stores. Create an account today.
             </p>
             <a href={isSeller ? "/storeEditor" : "/signup"}>
               <Button variant="dark" size="lg">
                 Get Started
               </Button>
             </a>
+            </div>
           </div>
         </Container>
       </Jumbotron>
 
       {/* Second jumbotron */}
-      <Jumbotron className="margin0">
-        <Container style={{ height: "50vh" }}>
-          <h1>Create your own store front</h1>
-          <p>
-            This is a modified jumbotron that occupies the entire horizontal
-            space of its parent.
-          </p>
+      <Jumbotron className="margin0" style={bgs.second}>
+        <Container style={{ height: "40vh" }}>
+          <div className="text-right" style={styles.second}>
+            <h1>Visit our merchants</h1>
+            <p>
+              Visit the Store Front Marketplace and shop with our participating vendors.
+            </p>
+            
+            <Button href="/marketplace" style={{backgroundColor: "black"}}>Store Front Marketplace</Button>
+          </div>
         </Container>
       </Jumbotron>
-
-      <Jumbotron className="margin0">
-        <Container style={{ height: "90vh" }}>
-          <h1>Visit our merchants</h1>
-          <p>
-            This is a modified jumbotron that occupies the entire horizontal
-            space of its parent.
-          </p>
-        </Container>
-      </Jumbotron>
-
+      
       {/* Third jumbotron */}
+      <Jumbotron className="margin0" style={bgs.third}>
+        <Container style={{ height: "84vh" }}>
+          <div style={styles.third}>
+            <h1>Create your own store front</h1>
+            <p>
+              Use our store editor to get the custom feel you want for your shop.
+            </p>
+          </div>
+        </Container>
+      </Jumbotron>
+
+      {/* Fourth jumbotron */}
       <Jumbotron className="margin0">
-        <Container style={{ height: "60vh" }}id ="about">
-          <h1>How It Works</h1>
-          <p>
-            This is a modified jumbotron that occupies the entire horizontal
-            space of its parent.
-          </p>
+        <Container style={{ height: "40vh" }} id ="about">
+          <Row>
+            <Col>
+              <div style={styles.fourth}>
+                <h1>Get Started</h1>
+                <h4>1. Make your store front account. <a href="/signup" style={{textDecoration: "underline", color: "black"}}>Create an account here</a>.</h4>
+                <h4>2. Add store details, images, products.</h4>
+                <h4>3. Customize font, colors, user experience.</h4>
+                <h4>4. Start selling.</h4>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </Jumbotron>
+
+      {/* Fifth jumbotron */}
+      <Jumbotron className="margin0" style={bgs.fifth}>
+        <Container style={{ height: "50vh" }}>
+          <div style={styles.fifth}>
+            <h1>Meet The Team</h1>
+          </div>
         </Container>
       </Jumbotron>
 
