@@ -2,10 +2,12 @@
 import React, { useState, useEffect } from "react";
 import api from "../../utils/api";
 import { useDispatch } from "react-redux";
-import { getAllStores, getCurrentStore } from "../../redux/actions/stores.actions";
+import {
+  getAllStores,
+  getCurrentStore,
+} from "../../redux/actions/stores.actions";
 import Token from "../../utils/Token";
-import { Link } from "react-router-dom"
-
+import { Link } from "react-router-dom";
 
 // Import styling
 import {
@@ -20,10 +22,10 @@ import {
 import "./SiteLanding.css";
 
 // Import images
-import bg1 from "../../assets/bg1.jpg"
-import bg2 from "../../assets/bg2.jpg"
-import bg3 from "../../assets/bg3.png"
-import bg5 from "../../assets/bg5.png"
+import bg1 from "../../assets/bg1.jpg";
+import bg2 from "../../assets/bg2.jpg";
+import bg3 from "../../assets/bg3.png";
+import bg5 from "../../assets/bg5.png";
 
 function SiteLanding(props) {
   const [bg, setBg] = useState(false);
@@ -32,13 +34,15 @@ function SiteLanding(props) {
   const userAuth = Token.authenticate();
 
   useEffect(() => {
-    const hash = props.history.location.hash
-    console.log(hash)
+    const hash = props.history.location.hash;
+    console.log(hash);
     if (hash && document.getElementById(hash.substr(1))) {
-        // Check if there is a hash and if an element with that id exists
-        document.getElementById(hash.substr(1)).scrollIntoView({behavior: "smooth"})
+      // Check if there is a hash and if an element with that id exists
+      document
+        .getElementById(hash.substr(1))
+        .scrollIntoView({ behavior: "smooth" });
     }
-}, [props.history.location.hash]) // Fires every time hash changes
+  }, [props.history.location.hash]); // Fires every time hash changes
 
   useEffect(() => {
     api
@@ -47,7 +51,7 @@ function SiteLanding(props) {
         dispatch(getAllStores(allStores.data));
         dispatch(getCurrentStore({}));
       })
-      .catch((err) => console.log(err));     
+      .catch((err) => console.log(err));
   }, []);
 
   const changeBg = () => {
@@ -66,52 +70,52 @@ function SiteLanding(props) {
 
   const bgs = {
     first: {
-      backgroundImage: `url(${bg1})` 
+      backgroundImage: `url(${bg1})`,
     },
 
     second: {
-      backgroundImage: `url(${bg2})`
+      backgroundImage: `url(${bg2})`,
     },
 
     third: {
-      backgroundImage: `url(${bg3})`
+      backgroundImage: `url(${bg3})`,
     },
 
     fifth: {
-      backgroundImage: `url(${bg5})`
-    }
-  }
+      backgroundImage: `url(${bg5})`,
+    },
+  };
 
   const styles = {
     first: {
       backgroundRepeat: "no-repeat",
       paddingTop: "12rem",
       marginLeft: "-12rem",
-      color: "white"
+      color: "white",
     },
 
     second: {
       backgroundRepeat: "no-repeat",
       paddingTop: "3rem",
-      marginRight: "-6rem", 
+      marginRight: "-6rem",
     },
 
     third: {
       backgroundRepeat: "no-repeat",
       paddingTop: "2rem",
-      marginLeft: "-4.5rem"
+      marginLeft: "-4.5rem",
     },
 
     fourth: {
       backgroundRepeat: "no-repeat",
-      paddingTop: "5rem"
+      paddingTop: "5rem",
     },
 
     fifth: {
       marginLeft: "-12.5rem",
-      paddingTop: "2rem"
-    }
-  }
+      paddingTop: "2rem",
+    },
+  };
 
   return (
     <div>
@@ -150,7 +154,7 @@ function SiteLanding(props) {
             )}
             <Link
               className="ml-4 mr-4"
-              style={{ color: "white", marginTop:"8px"}}
+              style={{ color: "white", marginTop: "8px" }}
               to="/#about"
             >
               About
@@ -176,18 +180,19 @@ function SiteLanding(props) {
 
       {/* First jumbotron */}
       <Jumbotron className="margin0" style={bgs.first}>
-        <Container style={{ height: "88vh" }}>
+        <Container style={{ height: "100vh" }}>
           <div className="align-items-center justify-content-center">
             <div style={styles.first}>
-            <h1>Customize your own web store.</h1>
-            <p>
-              Create your own store front. Sell Products. Shop other stores. Create an account today.
-            </p>
-            <a href={isSeller ? "/storeEditor" : "/signup"}>
-              <Button variant="dark" size="lg">
-                Get Started
-              </Button>
-            </a>
+              <h1>Customize your own web store.</h1>
+              <p>
+                Create your own store front. Sell Products. Shop other stores.
+                Create an account today.
+              </p>
+              <a href={isSeller ? "/storeEditor" : "/signup"}>
+                <Button variant="dark" size="lg">
+                  Get Started
+                </Button>
+              </a>
             </div>
           </div>
         </Container>
@@ -195,25 +200,30 @@ function SiteLanding(props) {
 
       {/* Second jumbotron */}
       <Jumbotron className="margin0" style={bgs.second}>
-        <Container style={{ height: "40vh" }}>
+        <Container style={{ height: "50vh" }}>
           <div className="text-right" style={styles.second}>
             <h1>Visit our merchants</h1>
             <p>
-              Visit the Store Front Marketplace and shop with our participating vendors.
+              Visit the Store Front Marketplace and shop with our participating
+              vendors.
             </p>
-            
-            <Button href="/marketplace" style={{backgroundColor: "black"}}>Store Front Marketplace</Button>
+
+            <Button href="/marketplace" style={{ backgroundColor: "black" }}>
+              Store Front Marketplace
+            </Button>
           </div>
         </Container>
       </Jumbotron>
-      
+
       {/* Third jumbotron */}
       <Jumbotron className="margin0" style={bgs.third}>
-        <Container style={{ height: "84vh" }}>
+        <Container style={{ height: "100vh" }}>
           <div style={styles.third}>
             <h1>Create your own store front</h1>
             <p>
-              Use our store editor to get the custom feel you want for your shop.
+              Dynamically create a fully functional ecommerce website
+              with checkout in less than 5 minutes.</p> <p>Use our store editor to get
+              the custom feel you want for your shop.
             </p>
           </div>
         </Container>
@@ -221,12 +231,21 @@ function SiteLanding(props) {
 
       {/* Fourth jumbotron */}
       <Jumbotron className="margin0">
-        <Container style={{ height: "40vh" }} id ="about">
+        <Container style={{ height: "55vh" }} id="about">
           <Row>
             <Col>
               <div style={styles.fourth}>
                 <h1>Get Started</h1>
-                <h4>1. Make your store front account. <a href="/signup" style={{textDecoration: "underline", color: "black"}}>Create an account here</a>.</h4>
+                <h4>
+                  1. Make your store front account.{" "}
+                  <a
+                    href="/signup"
+                    style={{ textDecoration: "underline", color: "black" }}
+                  >
+                    Create an account here
+                  </a>
+                  .
+                </h4>
                 <h4>2. Add store details, images, products.</h4>
                 <h4>3. Customize font, colors, user experience.</h4>
                 <h4>4. Start selling.</h4>
@@ -238,7 +257,7 @@ function SiteLanding(props) {
 
       {/* Fifth jumbotron */}
       <Jumbotron className="margin0" style={bgs.fifth}>
-        <Container style={{ height: "50vh" }}>
+        <Container style={{ height: "55vh" }}>
           <div style={styles.fifth}>
             <h1>Meet The Team</h1>
           </div>
