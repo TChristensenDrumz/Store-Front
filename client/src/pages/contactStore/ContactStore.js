@@ -54,7 +54,7 @@ function ContactStore() {
           <br />
           <textarea rows="5" className="form-control"></textarea>
         </div>
-        <button style={style.button}>Submit</button>
+        <button style={style.button} className="btn">Submit</button>
       </div>
       <Footer />
     </>
