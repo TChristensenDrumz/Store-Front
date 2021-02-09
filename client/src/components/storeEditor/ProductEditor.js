@@ -74,6 +74,7 @@ function ProductEditor({ image, name, id }) {
     product: {
       height: "100px",
       width: "100px",
+      boxShadow: "2px 1px 10px -4px black"
     },
     button: {
       background: "none",
