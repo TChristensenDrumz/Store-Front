@@ -9,18 +9,22 @@ function ContactStore() {
   const [accent_color, setAccentColor] = useState("black");
   const [body_color, setBodyColor] = useState("black");
   const [footer_color, setFooterColor] = useState("white");
+  const [storeName, setStoreName] = useState("Us");
 
   useEffect(() => {
-    if(currentStore) {
+    if(currentStore.id) {
       setAccentColor(currentStore.accent_color);
       setBodyColor(currentStore.body_color);
       setFooterColor(currentStore.footer_color);
-    }
+      setStoreName(currentStore.store_name);
+    };
   }, []);
   
   const style = {
     page: {
-      color: `${body_color}`
+      color: `${body_color}`,
+      textShadow: `-.5px 0 ${accent_color}, 0 .5px ${accent_color}, 1px 0 ${accent_color}, 0 -.5px ${accent_color}`,
+      letterSpacing: "2px"
     },
     button: {
       backgroundColor: `${accent_color}`,
@@ -32,7 +36,7 @@ function ContactStore() {
     <>
       <Header />
       <div className="container mb-5" style={style.page}>
-        <h1>Contact Us</h1>
+        <h1>Contact {storeName}</h1>
         <NameInput />
         <label for="exampleInputEmail1">Email address</label>
         <input
@@ -48,7 +52,7 @@ function ContactStore() {
         </div>
         <button style={style.button}>Submit</button>
       </div>
-      <Footer />
+      <Footer position="bottom" />
     </>
   );
 }

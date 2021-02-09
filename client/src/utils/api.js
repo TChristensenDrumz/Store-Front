@@ -18,6 +18,10 @@ export default {
     updateUser: function(userId, userData) {
         return axios.put("/api/user/update/" + userId, userData);
     },
+
+    checkEmail: function(email) {
+        return axios.get("/api/user/checkemail/" + email);
+    },
     //========================================================
     // Routes for store data
     getStoreInfo: function(storeId) {

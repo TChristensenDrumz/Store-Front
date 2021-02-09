@@ -42,7 +42,7 @@ function EditStore() {
       <div className="container border rounded" id="space">
         <div className="row pb-5">
           <div className="col-4 p-0">
-            <ListGroup variant="flush" className="border-right rounded">
+            <ListGroup variant="flush" className="border-right rounded borderClass">
               <ListGroup.Item onClick={() => setEdit(<StoreDetails />)}>
                 Store Details
               </ListGroup.Item>

@@ -5,8 +5,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Token from "../../utils/Token";
 import api from "../../utils/api";
-import Button from 'react-bootstrap/Button';
-import Modal from "react-bootstrap/Modal";
+import Alert from "../../components/Alert";
 
 function Cart() {
   const [cartItems, setCartItems] = useState([]);
@@ -15,6 +14,8 @@ function Cart() {
   const [itemAmount, setItemAmount] = useState("");
   const [show, setShow] = useState(false);
   const [message, setMessage] = useState("");
+  const [footerPosition, setFooterPosition] = useState("");
+  const [space, setSpace] = useState(true);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -55,6 +56,15 @@ function Cart() {
       newTotal += item.Product.price * item.quantity;
       setTotal(newTotal.toFixed(2));
       setItemAmount("");
+    };
+    if (cartItems) {
+      if (cartItems.length === 0) {
+        setFooterPosition("bottom");
+        setSpace(true);
+      }
+    } else {
+      setFooterPosition("bottom");
+      setSpace(true);
     }
   }, [change, itemAmount]);
 
@@ -74,24 +84,19 @@ function Cart() {
             <a href="/marketplace">Return to Marketplace</a>
           </div>
         </div>
-        <Footer />
+        <Footer position="bottom"/>
       </>
     );
   }
 
   return (
     <div>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Store Front</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>{message}</Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
-            OK
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      <Alert 
+        show = {show}
+        handleClose = {handleClose}
+        title = {"Store Front"}
+        message = {message}
+      />
       <Header />
       <div className="container">
         <h2>Shopping Cart</h2>
@@ -161,6 +166,7 @@ function Cart() {
           </div>
         </div>
       </div>
+      {space ? <div style={{height: "100px"}}/> : <> </>}
       <Footer />
     </div>
   );

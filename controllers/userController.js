@@ -6,10 +6,8 @@ module.exports = {
     create: function(req, res) {   
         db.User.create(req.body).then((result, err) => {
                 if (err) {
-                  console.log(err);
                     res.json(err);
                 } else {
-                  console.log(result);
                     res.json(result);
                 }
           })
@@ -89,5 +87,20 @@ module.exports = {
         console.log(err);
         res.json(err);
       }) 
+    },
+
+    checkEmail: function(req, res) {
+      console.log(req.body)
+      db.User.findOne({
+        where: {
+          email: req.params.email
+        }
+      }).then(result => {
+        console.log("RESULT ", result);
+        res.json(result);
+      }).catch(err => {
+        console.log(err);
+        res.json(err);
+      });
     }
 };

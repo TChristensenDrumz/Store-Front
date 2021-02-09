@@ -1,16 +1,18 @@
 import React from "react";
 
-function About({ image, info, color, about_scroll }) {
+function About({ image, info, color, about_scroll, font }) {
   const styles = {
     jumbo: {
+      fontFamily: `${font}`,
       color: `${color}`,
       height: "100vh",
       width: "100vw",
       padding: "0",
       backgroundImage: `url("${image}")`,
-      backgroundSize: "100%",
+      backgroundSize: "cover",
       backgroundPosition: "center",
       backgroundAttachment: `${about_scroll}`,
+      backgroundRepeat: "no-repeat",
       marginBottom: "0"
     },
     text: {

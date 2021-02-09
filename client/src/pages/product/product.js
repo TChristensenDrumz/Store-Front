@@ -6,8 +6,7 @@ import Token from "../../utils/Token";
 import { useHistory } from "react-router-dom";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import Button from 'react-bootstrap/Button';
-import Modal from "react-bootstrap/Modal";
+import Alert from "../../components/Alert";
 
 function Product() {
   const history = useHistory();
@@ -72,17 +71,12 @@ function Product() {
 
   return (
     <div>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-        <Modal.Title>{currentStore.store_name}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>{message}</Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
-            OK
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      <Alert 
+        show = {show}
+        handleClose = {handleClose}
+        title = {currentStore.store_name}
+        message = {message}
+      />
       <Header />
       <a name="#"></a>
       <div className="container mt-5" style={{color: currentStore.body_color}}>
