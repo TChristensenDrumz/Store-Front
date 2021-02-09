@@ -141,7 +141,7 @@ export default function Header() {
           <Nav className="ml-auto mr-auto">
             <Nav.Link
               className="ml-4 mr-4"
-              href="/marketplace"
+              href={shop}
               style={styles.navbar}
             >
               Shop
