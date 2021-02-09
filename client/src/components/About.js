@@ -1,8 +1,9 @@
 import React from "react";
 
-function About({ image, info, color, about_scroll }) {
+function About({ image, info, color, about_scroll, font }) {
   const styles = {
     jumbo: {
+      fontFamily: `${font}`,
       color: `${color}`,
       height: "100vh",
       width: "100vw",

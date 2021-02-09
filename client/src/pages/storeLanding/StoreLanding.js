@@ -40,6 +40,7 @@ function StoreLanding(props) {
     popular: {
       paddingTop: "10vh",
       paddingBottom: "10vh",
+      fontFamily: selectedStore.font,
       color: selectedStore.body_color,
       textShadow: `-.5px 0 ${selectedStore.accent_color}, 0 .5px ${selectedStore.accent_color}, 1px 0 ${selectedStore.accent_color}, 0 -.5px ${selectedStore.accent_color}`,
       letterSpacing: "2px"
@@ -80,6 +81,7 @@ function StoreLanding(props) {
           info={selectedStore.about}
           color={selectedStore.body_color}
           about_scroll={selectedStore.about_scroll}
+          font={selectedStore.font}
         />
       </div>
       <Footer />
