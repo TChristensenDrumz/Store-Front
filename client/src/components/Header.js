@@ -37,42 +37,32 @@ export default function Header() {
     } else {
       console.log("taking away current store");
       dispatch(getCurrentStore({}));
-    };
+    }
     if (currentStore) {
       if (currentStore.id) {
         setRedirect(`/storefront/${currentStore.id}#about`);
-      };
+      }
     }
   }, [location]);
 
   const handleManager = () => {
-    if(isSeller || userAuth) {
+    if (isSeller || userAuth) {
       handleShow();
-    }
-    else {
+    } else {
       history.push("/login");
     }
   };
 
   const handleLogout = () => {
     handleClose();
-    localStorage.removeItem("token"); 
+    localStorage.removeItem("token");
     history.push("/login");
   };
 
   const handleCart = () => {
     if (!userAuth) {
       handleShow();
-      return (
-        <Alert
-          show={show}
-          handleClose={handleClose}
-          title={"Store Editor"}
-          message={
-            "Please sign in or create an account to add to/view your cart"
-          }
-        />
-      );
+      return;
     }
     history.push("/cart");
   };
@@ -104,14 +94,14 @@ export default function Header() {
             </Button>
           </Modal.Footer>
         </Modal>
-      ) : (
+      ) : userAuth ? (
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Account Manager</Modal.Title>
           </Modal.Header>
           <Modal.Body>Would you like to logout?</Modal.Body>
           <Modal.Footer>
-          <Button variant="danger" onClick={handleLogout}>
+            <Button variant="danger" onClick={handleLogout}>
               Logout
             </Button>
             <Button variant="secondary" onClick={handleClose}>
@@ -119,6 +109,15 @@ export default function Header() {
             </Button>
           </Modal.Footer>
         </Modal>
+      ) : (
+        <Alert
+          show={show}
+          handleClose={handleClose}
+          title={"Store Editor"}
+          message={
+            "Please sign in or create an account to add to/view your cart"
+          }
+        />
       )}
       <Navbar
         collapseOnSelect
@@ -160,10 +159,7 @@ export default function Header() {
             </Nav.Link>
           </Nav>
           <Nav className="mr-5">
-            <Nav.Link
-              style={styles.navbar}
-              onClick={handleManager}
-            >
+            <Nav.Link style={styles.navbar} onClick={handleManager}>
               {isSeller || userAuth ? "Account Manager" : "Login"}
             </Nav.Link>
             <Nav.Link
@@ -177,6 +173,5 @@ export default function Header() {
         </Navbar.Collapse>
       </Navbar>
     </>
-
   );
 }
