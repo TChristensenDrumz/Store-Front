@@ -10,7 +10,7 @@ import DeleteStore from "../../components/storeEditor/DeleteStore";
 import api from "../../utils/api";
 import { useDispatch } from "react-redux";
 import Token from "../../utils/Token";
-import { getOwnerStore } from "../../redux/actions/stores.actions";
+import { getCurrentStore, getOwnerStore } from "../../redux/actions/stores.actions";
 import "./EditStore.css";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
@@ -29,6 +29,7 @@ function EditStore() {
     api.getStoreByOwner(userId).then(async (storeData) => {
       await dispatch(getOwnerStore(storeData.data));
       setDetails(storeData.data);
+      dispatch(getCurrentStore(storeData.data));
     });
   };
   useEffect(() => {

@@ -48,6 +48,7 @@ export default function Header({customFont = null, headerColor = null}) {
           setFontColor(ownerStore.font_color);
           setStoreName(ownerStore.store_name);
           setStoreLink("/storefront/" + ownerStore.id);
+          setShop("/storefront/allproducts/" + currentStore.id);
         };
         if (customFont) {
           setFont(customFont);

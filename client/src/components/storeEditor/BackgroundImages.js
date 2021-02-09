@@ -99,7 +99,7 @@ function BackgroundImages() {
                 for="bg-image"
                 id="bg-edit-name"
               >
-                {!background_image.name? "Choose File" :background_image.name}
+                {!background_image.name ? "Choose File" : background_image.name}
               </label>
             </div>
             <div className="input-group-append">

@@ -43,6 +43,7 @@ function Jumbo({
       backgroundColor: `${buttonColor}`,
       color: `${buttonTextColor}`,
       transform: "scale(1.7)",
+      border: "none"
     },
   };
   return (
