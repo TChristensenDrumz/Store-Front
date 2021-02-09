@@ -7,7 +7,7 @@ import windowDimensions from "../utils/GetWindowDimensions";
 // Import styling
 import { Navbar, Nav, Container, Row, Col } from "react-bootstrap";
 
-export default function Footer() {
+export default function Footer({position = ""}) {
   let windowHeight = windowDimensions();
   const { currentStore } = useSelector((state) => state.stores);
   let location = useLocation();
@@ -16,13 +16,18 @@ export default function Footer() {
   const [bgColor, setBgColor] = useState("black");
   const [address, setAddress] = useState("123 Internet Way");
   const [footer, setFooter] = useState(0);
+  const [storeName, setStoreName] = useState("Store Front")
+  const [redirect, setRedirect] = useState("/");
+  const [footerPosition, setFooterPosition] = useState(position);
 
   useEffect(() => {
     if (location.pathname.includes("storefront")) {
-      if (currentStore) {
+      if (currentStore.id) {
         setFont(currentStore.font);
         setFontColor(currentStore.footer_color);
         setAddress(currentStore.address);
+        setStoreName(currentStore.store_name);
+        setRedirect(`/storefront/${currentStore.id}`);
       };
     };
     let footerPosition = document.querySelector("#foot");
@@ -36,7 +41,7 @@ export default function Footer() {
     footer: {
       fontFamily: `${font}`,
       color: `${fontColor}`
-    },
+    }
   };
 
   return (
@@ -47,28 +52,24 @@ export default function Footer() {
       className="p-5"
       id="foot"
       sticky="bottom"
+      fixed={footerPosition}
       style={{ backgroundColor: bgColor }}
     >
       <Nav className="ml-auto mr-auto">
-        <Row>
+        <Row style={{width: "50vw"}}>
           <Col className="text-left mr-5 pr-5">
             <Navbar.Brand
               className="ml-auto mr-auto"
-              href="/"
+              href={redirect}
               style={styles.footer}
             >
-              Storefront
+              {storeName}
             </Navbar.Brand>
-            <Navbar.Text style={styles.footer}>{address}</Navbar.Text>
           </Col>
-
           <Col className="text-right ml-5 pl-5">
-            <Nav.Link href="#" style={styles.footer}>
-              Back to Top
-            </Nav.Link>
-            <Nav.Link href="/storefront/contact" style={styles.footer}>
+          <Navbar.Brand href="/storefront/contact" className="ml-auto mr-auto" style={styles.footer}>
               Contact
-            </Nav.Link>
+            </Navbar.Brand>
           </Col>
         </Row>
       </Nav>

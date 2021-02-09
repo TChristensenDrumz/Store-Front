@@ -43,7 +43,7 @@ export default function Header() {
         setRedirect(`/storefront/${currentStore.id}#about`);
       };
     }
-  }, [location.pathname]);
+  }, [location]);
 
   const handleManager = () => {
     if(isSeller || userAuth) {

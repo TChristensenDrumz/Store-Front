@@ -21,10 +21,18 @@ function Preview({image, name, storeId, productId, type}) {
       history.push(`/storefront/${storeId}/${productId}`);
     };
   };
+
+  const styles = {
+    image: {
+      height: "300px",
+      width: "15vw",
+      minWidth: "250px"
+    }
+  }
   return (
     <div className="d-flex justify-content-center m-5" onClick={goToPage}>
-      <Card style={{ width: "15vw", minWidth: "200px" }}>
-        <Image variant="top" src={image} fluid />
+      <Card style={{ width: "15vw", minWidth: "250px" }}>
+        <Image variant="top" src={image} style={styles.image}/>
         <Card.Body>
           <Card.Title style={{textAlign: "center"}}>{name}</Card.Title>
         </Card.Body>
