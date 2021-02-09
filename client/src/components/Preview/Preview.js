@@ -25,8 +25,8 @@ function Preview({image, name, storeId, productId, type}) {
   const styles = {
     image: {
       height: "300px",
-      width: "15vw",
-      minWidth: "250px"
+      width: "14.921vw",
+      minWidth: "248px"
     }
   }
   return (
