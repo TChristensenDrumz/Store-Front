@@ -27,19 +27,19 @@ When you navigate to the cart page, you will see all items within your cart, and
 
 ## Credits
 
-Axios,
-Bcryptjs,
-Cloudinary,
-Express,
-JSONwebtoken,
-Multer,
-Mysql,
-Passport,
-Paypal,
-Sequelize,
-Bootstrap,
-React,
-Redux,
+Axios <br/>
+Bcryptjs <br/>
+Cloudinary <br/>
+Express <br/>
+JSONwebtoken <br/>
+Multer <br/>
+Mysql <br/>
+Passport <br/>
+Paypal <br/>
+Sequelize <br/>
+Bootstrap <br/>
+React <br/>
+Redux <br/>
 Redux-persist
 
 ## Questions
