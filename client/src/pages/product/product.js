@@ -82,7 +82,7 @@ function Product() {
       <div className="container mt-5" style={{color: currentStore.body_color}}>
         <div className="row p-5">
           <div className="col-md-6 col-12">
-            <img src={product.image} height="300px"></img>
+            <img src={product.image} height="300px" style={{boxShadow: "2px 1px 10px -4px black"}}></img>
           </div>
           <div className="col-md-6 col-12">
             <div className="row">

@@ -41,7 +41,7 @@ function CartItem({
           </button>
         </div>
         <div class="media align-items-center col-6 p-2">
-          <img src={img} className="mr-3" alt="..." height="75px" />
+          <img src={img} className="mr-3" alt="..." height="75px" style={{boxShadow: "2px 1px 10px -4px black"}}/>
           <div className="media-body">
             <h5 className="mt-0 ml-3">{name}</h5>
           </div>
