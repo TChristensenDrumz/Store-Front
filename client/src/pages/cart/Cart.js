@@ -14,6 +14,8 @@ function Cart() {
   const [itemAmount, setItemAmount] = useState("");
   const [show, setShow] = useState(false);
   const [message, setMessage] = useState("");
+  const [footerPosition, setFooterPosition] = useState("");
+  const [space, setSpace] = useState(true);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -54,6 +56,15 @@ function Cart() {
       newTotal += item.Product.price * item.quantity;
       setTotal(newTotal.toFixed(2));
       setItemAmount("");
+    };
+    if (cartItems) {
+      if (cartItems.length === 0) {
+        setFooterPosition("bottom");
+        setSpace(true);
+      }
+    } else {
+      setFooterPosition("bottom");
+      setSpace(true);
     }
   }, [change, itemAmount]);
 
@@ -73,7 +84,7 @@ function Cart() {
             <a href="/marketplace">Return to Marketplace</a>
           </div>
         </div>
-        <Footer />
+        <Footer position="bottom"/>
       </>
     );
   }
@@ -155,6 +166,7 @@ function Cart() {
           </div>
         </div>
       </div>
+      {space ? <div style={{height: "100px"}}/> : <> </>}
       <Footer />
     </div>
   );

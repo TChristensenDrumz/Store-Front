@@ -83,7 +83,7 @@ function LoginPage() {
         </div>
         <Redirect to={redirect.url} />
       </form>
-      <Footer />
+      <Footer position="bottom"/>
     </>
   );
 }

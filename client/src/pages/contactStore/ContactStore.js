@@ -52,7 +52,7 @@ function ContactStore() {
         </div>
         <button style={style.button}>Submit</button>
       </div>
-      <Footer />
+      <Footer position="bottom" />
     </>
   );
 }

@@ -132,7 +132,7 @@ function CreateOwnerAccount() {
           </small>
         </div>
       </form>
-      <Footer />
+      <Footer position="bottom"/>
     </>
   );
 }

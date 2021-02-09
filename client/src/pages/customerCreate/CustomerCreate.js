@@ -80,7 +80,7 @@ function CreateAccount() {
           </small>
         </div>
       </form>
-      <Footer />
+      <Footer position="bottom"/>
     </>
   );
 }
