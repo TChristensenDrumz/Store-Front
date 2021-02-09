@@ -4,7 +4,7 @@ import EmailPassword from "../../components/EmailPassword";
 import NameInput from "../../components/NameInput";
 import api from "../../utils/api";
 import { useDispatch } from "react-redux";
-import { getStoreInfo } from "../../redux/actions/stores.actions";
+import { getOwnerStore, getStoreInfo } from "../../redux/actions/stores.actions";
 import Alert from "../../components/Alert";
 
 import Header from "../../components/Header";
@@ -66,7 +66,7 @@ function CreateOwnerAccount() {
           let { userId } = JSON.parse(atob(result.data.token.split(".")[1]));
           api.updateUser(userId, { isSeller: true }).then((res) => {
             api.createStore({ store_name, userId }).then((data) => {
-              dispatch(getStoreInfo(data.data));
+              dispatch(getOwnerStore(data.data));
               setMessage("Store created! Please proceed to the store editor.");
               handleShow(true);
             });

@@ -27,7 +27,6 @@ function BackgroundImages() {
   const aboutImageUpload = () => {
     handleImageUpload("about-image");
   };
-
   const handleImageUpload = (imageType) => {
     let fd = new FormData();
     if (imageType === "bg-image") {
@@ -98,7 +97,7 @@ function BackgroundImages() {
                 for="bg-image"
                 id="bg-edit-name"
               >
-                Choose file
+                {!background_image.name? "Choose File" :background_image.name}
               </label>
             </div>
             <div className="input-group-append">
@@ -148,7 +147,7 @@ function BackgroundImages() {
                 for="about-image"
                 id="about-edit-name"
               >
-                Choose file
+                {!about_image.name? "Choose File" :about_image.name}
               </label>
             </div>
             <div className="input-group-append">

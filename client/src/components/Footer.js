@@ -9,7 +9,7 @@ import { Navbar, Nav, Container, Row, Col } from "react-bootstrap";
 
 export default function Footer({position = ""}) {
   let windowHeight = windowDimensions();
-  const { currentStore } = useSelector((state) => state.stores);
+  const { currentStore, ownerStore } = useSelector((state) => state.stores);
   let location = useLocation();
   const [font, setFont] = useState("Roboto");
   const [fontColor, setFontColor] = useState("white");
@@ -29,6 +29,15 @@ export default function Footer({position = ""}) {
         setAddress(currentStore.address);
         setStoreName(currentStore.store_name);
         setRedirect(`/storefront/${currentStore.id}`);
+      };
+    } else if (location.pathname === "/storeEditor") {
+      if (ownerStore.id) {
+        setFont(ownerStore.font);
+        setFontColor(ownerStore.footer_color);
+        setBgColor(ownerStore.accent_color);
+        setAddress(ownerStore.address);
+        setStoreName(ownerStore.store_name);
+        setRedirect(`/storefront/${ownerStore.id}`);
       };
     };
     let footerPosition = document.querySelector("#foot");
