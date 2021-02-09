@@ -26,6 +26,7 @@ export default function Header() {
   const [redirect, setRedirect] = useState("/#about");
   const [shop, setShop] = useState("/marketplace");
   const [storeName, setStoreName] = useState("Store Front");
+  const [storeLink, setStoreLink] = useState("/");
 
 
   const handleClose = () => setShow(false);
@@ -38,12 +39,16 @@ export default function Header() {
         setFontColor(currentStore.font_color);
         setShop("/storefront/allproducts/" + currentStore.id);
         setStoreName(currentStore.store_name);
+        setStoreLink("/storefront/" + currentStore.id);
+
       }
     } else if (location.pathname === "/storeEditor") {
         if (ownerStore.id) {
           setFont(ownerStore.font);
           setFontColor(ownerStore.fontColor);
           setStoreName(ownerStore.store_name);
+          setShop("/storefront/allproducts/" + ownerStore.id);
+          setStoreLink("/storefront/" + ownerStore.id);
         };
     } else {
       dispatch(getCurrentStore({}));
@@ -136,7 +141,7 @@ export default function Header() {
         variant="light"
         className="p-5"
       >
-        <Navbar.Brand className="ml-5" href="/" style={styles.navbar}>
+        <Navbar.Brand className="ml-5" href={storeLink} style={styles.navbar}>
           {storeName}
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
