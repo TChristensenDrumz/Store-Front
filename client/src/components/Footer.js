@@ -9,9 +9,9 @@ import { Navbar, Nav, Container, Row, Col } from "react-bootstrap";
 
 export default function Footer({position = ""}) {
   let windowHeight = windowDimensions();
-  const { currentStore } = useSelector((state) => state.stores);
+  const { currentStore, ownerStore } = useSelector((state) => state.stores);
   let location = useLocation();
-  const [font, setFont] = useState("Roboto");
+  const [font, setFont] = useState("Helvetica Neue");
   const [fontColor, setFontColor] = useState("white");
   const [bgColor, setBgColor] = useState("black");
   const [address, setAddress] = useState("123 Internet Way");
@@ -30,6 +30,15 @@ export default function Footer({position = ""}) {
         setStoreName(currentStore.store_name);
         setRedirect(`/storefront/${currentStore.id}`);
       };
+    } else if (location.pathname === "/storeEditor") {
+      if (ownerStore.id) {
+        setFont(ownerStore.font);
+        setFontColor(ownerStore.footer_color);
+        setBgColor(ownerStore.accent_color);
+        setAddress(ownerStore.address);
+        setStoreName(ownerStore.store_name);
+        setRedirect(`/storefront/${ownerStore.id}`);
+      };
     };
     let footerPosition = document.querySelector("#foot");
       let foot = footerPosition.getBoundingClientRect().bottom;
@@ -37,6 +46,7 @@ export default function Footer({position = ""}) {
         setFooter(window.innerHeight - foot);
       };
   }, [location]);
+
   const styles = {
     footer: {
       fontFamily: `${font}`,
@@ -76,4 +86,4 @@ export default function Footer({position = ""}) {
     </Navbar>
     </div>
   );
-};
+}
