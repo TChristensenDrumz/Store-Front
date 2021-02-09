@@ -38,6 +38,12 @@ function EditStore() {
     }
   }, [details]);
 
+  const styles = {
+    space: {
+      marginBottom: "30vh"
+    }
+  }
+
   if (!details) {
     return <h1>Loading...</h1>;
   }
@@ -47,7 +53,7 @@ function EditStore() {
         customFont={customFont}
         headerColor={headerColor}
       />
-      <div className="container border rounded" id="space">
+      <div className="container border rounded" style={styles.space}>
         <div className="row pb-5">
           <div className="col-4 p-0">
             <ListGroup variant="flush" className="border-right rounded borderClass">
