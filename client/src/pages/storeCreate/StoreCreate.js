@@ -25,7 +25,7 @@ function CreateOwnerAccount() {
   const handleClose = () => {
     setShow(false);
     if (redirect) {
-      history.push("/storeEditor");
+      history.push("/login");
     }
   };
   const handleShow = (created = false) => {
@@ -67,7 +67,7 @@ function CreateOwnerAccount() {
           api.updateUser(userId, { isSeller: true }).then((res) => {
             api.createStore({ store_name, userId }).then((data) => {
               dispatch(getOwnerStore(data.data));
-              setMessage("Store created! Please proceed to the store editor.");
+              setMessage("Store created! Please proceed to login.");
               handleShow(true);
             });
           });
@@ -87,7 +87,7 @@ function CreateOwnerAccount() {
                 api.createStore({ store_name, userId }).then((data) => {
                   dispatch(getStoreInfo(data.data));
                   setMessage(
-                    "Store created! Please proceed to the store editor."
+                    "Store created! Please proceed to login."
                   );
                   handleShow(true);
                 });

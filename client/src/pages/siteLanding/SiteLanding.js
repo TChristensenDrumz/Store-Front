@@ -231,7 +231,7 @@ function SiteLanding(props) {
 
       {/* Fourth jumbotron */}
       <Jumbotron className="margin0">
-        <Container style={{ height: "55vh" }} id="about">
+        <Container style={{ height: "55vh" }}>
           <Row>
             <Col>
               <div style={styles.fourth}>
@@ -256,7 +256,7 @@ function SiteLanding(props) {
       </Jumbotron>
 
       {/* Fifth jumbotron */}
-      <Jumbotron className="margin0" style={bgs.fifth}>
+      <Jumbotron className="margin0" style={bgs.fifth} id="about">
         <Container style={{ height: "55vh" }}>
           <div style={styles.fifth}>
             <h1>Meet The Team</h1>
