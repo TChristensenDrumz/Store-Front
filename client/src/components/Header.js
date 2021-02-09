@@ -16,7 +16,7 @@ import { getCurrentStore } from "../redux/actions/stores.actions";
 export default function Header() {
   const userAuth = Token.authenticate();
   const isSeller = Token.isSeller();
-  const { currentStore } = useSelector((state) => state.stores);
+  const { currentStore, ownerStore } = useSelector((state) => state.stores);
   const location = useLocation();
   const history = useHistory();
   const dispatch = useDispatch();
@@ -30,12 +30,16 @@ export default function Header() {
 
   useEffect(() => {
     if (location.pathname.includes("storefront")) {
-      if (currentStore) {
+      if (currentStore.id) {
         setFont(currentStore.font);
         setFontColor(currentStore.font_color);
       }
+    } else if (location.pathname === "/storeEditor") {
+        if (ownerStore.id) {
+          setFont(ownerStore.font);
+          setFontColor(ownerStore.fontColor);
+        };
     } else {
-      console.log("taking away current store");
       dispatch(getCurrentStore({}));
     }
     if (currentStore) {
@@ -141,7 +145,7 @@ export default function Header() {
             </Nav.Link>
             <Link
               className="ml-4 mr-4"
-              to="#about"
+              to={redirect}
               style={{
                 fontFamily: `${font}`,
                 color: `${fontColor}`,
