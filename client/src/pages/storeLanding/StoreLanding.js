@@ -9,10 +9,6 @@ import { getCurrentStore } from "../../redux/actions/stores.actions";
 
 
 function StoreLanding(props) {
-  let hash = props.history.location.hash
-  const removeHash = () => {
-    hash = ""
-  }
   const params = useParams();
   const dispatch = useDispatch();
   const stores = useSelector((state) => state.stores);
@@ -25,6 +21,7 @@ function StoreLanding(props) {
   }, []);
 
   useEffect(() => {
+    const hash = props.history.location.hash;
     if (hash && document.getElementById(hash.substr(1))) {
       // Check if there is a hash and if an element with that id exists
       document.getElementById(hash.substr(1)).scrollIntoView({behavior: "smooth"})
