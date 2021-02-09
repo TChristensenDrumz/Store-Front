@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         font: {
             type: DataTypes.STRING,
-            defaultValue: "Helvetica Neue"
+            defaultValue: "Roboto"
         },
         background_image: {
             type: DataTypes.STRING,

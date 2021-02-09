@@ -20,7 +20,7 @@ export default function Header() {
   const location = useLocation();
   const history = useHistory();
   const dispatch = useDispatch();
-  const [font, setFont] = useState("Helvetica Neue");
+  const [font, setFont] = useState("Roboto");
   const [fontColor, setFontColor] = useState("black");
   const [show, setShow] = useState(false);
   const [redirect, setRedirect] = useState("/#about");
