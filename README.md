@@ -13,6 +13,8 @@ https://storefrontreact.herokuapp.com
 
 ## Usage
 
+![Store Front Demo](/gifs/storefrontdemo.gif)
+
 When you get to the page, you will see information about how to create your own store. From here, you can sign up to be a store owner, or sign up to be a customer.
 
 Once you sign in as a store owner, you will be taken to the store editor, where you can add your custom styling, change your store's details (name, tagline, etc), and add products.
