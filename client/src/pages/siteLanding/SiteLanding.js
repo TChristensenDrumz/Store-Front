@@ -28,7 +28,7 @@ import bg3 from "../../assets/bg3.png";
 import bg5 from "../../assets/bg5.png";
 
 function SiteLanding(props) {
-  const [bg, setBg] = useState(false);
+  const [bg, setBg] = useState(true);
   const dispatch = useDispatch();
   const isSeller = Token.isSeller();
   const userAuth = Token.authenticate();
@@ -71,49 +71,67 @@ function SiteLanding(props) {
   const bgs = {
     first: {
       backgroundImage: `url(${bg1})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      height: "120vh",
+      width: "100vw"
     },
 
     second: {
       backgroundImage: `url(${bg2})`,
+      backgroundSize: "cover",
+      backgroundPosition: "left",
+      backgroundRepeat: "no-repeat",
+      height: "90vh",
+      width: "100vw"
     },
 
     third: {
       backgroundImage: `url(${bg3})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      height: "90vh",
+      width: "100vw"
     },
 
     fifth: {
       backgroundImage: `url(${bg5})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      height: "75vh",
+      width: "100vw"
     },
   };
 
   const styles = {
     first: {
-      backgroundRepeat: "no-repeat",
-      paddingTop: "12rem",
-      marginLeft: "-12rem",
+      paddingTop: "27vh",
+      marginLeft: "5vw",
       color: "white",
+      width: "40vw"
     },
 
     second: {
-      backgroundRepeat: "no-repeat",
-      paddingTop: "3rem",
+      paddingTop: "6vh",
       marginRight: "-6rem",
     },
 
     third: {
-      backgroundRepeat: "no-repeat",
-      paddingTop: "2rem",
-      marginLeft: "-4.5rem",
+      paddingTop: "2vh",
+      marginLeft: "10vw",
+      lineHeight: ".5em"
     },
 
     fourth: {
-      backgroundRepeat: "no-repeat",
       paddingTop: "5rem",
     },
 
     fifth: {
-      marginLeft: "-12.5rem",
-      paddingTop: "2rem",
+      marginLeft: "5vw",
+      paddingTop: "5vh",
     },
   };
 
@@ -179,8 +197,8 @@ function SiteLanding(props) {
       </Navbar>
 
       {/* First jumbotron */}
-      <Jumbotron className="margin0" style={bgs.first}>
-        <Container style={{ height: "100vh" }}>
+      <div className="margin0" style={bgs.first}>
+        <div style={{width: "90vw"}}>
           <div className="align-items-center justify-content-center">
             <div style={styles.first}>
               <h1>Customize your own web store.</h1>
@@ -195,12 +213,12 @@ function SiteLanding(props) {
               </a>
             </div>
           </div>
-        </Container>
-      </Jumbotron>
+        </div>
+      </div>
 
       {/* Second jumbotron */}
-      <Jumbotron className="margin0" style={bgs.second}>
-        <Container style={{ height: "50vh" }}>
+      <div className="margin0" style={bgs.second}>
+      <div style={{width: "90vw"}}>
           <div className="text-right" style={styles.second}>
             <h1>Visit our merchants</h1>
             <p>
@@ -212,12 +230,12 @@ function SiteLanding(props) {
               Store Front Marketplace
             </Button>
           </div>
-        </Container>
-      </Jumbotron>
+        </div>
+      </div>
 
       {/* Third jumbotron */}
-      <Jumbotron className="margin0" style={bgs.third}>
-        <Container style={{ height: "100vh" }}>
+      <div className="margin0" style={bgs.third}>
+      <div style={{width: "90vw"}}>
           <div style={styles.third}>
             <h1>Create your own store front</h1>
             <p>
@@ -226,11 +244,11 @@ function SiteLanding(props) {
               the custom feel you want for your shop.
             </p>
           </div>
-        </Container>
-      </Jumbotron>
+        </div>
+      </div>
 
       {/* Fourth jumbotron */}
-      <Jumbotron className="margin0">
+      <div className="margin0">
         <Container style={{ height: "55vh" }}>
           <Row>
             <Col>
@@ -253,16 +271,16 @@ function SiteLanding(props) {
             </Col>
           </Row>
         </Container>
-      </Jumbotron>
+      </div>
 
       {/* Fifth jumbotron */}
-      <Jumbotron className="margin0" style={bgs.fifth} id="about">
-        <Container style={{ height: "55vh" }}>
+      <div className="margin0" style={bgs.fifth} id="about">
+      <div style={{width: "90vw"}}>
           <div style={styles.fifth}>
             <h1>Meet The Team</h1>
           </div>
-        </Container>
-      </Jumbotron>
+        </div>
+      </div>
 
       {/* Footer */}
       <Navbar
